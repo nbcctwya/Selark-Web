@@ -55,7 +55,7 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
   const [creating, setCreating] = useState<'connection' | 'application' | null>(null);
   const s = data.snapshot;
   const caps = useMemo(() => resolveCapabilities(data.capabilities, s), [data.capabilities, s]);
-  const manage = useMemo<Manage>(() => ({ api: data.api, run: data.run, saving: data.saving, ...caps }), [data.api, data.run, data.saving, caps]);
+  const manage = useMemo<Manage>(() => ({ api: data.api, read: data.read, run: data.run, saving: data.saving, ...caps }), [data.api, data.read, data.run, data.saving, caps]);
   const now = useNow();
   const meta = pages.find(p => p.key === page)!;
 
@@ -153,7 +153,7 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
         <div className="sidebar-foot">
           <div className="local-card">
             <Icon name="shield" size={17} />
-            <div><strong>数据留在本机</strong><p>独立管理会话 · 同源访问 · 不探测供应商</p></div>
+            <div><strong>本机管理</strong><p>用量记录保存在本机 · 按需发现模型</p></div>
           </div>
           <Segmented label="主题" size="sm" value={themePref} onChange={setThemePref} options={[
             { value: 'light', label: <Icon name="sun" size={15} title="浅色" />, title: '浅色' },
@@ -204,7 +204,7 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
               {page === 'monitor' && <><MonitorPage snapshot={s} logs={data.logs} backups={data.backups} failures={data.failures} /><FiltersBar snapshot={s} filters={filters} onChange={changeFilters} />{records}</>}
             </div>}
 
-          <footer className="foot"><span><span className="live-dot" />仅限本机 · 无供应商探测</span><span>历史有据可查，未知如实呈现。</span></footer>
+          <footer className="foot"><span><span className="live-dot" />仅限本机 · 手动发现模型</span><span>历史有据可查，未知如实呈现。</span></footer>
         </main>
       </div>
     </div>

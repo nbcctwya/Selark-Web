@@ -189,7 +189,7 @@ function TokenReveal({ app, onDone }: { app: { id: string; name: string; token: 
 /* ------------------------------------------------------- policy & revoke */
 
 export function ApplicationSettings({ id, snapshot }: { id: string; snapshot: Snapshot }) {
-  const { api, run, saving, can, why } = useManage();
+  const { api, read, run, saving, can, why } = useManage();
   const [managed, setManaged] = useState<ManagedApplication | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -200,11 +200,11 @@ export function ApplicationSettings({ id, snapshot }: { id: string; snapshot: Sn
   useEffect(() => {
     const controller = new AbortController();
     setLoadError(null);
-    api.getApplication(id, controller.signal).then(item => { setManaged(item); setDraft(toDraft(item.policy)); }).catch(error => {
+    read(signal => api.getApplication(id, signal), controller.signal).then(item => { setManaged(item); setDraft(toDraft(item.policy)); }).catch(error => {
       if (!controller.signal.aborted) setLoadError(error instanceof ApiError ? error.message : '应用策略暂不可读。');
     });
     return () => controller.abort();
-  }, [api, id, reload]);
+  }, [api, read, id, reload]);
   const patch = useMemo(() => (managed && draft ? diffPolicy(managed.policy, toPolicy(draft)) : {}), [managed, draft]);
 
   if (loadError) return <Empty icon="alert" tone="error" title="无法读取应用策略">{loadError}<p><Button size="sm" icon="refresh" onClick={() => setReload(r => r + 1)}>重试</Button></p></Empty>;

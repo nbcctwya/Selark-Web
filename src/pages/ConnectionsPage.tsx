@@ -30,7 +30,7 @@ function Layers({ c, size = 'md' }: { c: Connection; size?: 'sm' | 'md' }) {
 }
 
 export function ConnectionsPage({ snapshot, openId, onOpen, creating, onCreating }: { snapshot: Snapshot; openId: string | null; onOpen: (id: string | null) => void; creating: boolean; onCreating: (open: boolean) => void }) {
-  const { can, why } = useManage();
+  const { can, why, saving } = useManage();
   const toast = useToast();
   const [search, setSearch] = useState('');
   const [type, setType] = useState<TypeFilter>('all');
@@ -45,7 +45,7 @@ export function ConnectionsPage({ snapshot, openId, onOpen, creating, onCreating
   const types = [...new Set(connections.map(c => c.resource_type))];
   const editable = can.model_approval;
   const createButton = <Button variant="primary" icon="sparkle" disabled={!can.connection_management} title={can.connection_management ? undefined : why.connection_management} onClick={() => onCreating(true)}>新建连接</Button>;
-  const createSheet = <Sheet open={creating} onClose={() => onCreating(false)} labelId="create-connection-title" eyebrow="连接" title="新建连接" subtitle="添加 API 或 Key 型 Token Plan；Key 只保存在本机。">
+  const createSheet = <Sheet open={creating} busy={Boolean(saving)} onClose={() => onCreating(false)} labelId="create-connection-title" eyebrow="连接" title="新建连接" subtitle="添加 API 或 Key 型 Token Plan；Key 只保存在本机。">
     {creating && <CreateConnection snapshot={snapshot} onCreated={id => { onCreating(false); onOpen(id); toast({ tone: 'good', text: `连接 ${id} 已创建。尚未发现或启用任何模型。` }); }} />}
   </Sheet>;
 

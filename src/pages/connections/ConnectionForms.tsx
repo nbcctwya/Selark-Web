@@ -72,7 +72,7 @@ function AdvancedFields({ value, onChange, fields, provider, errors }: { value: 
 /* ------------------------------------------------------------------ create */
 
 export function CreateConnection({ snapshot, onCreated }: { snapshot: Snapshot; onCreated: (id: string) => void }) {
-  const { api, run, saving } = useManage();
+  const { api, read, run, saving } = useManage();
   const [providers, setProviders] = useState<Provider[] | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [providerId, setProviderId] = useState('');
@@ -87,11 +87,11 @@ export function CreateConnection({ snapshot, onCreated }: { snapshot: Snapshot; 
 
   useEffect(() => {
     const controller = new AbortController();
-    api.getProviders(controller.signal).then(r => setProviders(r.items)).catch(error => {
+    read(signal => api.getProviders(signal), controller.signal).then(r => setProviders(r.items)).catch(error => {
       if (!controller.signal.aborted) setLoadError(error instanceof ApiError ? error.message : '供应商列表暂不可读。');
     });
     return () => controller.abort();
-  }, [api]);
+  }, [api, read]);
 
   const provider = providers?.find(p => p.id === providerId) ?? null;
   const fields = useMemo(() => new Set(['timeout_seconds', 'stream_usage', 'token_parameter', 'workspace_id', 'anthropic_version', ...(provider?.resource_type === 'token_plan' ? ['plan'] : [])]), [provider]);
@@ -176,7 +176,7 @@ const fieldLabels: Record<string, string> = {
 };
 
 export function ConnectionSettings({ id }: { id: string }) {
-  const { api, run, saving, can, why } = useManage();
+  const { api, read, run, saving, can, why } = useManage();
   const [managed, setManaged] = useState<ManagedConnection | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [reload, setReload] = useState(0);
@@ -198,11 +198,11 @@ export function ConnectionSettings({ id }: { id: string }) {
   useEffect(() => {
     const controller = new AbortController();
     setLoadError(null);
-    api.getConnection(id, controller.signal).then(reset).catch(error => {
+    read(signal => api.getConnection(id, signal), controller.signal).then(reset).catch(error => {
       if (!controller.signal.aborted) setLoadError(error instanceof ApiError ? error.message : '连接配置暂不可读。');
     });
     return () => controller.abort();
-  }, [api, id, reload]);
+  }, [api, read, id, reload]);
 
   if (loadError) return <Empty icon="alert" tone="error" title="无法读取连接配置">{loadError}<p><Button size="sm" icon="refresh" onClick={() => setReload(r => r + 1)}>重试</Button></p></Empty>;
   if (!managed) return <div className="form"><Skeleton className="sk-chart" /></div>;

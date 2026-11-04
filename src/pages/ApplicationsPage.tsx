@@ -27,10 +27,10 @@ function QuotaBlock({ app }: { app: Application }) {
 }
 
 export function ApplicationsPage({ snapshot, openId, onOpen, creating, onCreating }: { snapshot: Snapshot; openId: string | null; onOpen: (id: string | null) => void; creating: boolean; onCreating: (open: boolean) => void }) {
-  const { can, why } = useManage();
+  const { can, why, saving } = useManage();
   const toast = useToast();
   const createButton = <Button variant="primary" icon="sparkle" disabled={!can.application_management} title={can.application_management ? undefined : why.application_management} onClick={() => onCreating(true)}>新建应用</Button>;
-  const createSheet = <Sheet open={creating} onClose={() => onCreating(false)} labelId="create-application-title" eyebrow="应用" title="新建应用" subtitle="为一个调用方生成独立令牌，并设置它能使用的资源与限额。">
+  const createSheet = <Sheet open={creating} busy={Boolean(saving)} onClose={() => onCreating(false)} labelId="create-application-title" eyebrow="应用" title="新建应用" subtitle="为一个调用方生成独立令牌，并设置它能使用的资源与限额。">
     {creating && <CreateApplication snapshot={snapshot} onDone={() => { onCreating(false); toast({ tone: 'good', text: '应用已创建，令牌已从页面清除。' }); }} />}
   </Sheet>;
   const [scope, setScope] = useState<'active' | 'all'>('all');

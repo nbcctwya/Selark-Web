@@ -350,6 +350,8 @@ test('all pages fit a phone viewport and support a dark theme', async ({ page },
 
 test('production build uses same-origin HTTP under CSP, survives reload and clears data after a 401', async ({ page }) => {
   let exchanges = 0, expired = false;
+  const snapshot = structuredClone(fixture.snapshot);
+  for (const app of snapshot.applications) app.id = `caller_${'a'.repeat(24)}_${app.id}`;
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   // The intentional 401 response is logged by the browser; anything else (e.g. a CSP violation) is a failure.
@@ -371,25 +373,44 @@ test('production build uses same-origin HTTP under CSP, survives reload and clea
     expect(request.headers()['x-selark-session']).toBe('fixture-browser-session');
     expect(request.headers().cookie).toBeUndefined();
     if (expired) { await route.fulfill({ status: 401, json: { error: '管理会话已失效。' } }); return; }
-    const values: Record<string, unknown> = { '/api/snapshot': fixture.snapshot, '/api/records': { items: fixture.records.slice(0, 25), total: 65, offset: 0, limit: 25 }, '/api/logs': fixture.logs, '/api/backups': fixture.backups, '/api/capabilities': fixture.management.capabilities };
+    const values: Record<string, unknown> = { '/api/snapshot': snapshot, '/api/records': { items: fixture.records.slice(0, 25), total: 65, offset: 0, limit: 25 }, '/api/logs': fixture.logs, '/api/backups': fixture.backups, '/api/capabilities': fixture.management.capabilities };
     if (!(path in values)) throw new Error(`Unexpected API request ${request.method()} ${path}`);
     await route.fulfill({ json: values[path] });
   });
-  await page.goto('http://127.0.0.1:5174/#login=fixture-login');
-  await expect(metrics(page)).toBeVisible();
-  expect(new URL(page.url()).hash).toBe('');
-  await expect(page.locator('.dev-toolbar')).toHaveCount(0);
-  await page.reload();
-  await expect(metrics(page)).toBeVisible();
-  expect(exchanges).toBe(1);
+  // Every entry point must expire the whole dashboard, including reads started by a sheet.
+  for (const entry of ['write', 'providers', 'connection', 'application']) {
+    expired = false;
+    await page.goto('about:blank');
+    await page.goto('http://127.0.0.1:5174/#login=fixture-login');
+    await expect(metrics(page)).toBeVisible();
+    expect(new URL(page.url()).hash).toBe('');
+    await expect(page.locator('.dev-toolbar')).toHaveCount(0);
+    const previousExchanges = exchanges;
+    await page.reload();
+    await expect(metrics(page)).toBeVisible();
+    expect(exchanges).toBe(previousExchanges);
 
-  // A 401 during a write clears every resource value and closes the open detail.
-  const sheet = await openConnection(page, 'OpenAI Demo');
-  expired = true;
-  await sheet.getByRole('switch', { name: '启用 demo-text-small' }).click();
-  await expect(page.getByRole('heading', { name: '需要本机管理会话' })).toBeVisible();
-  await expect(page.getByRole('dialog')).toHaveCount(0);
-  await expect(page.getByText('OpenAI Demo')).toHaveCount(0);
-  expect(await page.evaluate(() => sessionStorage.getItem('selark-dashboard-session'))).toBeNull();
+    if (entry === 'application') {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await nav(page, '应用管理').click();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+      await page.getByRole('button', { name: 'Cursor Workspace', exact: true }).click();
+      expired = true;
+      await page.getByRole('tab', { name: '策略与撤销' }).click();
+    } else if (entry === 'providers') {
+      await nav(page, '连接与模型').click();
+      expired = true;
+      await page.getByRole('button', { name: '新建连接' }).click();
+    } else {
+      const sheet = await openConnection(page, 'OpenAI Demo');
+      expired = true;
+      if (entry === 'write') await sheet.getByRole('switch', { name: '启用 demo-text-small' }).click();
+      else await sheet.getByRole('tab', { name: '设置' }).click();
+    }
+    await expect(page.getByRole('heading', { name: '需要本机管理会话' })).toBeVisible();
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    await expect(page.getByText('OpenAI Demo')).toHaveCount(0);
+    expect(await page.evaluate(() => sessionStorage.getItem('selark-dashboard-session'))).toBeNull();
+  }
   expect(errors).toEqual([]);
 });

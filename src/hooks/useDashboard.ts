@@ -55,6 +55,7 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
   const current = useRef<AbortController | null>(null);
   const recordsController = useRef<AbortController | null>(null);
   const mutation = useRef<AbortController | null>(null);
+  const sessionGeneration = useRef(0);
   const locked = useRef(false);
   const refreshing = useRef(false);
   const snapshotRef = useRef<Snapshot | null>(null);
@@ -65,11 +66,26 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
     api.clearSession();
     current.current?.abort();
     recordsController.current?.abort();
+    mutation.current?.abort();
+    sessionGeneration.current++;
     snapshotRef.current = null;
     generation.current++;
     // Drop every resource value; the view also closes any open detail when it sees authRequired.
     setState({ ...initial, loading: false, authRequired: true, authMessage: message || '管理会话已失效。' });
   }, [api]);
+
+  // Detail reads share the same expiry handling and deadline as the main dashboard.
+  const read = useCallback(async <T,>(operation: (signal: AbortSignal) => Promise<T>, signal: AbortSignal): Promise<T> => {
+    const bounded = AbortSignal.any([signal, AbortSignal.timeout(READ_TIMEOUT)]);
+    try {
+      const value = await operation(bounded);
+      bounded.throwIfAborted();
+      return value;
+    } catch (error) {
+      if (isExpired(error)) expire(error.message);
+      throw error;
+    }
+  }, [expire]);
 
   const loadRecords = useCallback(async () => {
     const snapshot = snapshotRef.current;
@@ -167,6 +183,7 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
   const run = useCallback(async <T,>(operation: (signal: AbortSignal) => Promise<T>, options: WriteOptions): Promise<WriteResult<T> | null> => {
     if (locked.current) return null;
     locked.current = true;
+    const sessionVersion = sessionGeneration.current;
     setSaving(options.key);
     const controller = new AbortController();
     mutation.current = controller;
@@ -174,9 +191,12 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
     try {
       const value = await operation(controller.signal);
       clearTimeout(timer);
+      if (sessionVersion !== sessionGeneration.current) return null;
       const refreshed = await refresh();
+      if (sessionVersion !== sessionGeneration.current) return null;
       return { ok: true, value, refreshed };
     } catch (error) {
+      if (sessionVersion !== sessionGeneration.current) return null;
       if (isExpired(error)) { expire(error.message); return null; }
       if (error instanceof ApiError) {
         if (error.status === 409 && error.code !== 'default_model_confirmation' && options.refreshOn409 !== false) {
@@ -196,7 +216,7 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
     }
   }, [refresh, expire]);
 
-  return { ...state, saving, refresh, run, api };
+  return { ...state, saving, refresh, read, run, api };
 }
 
 export type Dashboard = ReturnType<typeof useDashboard>;

@@ -18,10 +18,11 @@ function useModal(open: boolean) {
   return ref;
 }
 
-export function Sheet({ open, onClose, title, eyebrow, subtitle, children, footer, labelId }: { open: boolean; onClose: () => void; title: ReactNode; eyebrow?: ReactNode; subtitle?: ReactNode; children: ReactNode; footer?: ReactNode; labelId: string }) {
+export function Sheet({ open, onClose, title, eyebrow, subtitle, children, footer, labelId, busy = false }: { open: boolean; onClose: () => void; title: ReactNode; eyebrow?: ReactNode; subtitle?: ReactNode; children: ReactNode; footer?: ReactNode; labelId: string; busy?: boolean }) {
   const ref = useModal(open);
   return <dialog ref={ref} className="sheet" aria-labelledby={labelId} onClose={event => { if (event.target === ref.current) onClose(); }}
-    onClick={event => { if (event.target === ref.current) ref.current?.close(); }}>
+    onCancel={event => { if (busy) event.preventDefault(); }}
+    onClick={event => { if (!busy && event.target === ref.current) ref.current?.close(); }}>
     {open && <div className="sheet-inner">
       <header className="sheet-head">
         <div className="sheet-titles">
@@ -29,7 +30,7 @@ export function Sheet({ open, onClose, title, eyebrow, subtitle, children, foote
           <h2 id={labelId}>{title}</h2>
           {subtitle && <p className="sheet-sub">{subtitle}</p>}
         </div>
-        <Button variant="ghost" icon="close" aria-label="关闭详情" onClick={() => ref.current?.close()} />
+        <Button variant="ghost" icon="close" aria-label="关闭详情" disabled={busy} onClick={() => ref.current?.close()} />
       </header>
       <div className="sheet-body">{children}</div>
       {footer && <footer className="sheet-foot">{footer}</footer>}

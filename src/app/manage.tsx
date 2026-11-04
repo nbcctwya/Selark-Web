@@ -4,6 +4,7 @@ import type { WriteOptions, WriteResult } from '../hooks/useDashboard';
 
 export interface Manage {
   api: DashboardApi;
+  read: <T>(operation: (signal: AbortSignal) => Promise<T>, signal: AbortSignal) => Promise<T>;
   run: <T>(operation: (signal: AbortSignal) => Promise<T>, options: WriteOptions) => Promise<WriteResult<T> | null>;
   saving: string | null;
   can: Capabilities;
