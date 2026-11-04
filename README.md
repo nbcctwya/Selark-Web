@@ -22,7 +22,7 @@ npm ci
 npm run dev
 ```
 
-打开 `http://127.0.0.1:5173`。顶部开发工具栏可以切换场景、重置数据。模型启停只修改内存；刷新页面或重置即可恢复。开发服务只绑定本机。
+打开 `http://127.0.0.1:5173`。顶部开发工具栏可以切换场景、重置数据。所有模拟管理操作只修改内存；刷新页面或重置即可恢复。开发服务只绑定本机。
 
 ```bash
 npm run typecheck
@@ -45,10 +45,13 @@ npm run test:browser
 
 ```text
 src/
+  api/generated.ts      # 从固定 OpenAPI 规范生成的完整字段类型
   api/types.ts          # 前后端交接的数据类型和 DashboardApi 接口
   api/http.ts           # 真实 HTTP、独立管理会话、错误与取消
   mocks/fixture.json    # 从临时模拟账本导出的公开响应；没有真实凭据
   mocks/api.ts          # 内存模拟适配器：筛选、分页、修改、异常
+  mocks/management.ts   # 连接、模型、应用编辑的内存流程
+  mocks/contract.ts     # 仅开发/测试使用的规范校验
   mocks/Workbench.tsx   # 仅开发模式加载的场景工具栏
   hooks/useDashboard.ts # 加载、刷新、错误、会话失效、模型写入
   components/          # 筛选、统计、调用列表与详情等共用组件
@@ -59,6 +62,8 @@ src/
 API.md                 # 当前真实接口、字段口径及交互约定
 CLAUDE.md              # 给 Claude 的任务与交付说明
 BACKEND_REQUESTS.md    # 记录设计中需要的新后端能力
+contracts/             # Selark 导出的固定 OpenAPI 规范
+tools/api-types/       # 独立锁定的类型生成开发工具
 ```
 
 组件通过 `DashboardApi` 访问数据，避免直接导入 fixture 或在组件里写 `fetch`。真实和模拟适配器实现同一个接口；不要让某种数据源专属的字段进入产品组件。
@@ -77,8 +82,14 @@ BACKEND_REQUESTS.md    # 记录设计中需要的新后端能力
 | 部分数据不可读 | 资源可见，用量/记录不可读 |
 | 修改冲突 | 第一次模型修改返回 409，刷新后需重新明确操作 |
 | 慢速加载 | 延迟 1.8 秒，可检查加载提示、重复操作和导航 |
+| 离线模式 | 关闭模型发现，允许本地配置与应用管理 |
+| 发现失败 | HTTP 成功返回失败状态，保留旧目录 |
 
 未知用量、真实零值、无记录必须分别呈现。时间筛选影响用量和调用记录；连接、应用权限和 UTC 今日配额保留全局范围。
+
+连接创建和编辑、显式发现、批量模型审批、默认模型、应用创建/策略/配额/撤销的类型和两种适配器已准备好。
+页面设计和新增表单按 [API.md](API.md) 实现；现有骨架尚未展示全部管理操作。
+规范和生成类型已随仓库提交，独立开发不依赖后端。契约维护时运行 `npm run setup:api`、`npm run generate:api`、`npm run check:api`。
 
 ## Git 交接
 

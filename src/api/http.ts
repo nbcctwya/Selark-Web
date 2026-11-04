@@ -1,7 +1,7 @@
 import type { Backups, DashboardApi, Filters, Logs, ModelApproval, ModelApprovalResult, RecordQuery, RecordsPage, Snapshot } from './types';
 
 export class ApiError extends Error {
-  constructor(public readonly status: number, message: string) {
+  constructor(public readonly status: number, message: string, public readonly code?: string) {
     super(message);
     this.name = 'ApiError';
   }
@@ -37,20 +37,21 @@ export function createHttpApi(options: { fetch?: typeof fetch; storage?: Session
     } catch { /* Storage may be disabled. */ }
   }
 
-  async function request<T>(path: string, signal?: AbortSignal, payload?: unknown, login = false): Promise<T> {
+  async function request<T>(path: string, signal?: AbortSignal, payload?: unknown, login = false, method = payload === undefined ? 'GET' : 'POST', timeout = 20000): Promise<T> {
     const headers: Record<string, string> = login ? {} : { 'X-Selark-Dashboard': '1', 'X-Selark-Session': session ?? '' };
     if (payload !== undefined) headers['Content-Type'] = 'application/json';
     const response = await send(`/api/${path}`, {
-      method: payload === undefined ? 'GET' : 'POST', headers,
+      method, headers,
       credentials: 'omit', mode: 'same-origin', redirect: 'error', cache: 'no-store',
-      body: payload === undefined ? undefined : JSON.stringify(payload), signal: signal ?? AbortSignal.timeout(20000),
+      body: payload === undefined ? undefined : JSON.stringify(payload), signal: signal ?? AbortSignal.timeout(timeout),
     });
     if (response.status === 401) save(null);
     const body: unknown = await response.json().catch(() => null);
     if (!response.ok) {
       const message = body && typeof body === 'object' && 'error' in body && typeof body.error === 'string'
         ? body.error : '本地数据暂时不可读。';
-      throw new ApiError(response.status, message);
+      const code = body && typeof body === 'object' && 'code' in body && typeof body.code === 'string' ? body.code : undefined;
+      throw new ApiError(response.status, message, code);
     }
     if (!body || typeof body !== 'object') throw new ApiError(502, 'Dashboard 返回了无效数据。');
     return body as T;
@@ -79,5 +80,21 @@ export function createHttpApi(options: { fetch?: typeof fetch; storage?: Session
     logs: signal => request<Logs>('logs', signal),
     backups: signal => request<Backups>('backups', signal),
     setModelApproval: (change: ModelApproval, signal) => request<ModelApprovalResult>('model-approval', signal, change),
+    getCapabilities: signal => request('capabilities', signal),
+    getProviders: signal => request('providers', signal),
+    getConnections: signal => request('connections', signal),
+    getConnection: (id, signal) => request(`connections/${encodeURIComponent(id)}`, signal),
+    createConnection: (input, signal) => request('connections', signal, input),
+    updateConnection: (id, input, signal) => request(`connections/${encodeURIComponent(id)}`, signal, input, false, 'PATCH'),
+    getConnectionModels: (id, signal) => request(`connections/${encodeURIComponent(id)}/models`, signal),
+    discoverModels: (id, signal) => request(`connections/${encodeURIComponent(id)}/discover`, signal, {}, false, 'POST', 45000),
+    approveModels: (id, input, signal) => request(`connections/${encodeURIComponent(id)}/models/approval`, signal, input),
+    setDefaultModel: (id, input, signal) => request(`connections/${encodeURIComponent(id)}/models/default`, signal, input, false, 'PUT'),
+    getApplications: signal => request('applications', signal),
+    getApplication: (id, signal) => request(`applications/${encodeURIComponent(id)}`, signal),
+    createApplication: (input, signal) => request('applications', signal, input),
+    updateApplicationPolicy: (id, input, signal) => request(`applications/${encodeURIComponent(id)}/policy`, signal, input, false, 'PATCH'),
+    revokeApplication: (id, input, signal) => request(`applications/${encodeURIComponent(id)}/revoke`, signal, input),
+    getApplicationQuota: (id, signal) => request(`applications/${encodeURIComponent(id)}/quota`, signal),
   };
 }

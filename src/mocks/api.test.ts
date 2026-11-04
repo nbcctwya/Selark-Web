@@ -1,11 +1,78 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createMockApi } from './api';
 import fixture from './fixture.json';
+import { conforms } from './contract';
 
 afterEach(() => vi.unstubAllGlobals());
 const make = (scenario: Parameters<typeof createMockApi>[0] = {}) => createMockApi({ delayMs: 0, now: new Date(fixture.reference_time), ...scenario });
 
 describe('mock contract and interactions', () => {
+  it('runs connection, model and application workflows against the published response contract', async () => {
+    const send = vi.fn(); vi.stubGlobal('fetch', send);
+    const api = make(); await api.initialize();
+    const checked = <T>(schema: string, value: T): T => { expect(conforms(schema, value), schema).toBe(true); return value; };
+    checked('Capabilities', await api.getCapabilities());
+    checked('ProviderList', await api.getProviders());
+    const connection = checked('ManagedConnection', await api.createConnection({ id: 'new-relay', provider: 'openai-compatible', base_url: 'https://relay.example/v1', api_key: 'fixture-submitted-key' }));
+    expect(connection.allowed_models).toEqual([]);
+    expect(connection.discovery.state).toBe('never');
+    expect(connection).not.toHaveProperty('api_key');
+    await expect(api.createConnection({ id: connection.id, provider: 'openai', api_key: 'fixture-key' })).rejects.toMatchObject({ status: 409, code: 'connection_exists' });
+    const updated = checked('ManagedConnection', await api.updateConnection(connection.id, { revision: connection.revision, name: 'Changed', api_key: 'fixture-rotated-key' }));
+    await expect(api.updateConnection(connection.id, { revision: connection.revision, enabled: false })).rejects.toMatchObject({ status: 409, code: 'connection_changed' });
+    expect(updated.name).toBe('Changed');
+    const discovered = checked('ManagedModels', await api.discoverModels(connection.id));
+    expect(discovered.discovery.state).toBe('success');
+    expect(discovered.models.every(m => !m.approved)).toBe(true);
+    const approved = checked('ManagedModels', await api.approveModels(connection.id, { revision: discovered.approval_revision, enabled: true, all_models: true }));
+    const selected = checked('ManagedModels', await api.setDefaultModel(connection.id, { revision: approved.approval_revision, model: approved.models[0].id }));
+    await expect(api.approveModels(connection.id, { revision: selected.approval_revision, enabled: false, all_models: true })).rejects.toMatchObject({ status: 409, code: 'default_model_confirmation' });
+    const app = checked('CreatedApplication', await api.createApplication({ name: 'New editor', policy: { allowed_connections: [connection.id], daily_token_limit: 1000 } }));
+    expect(app.token).toContain('demo-only-not-a-real-token');
+    const list = checked('ApplicationList', await api.getApplications());
+    expect(JSON.stringify(list)).not.toContain(app.token);
+    expect(checked('ManagedApplication', await api.getApplication(app.id))).not.toHaveProperty('token');
+    const policy = checked('ManagedApplication', await api.updateApplicationPolicy(app.id, { revision: app.revision, policy: { daily_token_limit: 500, daily_budget: '1.25' } }));
+    const quota = checked('ApplicationQuota', await api.getApplicationQuota(app.id));
+    expect(quota.remaining_tokens).toBe(500);
+    expect(quota.policy.daily_budget).toBe('1.25');
+    await expect(api.revokeApplication(app.id, { revision: app.revision })).rejects.toMatchObject({ status: 409, code: 'application_changed' });
+    const revoked = checked('RevokedApplication', await api.revokeApplication(app.id, { revision: policy.revision }));
+    expect(revoked.in_flight_policy).toBe('already_admitted_requests_continue');
+    expect(revoked.active).toBe(false);
+    const disabled = checked('ManagedModels', await api.approveModels(connection.id, { revision: selected.approval_revision, enabled: false, all_models: true, clear_default: true }));
+    expect(disabled.default_model).toBeNull();
+    checked('ConnectionList', await api.getConnections());
+    checked('ManagedModels', await api.getConnectionModels(connection.id));
+    const snapshot = checked('Snapshot', await api.snapshot());
+    expect(snapshot.applications.find(item => item.id === app.id)?.effective_resources).toEqual([]);
+    expect(JSON.stringify(snapshot)).not.toContain('fixture-rotated-key');
+    expect(send).not.toHaveBeenCalled();
+  });
+
+  it('rejects malformed edits and separates read-only, offline and failed discovery behavior', async () => {
+    const api = make(); await api.initialize();
+    const connection = await api.getConnection('openai-demo');
+    await expect(api.updateConnection(connection.id, { revision: connection.revision })).rejects.toMatchObject({ status: 400, code: 'invalid_request' });
+    await expect(api.updateConnection(connection.id, { revision: connection.revision, enabled: null } as never)).rejects.toMatchObject({ status: 400, code: 'invalid_request' });
+    await expect(api.updateConnection(connection.id, { revision: connection.revision, name: 'Valid', unexpected: true } as never)).rejects.toMatchObject({ status: 400 });
+    expect((await api.getConnection(connection.id)).revision).toBe(connection.revision);
+    const readonly = make({ scenario: 'readonly' }); await readonly.initialize();
+    expect(Object.values(await readonly.getCapabilities()).every(value => !value)).toBe(true);
+    await expect(readonly.createApplication({ name: 'Blocked' })).rejects.toMatchObject({ status: 405 });
+    const offline = make({ scenario: 'offline-mode' }); await offline.initialize();
+    expect((await offline.getCapabilities()).model_discovery).toBe(false);
+    await expect(offline.discoverModels(connection.id)).rejects.toMatchObject({ status: 405 });
+    expect((await offline.createApplication({ name: 'Local only' })).active).toBe(true);
+    const failing = make({ scenario: 'discovery-error' }); await failing.initialize();
+    const before = await failing.getConnectionModels(connection.id);
+    const failure = await failing.discoverModels(connection.id);
+    expect(failure.discovery.state).toBe('failure');
+    expect(failure.discovery.models).toEqual(before.discovery.models);
+    expect(failure.default_model).toBe(before.default_model);
+    expect(conforms('ManagedModels', failure)).toBe(true);
+  });
+
   it('preserves aggregate tokens, cost precision and unknown usage from the real synthetic ledger', async () => {
     const api = make(); await api.initialize();
     const snapshot = await api.snapshot();
@@ -21,6 +88,7 @@ describe('mock contract and interactions', () => {
     expect(first.total).toBe(65); expect(first.items).toHaveLength(25); expect(second.items).toHaveLength(25);
     expect(new Set([...first.items, ...second.items].map(r => r.request_id)).size).toBe(50);
     const snapshot = await api.snapshot({ connection_id: 'deepseek' });
+    expect(conforms('Snapshot', await api.snapshot({ connection_id: 'deepseek', period: '7d' }))).toBe(true);
     const records = await api.records({ connection_id: 'deepseek' });
     expect(records.total).toBe(snapshot.usage?.summary.requests);
     expect(records.items.every(r => r.connection_id === 'deepseek')).toBe(true);

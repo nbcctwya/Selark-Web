@@ -1,0 +1,12 @@
+{
+  "name": "selark-api-type-generator",
+  "private": true,
+  "type": "module",
+  "description": "Isolated OpenAPI generator; the application continues using TypeScript 7.",
+  "devDependencies": {
+    "openapi-typescript": "6.7.6"
+  },
+  "overrides": {
+    "undici": "6.29.1"
+  }
+}

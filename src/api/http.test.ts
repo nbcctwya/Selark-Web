@@ -1,5 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { ApiError, createHttpApi } from './http';
+import specification from '../../contracts/dashboard.openapi.json';
+import { conforms } from '../mocks/contract';
 
 function storage() {
   const values = new Map<string, string>();
@@ -7,6 +9,43 @@ function storage() {
 }
 
 describe('real HTTP adapter', () => {
+  it('maps all management methods to documented routes and sends PATCH, PUT, revisions and error codes', async () => {
+    const saved = storage(); saved.setItem('selark-dashboard-session', 'fixture-session');
+    const send = vi.fn<typeof fetch>().mockImplementation(async () => new Response('{}'));
+    const api = createHttpApi({ fetch: send, storage: saved });
+    const version = 'a'.repeat(64);
+    const operations: [string, unknown[]][] = [
+      ['getCapabilities', []], ['getProviders', []], ['getConnections', []], ['getConnection', ['sample']],
+      ['createConnection', [{ id: 'sample', provider: 'openai', api_key: 'fixture-key' }]],
+      ['updateConnection', ['sample', { revision: version, enabled: false }]],
+      ['getConnectionModels', ['sample']], ['discoverModels', ['sample']],
+      ['approveModels', ['sample', { revision: 1, enabled: true, models: ['demo'] }]],
+      ['setDefaultModel', ['sample', { revision: 1, model: null }]],
+      ['getApplications', []], ['getApplication', ['sample']], ['createApplication', [{ name: 'Editor' }]],
+      ['updateApplicationPolicy', ['sample', { revision: version, policy: { allowed_models: [] } }]],
+      ['revokeApplication', ['sample', { revision: version }]], ['getApplicationQuota', ['sample']],
+    ];
+    const timeout = vi.spyOn(AbortSignal, 'timeout');
+    try {
+      for (const [name, args] of operations) {
+        await (api as unknown as Record<string, (...args: unknown[]) => Promise<unknown>>)[name](...args);
+        const [url, options] = send.mock.calls.at(-1)!;
+        const path = String(url).replace('/sample', '/{identity}');
+        const route = specification.paths[path as keyof typeof specification.paths];
+        const operation = (route as Record<string, { operationId: string; requestBody?: { content: { 'application/json': { schema: { $ref: string } } } } }>)[options!.method!.toLowerCase()];
+        expect(operation.operationId).toBe(name);
+        if (operation.requestBody) expect(conforms(operation.requestBody.content['application/json'].schema.$ref.split('/').at(-1)!, JSON.parse(String(options!.body)))).toBe(true);
+      }
+      expect(timeout).toHaveBeenCalledWith(45000);
+    } finally { timeout.mockRestore(); }
+    expect(send).toHaveBeenCalledTimes(16);
+    await api.getApplication('a/b?x=1');
+    expect(send.mock.calls.at(-1)![0]).toBe('/api/applications/a%2Fb%3Fx%3D1');
+    send.mockResolvedValue(new Response(JSON.stringify({ error: 'Refresh', code: 'connection_changed' }), { status: 409 }));
+    await expect(api.updateConnection('sample', { revision: version, name: 'Edited' })).rejects.toMatchObject({ status: 409, code: 'connection_changed' });
+    expect(send).toHaveBeenCalledTimes(18);
+  });
+
   it('exchanges a one-use link once even under concurrent React initialization', async () => {
     const send = vi.fn<typeof fetch>().mockResolvedValue(new Response(JSON.stringify({ session_token: 'fixture-admin-session', authenticated: true, expires_in: 28800 })));
     const saved = storage();

@@ -1,9 +1,9 @@
 {
   "fixture_only": true,
-  "contract": "selark-dashboard-v1",
-  "reference_time": "2026-11-04T03:35:46.971402+00:00",
+  "contract": "selark-dashboard-v2",
+  "reference_time": "2026-11-04T08:20:47.292937+00:00",
   "snapshot": {
-    "checked_at": "2026-11-04T03:35:46.971402+00:00",
+    "checked_at": "2026-11-04T08:20:47.292937+00:00",
     "version": "0.10.0",
     "scope": "local_instance",
     "ok": true,
@@ -29,7 +29,7 @@
         },
         "verification": {
           "state": "success",
-          "verified_at": "2026-11-03T22:32:24.295880+00:00",
+          "verified_at": "2026-11-04T03:17:24.628896+00:00",
           "age_seconds": 18202,
           "model": "mimo-fixture",
           "scope": "connection_configuration"
@@ -41,8 +41,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-04T03:35:46.768417+00:00",
-          "discovered_at": "2026-11-04T03:35:46.768417+00:00",
+          "checked_at": "2026-11-04T08:20:47.112261+00:00",
+          "discovered_at": "2026-11-04T08:20:47.112261+00:00",
           "current": true,
           "count": 2
         },
@@ -81,7 +81,7 @@
                 {
                   "state": "success",
                   "outcome": "success",
-                  "verified_at": "2026-11-03T22:32:24.295880+00:00",
+                  "verified_at": "2026-11-04T03:17:24.628896+00:00",
                   "request_id": "fixture-00063",
                   "actual_model": "mimo-fixture",
                   "protocol": "chat-completions",
@@ -138,7 +138,7 @@
         },
         "verification": {
           "state": "success",
-          "verified_at": "2026-11-04T01:03:47.372803+00:00",
+          "verified_at": "2026-11-04T05:48:47.705819+00:00",
           "age_seconds": 9119,
           "model": "deepseek-fixture",
           "scope": "connection_configuration"
@@ -150,8 +150,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-04T03:35:46.809165+00:00",
-          "discovered_at": "2026-11-04T03:35:46.809165+00:00",
+          "checked_at": "2026-11-04T08:20:47.131601+00:00",
+          "discovered_at": "2026-11-04T08:20:47.131601+00:00",
           "current": true,
           "count": 1
         },
@@ -190,7 +190,7 @@
                 {
                   "state": "success",
                   "outcome": "success",
-                  "verified_at": "2026-11-04T01:03:47.372803+00:00",
+                  "verified_at": "2026-11-04T05:48:47.705819+00:00",
                   "request_id": "fixture-00064",
                   "actual_model": "deepseek-fixture",
                   "protocol": "chat-completions",
@@ -229,7 +229,7 @@
         },
         "verification": {
           "state": "success",
-          "verified_at": "2026-11-03T20:01:01.218957+00:00",
+          "verified_at": "2026-11-04T00:46:01.551973+00:00",
           "age_seconds": 27285,
           "model": "kimi-for-coding",
           "scope": "connection_configuration"
@@ -241,8 +241,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-04T03:35:46.829964+00:00",
-          "discovered_at": "2026-11-04T03:35:46.829964+00:00",
+          "checked_at": "2026-11-04T08:20:47.154170+00:00",
+          "discovered_at": "2026-11-04T08:20:47.154170+00:00",
           "current": true,
           "count": 1
         },
@@ -279,7 +279,7 @@
                 {
                   "state": "success",
                   "outcome": "success",
-                  "verified_at": "2026-11-03T20:01:01.218957+00:00",
+                  "verified_at": "2026-11-04T00:46:01.551973+00:00",
                   "request_id": "fixture-00062",
                   "actual_model": "kimi-for-coding",
                   "protocol": "chat-completions",
@@ -345,8 +345,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-04T03:35:46.846757+00:00",
-          "discovered_at": "2026-11-04T03:35:46.846757+00:00",
+          "checked_at": "2026-11-04T08:20:47.171992+00:00",
+          "discovered_at": "2026-11-04T08:20:47.171992+00:00",
           "current": true,
           "count": 0
         },
@@ -400,8 +400,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-04T03:35:46.861221+00:00",
-          "discovered_at": "2026-11-04T03:35:46.861221+00:00",
+          "checked_at": "2026-11-04T08:20:47.190872+00:00",
+          "discovered_at": "2026-11-04T08:20:47.190872+00:00",
           "current": true,
           "count": 1
         },
@@ -471,8 +471,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-04T03:35:46.877887+00:00",
-          "discovered_at": "2026-11-04T03:35:46.877887+00:00",
+          "checked_at": "2026-11-04T08:20:47.207704+00:00",
+          "discovered_at": "2026-11-04T08:20:47.207704+00:00",
           "current": true,
           "count": 2
         },
@@ -528,7 +528,7 @@
       {
         "id": "legacy",
         "name": "Legacy client (0.1.x)",
-        "created_at": "2026-11-04T03:35:46.367001+00:00",
+        "created_at": "2026-11-04T08:20:46.696927+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -614,7 +614,7 @@
       {
         "id": "demo-app-1",
         "name": "Cursor Workspace",
-        "created_at": "2026-11-04T03:35:46.443843+00:00",
+        "created_at": "2026-11-04T08:20:46.777714+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -702,7 +702,7 @@
       {
         "id": "demo-app-2",
         "name": "Personal Notebook",
-        "created_at": "2026-11-04T03:35:46.445376+00:00",
+        "created_at": "2026-11-04T08:20:46.779388+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -790,7 +790,7 @@
       {
         "id": "demo-app-3",
         "name": "Research Tools",
-        "created_at": "2026-11-04T03:35:46.446693+00:00",
+        "created_at": "2026-11-04T08:20:46.780844+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -876,8 +876,8 @@
       {
         "id": "demo-app-4",
         "name": "Disabled integration",
-        "created_at": "2026-11-04T03:35:46.722341+00:00",
-        "revoked_at": "2026-11-04T03:35:46.723169+00:00",
+        "created_at": "2026-11-04T08:20:47.073776+00:00",
+        "revoked_at": "2026-11-04T08:20:47.074740+00:00",
         "active": false,
         "policy": {
           "allow_token_plans": false,
@@ -936,8 +936,8 @@
     "usage": {
       "timezone": "UTC",
       "filters": {
-        "since": "2026-10-28T03:35:46.956657+00:00",
-        "until": "2026-11-04T03:35:46.956657+00:00"
+        "since": "2026-10-28T08:20:47.283403+00:00",
+        "until": "2026-11-04T08:20:47.283403+00:00"
       },
       "summary": {
         "requests": 65,
@@ -986,24 +986,24 @@
       "trend": [
         {
           "day": "2026-10-28",
-          "requests": 7,
-          "known_usage_requests": 6,
+          "requests": 5,
+          "known_usage_requests": 4,
           "missing_usage_requests": 1,
           "local_rejected_requests": 0,
           "unknown_consumption_requests": 1,
           "in_flight_requests": 0,
-          "reported_usage_requests": 6,
-          "upstream_attempts": 7,
+          "reported_usage_requests": 4,
+          "upstream_attempts": 5,
           "unknown_attempt_count_requests": 0,
           "unknown_time_requests": 0,
           "status_counts": {
             "failed": 1,
-            "success": 6
+            "success": 4
           },
           "known_tokens": {
-            "prompt_tokens": 8667,
-            "completion_tokens": 1503,
-            "total_tokens": 10170
+            "prompt_tokens": 5270,
+            "completion_tokens": 830,
+            "total_tokens": 6100
           },
           "missing_field_requests": {
             "prompt_tokens": 1,
@@ -1011,21 +1011,21 @@
             "total_tokens": 1
           },
           "estimated_cost_by_currency": {
-            "USD": "0.008784000"
+            "USD": "0.005948000"
           },
-          "unknown_cost_requests": 3,
+          "unknown_cost_requests": 2,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
-            "requests": 7,
+            "requests": 5,
             "tokens_by_basis": {
               "unknown_hold": 1100,
-              "reported_total": 10170
+              "reported_total": 6100
             }
           },
-          "completed_requests": 7,
-          "success_rate": 0.8571428571428571,
-          "average_latency_ms": 399.0
+          "completed_requests": 5,
+          "success_rate": 0.8,
+          "average_latency_ms": 316.0
         },
         {
           "day": "2026-10-29",
@@ -1043,9 +1043,9 @@
             "success": 10
           },
           "known_tokens": {
-            "prompt_tokens": 24605,
-            "completion_tokens": 5945,
-            "total_tokens": 30550
+            "prompt_tokens": 22065,
+            "completion_tokens": 5085,
+            "total_tokens": 27150
           },
           "missing_field_requests": {
             "prompt_tokens": 0,
@@ -1053,20 +1053,20 @@
             "total_tokens": 0
           },
           "estimated_cost_by_currency": {
-            "USD": "0.030092000"
+            "USD": "0.022392000"
           },
-          "unknown_cost_requests": 3,
+          "unknown_cost_requests": 4,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
             "requests": 10,
             "tokens_by_basis": {
-              "reported_total": 30550
+              "reported_total": 27150
             }
           },
           "completed_requests": 10,
           "success_rate": 1.0,
-          "average_latency_ms": 1104.5
+          "average_latency_ms": 938.5
         },
         {
           "day": "2026-10-30",
@@ -1085,9 +1085,9 @@
             "failed": 1
           },
           "known_tokens": {
-            "prompt_tokens": 29590,
-            "completion_tokens": 8110,
-            "total_tokens": 37700
+            "prompt_tokens": 27304,
+            "completion_tokens": 7336,
+            "total_tokens": 34640
           },
           "missing_field_requests": {
             "prompt_tokens": 1,
@@ -1095,7 +1095,7 @@
             "total_tokens": 1
           },
           "estimated_cost_by_currency": {
-            "USD": "0.034660000"
+            "USD": "0.030052000"
           },
           "unknown_cost_requests": 4,
           "billed_cost": null,
@@ -1103,13 +1103,13 @@
             "scope": "Selark 0.5+ admissions",
             "requests": 9,
             "tokens_by_basis": {
-              "reported_total": 37700,
+              "reported_total": 34640,
               "unknown_hold": 4330
             }
           },
           "completed_requests": 9,
           "success_rate": 0.8888888888888888,
-          "average_latency_ms": 1893.0
+          "average_latency_ms": 1727.0
         },
         {
           "day": "2026-10-31",
@@ -1127,9 +1127,9 @@
             "success": 10
           },
           "known_tokens": {
-            "prompt_tokens": 48735,
-            "completion_tokens": 14115,
-            "total_tokens": 62850
+            "prompt_tokens": 46195,
+            "completion_tokens": 13255,
+            "total_tokens": 59450
           },
           "missing_field_requests": {
             "prompt_tokens": 0,
@@ -1137,20 +1137,20 @@
             "total_tokens": 0
           },
           "estimated_cost_by_currency": {
-            "USD": "0.054648000"
+            "USD": "0.059788000"
           },
-          "unknown_cost_requests": 4,
+          "unknown_cost_requests": 3,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
             "requests": 10,
             "tokens_by_basis": {
-              "reported_total": 62850
+              "reported_total": 59450
             }
           },
           "completed_requests": 10,
           "success_rate": 1.0,
-          "average_latency_ms": 2681.5
+          "average_latency_ms": 2515.5
         },
         {
           "day": "2026-11-01",
@@ -1169,9 +1169,9 @@
             "failed": 1
           },
           "known_tokens": {
-            "prompt_tokens": 48894,
-            "completion_tokens": 14646,
-            "total_tokens": 63540
+            "prompt_tokens": 46608,
+            "completion_tokens": 13872,
+            "total_tokens": 60480
           },
           "missing_field_requests": {
             "prompt_tokens": 1,
@@ -1179,7 +1179,7 @@
             "total_tokens": 1
           },
           "estimated_cost_by_currency": {
-            "USD": "0.068472000"
+            "USD": "0.066168000"
           },
           "unknown_cost_requests": 3,
           "billed_cost": null,
@@ -1187,13 +1187,13 @@
             "scope": "Selark 0.5+ admissions",
             "requests": 9,
             "tokens_by_basis": {
-              "reported_total": 63540,
+              "reported_total": 60480,
               "unknown_hold": 7560
             }
           },
           "completed_requests": 9,
           "success_rate": 0.8888888888888888,
-          "average_latency_ms": 740.2222222222222
+          "average_latency_ms": 1256.6666666666667
         },
         {
           "day": "2026-11-02",
@@ -1211,9 +1211,9 @@
             "success": 10
           },
           "known_tokens": {
-            "prompt_tokens": 72865,
-            "completion_tokens": 9685,
-            "total_tokens": 82550
+            "prompt_tokens": 70325,
+            "completion_tokens": 13025,
+            "total_tokens": 83350
           },
           "missing_field_requests": {
             "prompt_tokens": 0,
@@ -1221,7 +1221,7 @@
             "total_tokens": 0
           },
           "estimated_cost_by_currency": {
-            "USD": "0.072220000"
+            "USD": "0.075704000"
           },
           "unknown_cost_requests": 3,
           "billed_cost": null,
@@ -1229,12 +1229,12 @@
             "scope": "Selark 0.5+ admissions",
             "requests": 10,
             "tokens_by_basis": {
-              "reported_total": 82550
+              "reported_total": 83350
             }
           },
           "completed_requests": 10,
           "success_rate": 1.0,
-          "average_latency_ms": 1187.5
+          "average_latency_ms": 1021.5
         },
         {
           "day": "2026-11-03",
@@ -1253,9 +1253,9 @@
             "failed": 1
           },
           "known_tokens": {
-            "prompt_tokens": 68198,
-            "completion_tokens": 4382,
-            "total_tokens": 72580
+            "prompt_tokens": 65912,
+            "completion_tokens": 3608,
+            "total_tokens": 69520
           },
           "missing_field_requests": {
             "prompt_tokens": 1,
@@ -1263,7 +1263,7 @@
             "total_tokens": 1
           },
           "estimated_cost_by_currency": {
-            "USD": "0.051032000"
+            "USD": "0.048728000"
           },
           "unknown_cost_requests": 4,
           "billed_cost": null,
@@ -1271,33 +1271,33 @@
             "scope": "Selark 0.5+ admissions",
             "requests": 9,
             "tokens_by_basis": {
-              "reported_total": 72580,
+              "reported_total": 69520,
               "unknown_hold": 8690
             }
           },
           "completed_requests": 9,
           "success_rate": 0.8888888888888888,
-          "average_latency_ms": 1976.0
+          "average_latency_ms": 1810.0
         },
         {
           "day": "2026-11-04",
-          "requests": 1,
-          "known_usage_requests": 1,
+          "requests": 3,
+          "known_usage_requests": 3,
           "missing_usage_requests": 0,
           "local_rejected_requests": 0,
           "unknown_consumption_requests": 0,
           "in_flight_requests": 0,
-          "reported_usage_requests": 1,
-          "upstream_attempts": 1,
+          "reported_usage_requests": 3,
+          "upstream_attempts": 3,
           "unknown_attempt_count_requests": 0,
           "unknown_time_requests": 0,
           "status_counts": {
-            "success": 1
+            "success": 3
           },
           "known_tokens": {
-            "prompt_tokens": 9128,
-            "completion_tokens": 752,
-            "total_tokens": 9880
+            "prompt_tokens": 27003,
+            "completion_tokens": 2127,
+            "total_tokens": 29130
           },
           "missing_field_requests": {
             "prompt_tokens": 0,
@@ -1305,20 +1305,20 @@
             "total_tokens": 0
           },
           "estimated_cost_by_currency": {
-            "USD": "0.011384000"
+            "USD": "0.022512000"
           },
-          "unknown_cost_requests": 0,
+          "unknown_cost_requests": 1,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
-            "requests": 1,
+            "requests": 3,
             "tokens_by_basis": {
-              "reported_total": 9880
+              "reported_total": 29130
             }
           },
-          "completed_requests": 1,
+          "completed_requests": 3,
           "success_rate": 1.0,
-          "average_latency_ms": 2391.0
+          "average_latency_ms": 2308.0
         }
       ],
       "models": [
@@ -1479,8 +1479,8 @@
   "records": [
     {
       "request_id": "fixture-00064",
-      "started_at": "2026-11-04T01:03:47.372803+00:00",
-      "finished_at": "2026-11-04T01:03:47.372803+00:00",
+      "started_at": "2026-11-04T05:48:47.705819+00:00",
+      "finished_at": "2026-11-04T05:48:47.705819+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1513,8 +1513,8 @@
     },
     {
       "request_id": "fixture-00063",
-      "started_at": "2026-11-03T22:32:24.295880+00:00",
-      "finished_at": "2026-11-03T22:32:24.295880+00:00",
+      "started_at": "2026-11-04T03:17:24.628896+00:00",
+      "finished_at": "2026-11-04T03:17:24.628896+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1547,8 +1547,8 @@
     },
     {
       "request_id": "fixture-00062",
-      "started_at": "2026-11-03T20:01:01.218957+00:00",
-      "finished_at": "2026-11-03T20:01:01.218957+00:00",
+      "started_at": "2026-11-04T00:46:01.551973+00:00",
+      "finished_at": "2026-11-04T00:46:01.551973+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1581,8 +1581,8 @@
     },
     {
       "request_id": "fixture-00061",
-      "started_at": "2026-11-03T17:29:38.142034+00:00",
-      "finished_at": "2026-11-03T17:29:38.142034+00:00",
+      "started_at": "2026-11-03T22:14:38.475050+00:00",
+      "finished_at": "2026-11-03T22:14:38.475050+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1615,8 +1615,8 @@
     },
     {
       "request_id": "fixture-00060",
-      "started_at": "2026-11-03T14:58:15.065111+00:00",
-      "finished_at": "2026-11-03T14:58:15.065111+00:00",
+      "started_at": "2026-11-03T19:43:15.398127+00:00",
+      "finished_at": "2026-11-03T19:43:15.398127+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1649,8 +1649,8 @@
     },
     {
       "request_id": "fixture-00059",
-      "started_at": "2026-11-03T12:26:51.988188+00:00",
-      "finished_at": "2026-11-03T12:26:51.988188+00:00",
+      "started_at": "2026-11-03T17:11:52.321204+00:00",
+      "finished_at": "2026-11-03T17:11:52.321204+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1683,8 +1683,8 @@
     },
     {
       "request_id": "fixture-00058",
-      "started_at": "2026-11-03T09:55:28.911264+00:00",
-      "finished_at": "2026-11-03T09:55:28.911264+00:00",
+      "started_at": "2026-11-03T14:40:29.244280+00:00",
+      "finished_at": "2026-11-03T14:40:29.244280+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1717,8 +1717,8 @@
     },
     {
       "request_id": "fixture-00057",
-      "started_at": "2026-11-03T07:24:05.834341+00:00",
-      "finished_at": "2026-11-03T07:24:05.834341+00:00",
+      "started_at": "2026-11-03T12:09:06.167357+00:00",
+      "finished_at": "2026-11-03T12:09:06.167357+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1751,8 +1751,8 @@
     },
     {
       "request_id": "fixture-00056",
-      "started_at": "2026-11-03T04:52:42.757418+00:00",
-      "finished_at": "2026-11-03T04:52:42.757418+00:00",
+      "started_at": "2026-11-03T09:37:43.090434+00:00",
+      "finished_at": "2026-11-03T09:37:43.090434+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1785,8 +1785,8 @@
     },
     {
       "request_id": "fixture-00055",
-      "started_at": "2026-11-03T02:21:19.680495+00:00",
-      "finished_at": "2026-11-03T02:21:19.680495+00:00",
+      "started_at": "2026-11-03T07:06:20.013511+00:00",
+      "finished_at": "2026-11-03T07:06:20.013511+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1819,8 +1819,8 @@
     },
     {
       "request_id": "fixture-00054",
-      "started_at": "2026-11-02T23:49:56.603572+00:00",
-      "finished_at": "2026-11-02T23:49:56.603572+00:00",
+      "started_at": "2026-11-03T04:34:56.936588+00:00",
+      "finished_at": "2026-11-03T04:34:56.936588+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1853,8 +1853,8 @@
     },
     {
       "request_id": "fixture-00053",
-      "started_at": "2026-11-02T21:18:33.526649+00:00",
-      "finished_at": "2026-11-02T21:18:33.526649+00:00",
+      "started_at": "2026-11-03T02:03:33.859665+00:00",
+      "finished_at": "2026-11-03T02:03:33.859665+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1887,8 +1887,8 @@
     },
     {
       "request_id": "fixture-00052",
-      "started_at": "2026-11-02T18:47:10.449726+00:00",
-      "finished_at": "2026-11-02T18:47:10.449726+00:00",
+      "started_at": "2026-11-02T23:32:10.782742+00:00",
+      "finished_at": "2026-11-02T23:32:10.782742+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1921,8 +1921,8 @@
     },
     {
       "request_id": "fixture-00051",
-      "started_at": "2026-11-02T16:15:47.372803+00:00",
-      "finished_at": "2026-11-02T16:15:47.372803+00:00",
+      "started_at": "2026-11-02T21:00:47.705819+00:00",
+      "finished_at": "2026-11-02T21:00:47.705819+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1955,8 +1955,8 @@
     },
     {
       "request_id": "fixture-00050",
-      "started_at": "2026-11-02T13:44:24.295880+00:00",
-      "finished_at": "2026-11-02T13:44:24.295880+00:00",
+      "started_at": "2026-11-02T18:29:24.628896+00:00",
+      "finished_at": "2026-11-02T18:29:24.628896+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1989,8 +1989,8 @@
     },
     {
       "request_id": "fixture-00049",
-      "started_at": "2026-11-02T11:13:01.218957+00:00",
-      "finished_at": "2026-11-02T11:13:01.218957+00:00",
+      "started_at": "2026-11-02T15:58:01.551973+00:00",
+      "finished_at": "2026-11-02T15:58:01.551973+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2023,8 +2023,8 @@
     },
     {
       "request_id": "fixture-00048",
-      "started_at": "2026-11-02T08:41:38.142034+00:00",
-      "finished_at": "2026-11-02T08:41:38.142034+00:00",
+      "started_at": "2026-11-02T13:26:38.475050+00:00",
+      "finished_at": "2026-11-02T13:26:38.475050+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2057,8 +2057,8 @@
     },
     {
       "request_id": "fixture-00047",
-      "started_at": "2026-11-02T06:10:15.065111+00:00",
-      "finished_at": "2026-11-02T06:10:15.065111+00:00",
+      "started_at": "2026-11-02T10:55:15.398127+00:00",
+      "finished_at": "2026-11-02T10:55:15.398127+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2091,8 +2091,8 @@
     },
     {
       "request_id": "fixture-00046",
-      "started_at": "2026-11-02T03:38:51.988188+00:00",
-      "finished_at": "2026-11-02T03:38:51.988188+00:00",
+      "started_at": "2026-11-02T08:23:52.321204+00:00",
+      "finished_at": "2026-11-02T08:23:52.321204+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2125,8 +2125,8 @@
     },
     {
       "request_id": "fixture-00045",
-      "started_at": "2026-11-02T01:07:28.911264+00:00",
-      "finished_at": "2026-11-02T01:07:28.911264+00:00",
+      "started_at": "2026-11-02T05:52:29.244280+00:00",
+      "finished_at": "2026-11-02T05:52:29.244280+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2159,8 +2159,8 @@
     },
     {
       "request_id": "fixture-00044",
-      "started_at": "2026-11-01T22:36:05.834341+00:00",
-      "finished_at": "2026-11-01T22:36:05.834341+00:00",
+      "started_at": "2026-11-02T03:21:06.167357+00:00",
+      "finished_at": "2026-11-02T03:21:06.167357+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2193,8 +2193,8 @@
     },
     {
       "request_id": "fixture-00043",
-      "started_at": "2026-11-01T20:04:42.757418+00:00",
-      "finished_at": "2026-11-01T20:04:42.757418+00:00",
+      "started_at": "2026-11-02T00:49:43.090434+00:00",
+      "finished_at": "2026-11-02T00:49:43.090434+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2227,8 +2227,8 @@
     },
     {
       "request_id": "fixture-00042",
-      "started_at": "2026-11-01T17:33:19.680495+00:00",
-      "finished_at": "2026-11-01T17:33:19.680495+00:00",
+      "started_at": "2026-11-01T22:18:20.013511+00:00",
+      "finished_at": "2026-11-01T22:18:20.013511+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2261,8 +2261,8 @@
     },
     {
       "request_id": "fixture-00041",
-      "started_at": "2026-11-01T15:01:56.603572+00:00",
-      "finished_at": "2026-11-01T15:01:56.603572+00:00",
+      "started_at": "2026-11-01T19:46:56.936588+00:00",
+      "finished_at": "2026-11-01T19:46:56.936588+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2295,8 +2295,8 @@
     },
     {
       "request_id": "fixture-00040",
-      "started_at": "2026-11-01T12:30:33.526649+00:00",
-      "finished_at": "2026-11-01T12:30:33.526649+00:00",
+      "started_at": "2026-11-01T17:15:33.859665+00:00",
+      "finished_at": "2026-11-01T17:15:33.859665+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2329,8 +2329,8 @@
     },
     {
       "request_id": "fixture-00039",
-      "started_at": "2026-11-01T09:59:10.449726+00:00",
-      "finished_at": "2026-11-01T09:59:10.449726+00:00",
+      "started_at": "2026-11-01T14:44:10.782742+00:00",
+      "finished_at": "2026-11-01T14:44:10.782742+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2363,8 +2363,8 @@
     },
     {
       "request_id": "fixture-00038",
-      "started_at": "2026-11-01T07:27:47.372803+00:00",
-      "finished_at": "2026-11-01T07:27:47.372803+00:00",
+      "started_at": "2026-11-01T12:12:47.705819+00:00",
+      "finished_at": "2026-11-01T12:12:47.705819+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2397,8 +2397,8 @@
     },
     {
       "request_id": "fixture-00037",
-      "started_at": "2026-11-01T04:56:24.295880+00:00",
-      "finished_at": "2026-11-01T04:56:24.295880+00:00",
+      "started_at": "2026-11-01T09:41:24.628896+00:00",
+      "finished_at": "2026-11-01T09:41:24.628896+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2431,8 +2431,8 @@
     },
     {
       "request_id": "fixture-00036",
-      "started_at": "2026-11-01T02:25:01.218957+00:00",
-      "finished_at": "2026-11-01T02:25:01.218957+00:00",
+      "started_at": "2026-11-01T07:10:01.551973+00:00",
+      "finished_at": "2026-11-01T07:10:01.551973+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2465,8 +2465,8 @@
     },
     {
       "request_id": "fixture-00035",
-      "started_at": "2026-10-31T23:53:38.142034+00:00",
-      "finished_at": "2026-10-31T23:53:38.142034+00:00",
+      "started_at": "2026-11-01T04:38:38.475050+00:00",
+      "finished_at": "2026-11-01T04:38:38.475050+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2499,8 +2499,8 @@
     },
     {
       "request_id": "fixture-00034",
-      "started_at": "2026-10-31T21:22:15.065111+00:00",
-      "finished_at": "2026-10-31T21:22:15.065111+00:00",
+      "started_at": "2026-11-01T02:07:15.398127+00:00",
+      "finished_at": "2026-11-01T02:07:15.398127+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2533,8 +2533,8 @@
     },
     {
       "request_id": "fixture-00033",
-      "started_at": "2026-10-31T18:50:51.988188+00:00",
-      "finished_at": "2026-10-31T18:50:51.988188+00:00",
+      "started_at": "2026-10-31T23:35:52.321204+00:00",
+      "finished_at": "2026-10-31T23:35:52.321204+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2567,8 +2567,8 @@
     },
     {
       "request_id": "fixture-00032",
-      "started_at": "2026-10-31T16:19:28.911264+00:00",
-      "finished_at": "2026-10-31T16:19:28.911264+00:00",
+      "started_at": "2026-10-31T21:04:29.244280+00:00",
+      "finished_at": "2026-10-31T21:04:29.244280+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2601,8 +2601,8 @@
     },
     {
       "request_id": "fixture-00031",
-      "started_at": "2026-10-31T13:48:05.834341+00:00",
-      "finished_at": "2026-10-31T13:48:05.834341+00:00",
+      "started_at": "2026-10-31T18:33:06.167357+00:00",
+      "finished_at": "2026-10-31T18:33:06.167357+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2635,8 +2635,8 @@
     },
     {
       "request_id": "fixture-00030",
-      "started_at": "2026-10-31T11:16:42.757418+00:00",
-      "finished_at": "2026-10-31T11:16:42.757418+00:00",
+      "started_at": "2026-10-31T16:01:43.090434+00:00",
+      "finished_at": "2026-10-31T16:01:43.090434+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2669,8 +2669,8 @@
     },
     {
       "request_id": "fixture-00029",
-      "started_at": "2026-10-31T08:45:19.680495+00:00",
-      "finished_at": "2026-10-31T08:45:19.680495+00:00",
+      "started_at": "2026-10-31T13:30:20.013511+00:00",
+      "finished_at": "2026-10-31T13:30:20.013511+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2703,8 +2703,8 @@
     },
     {
       "request_id": "fixture-00028",
-      "started_at": "2026-10-31T06:13:56.603572+00:00",
-      "finished_at": "2026-10-31T06:13:56.603572+00:00",
+      "started_at": "2026-10-31T10:58:56.936588+00:00",
+      "finished_at": "2026-10-31T10:58:56.936588+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2737,8 +2737,8 @@
     },
     {
       "request_id": "fixture-00027",
-      "started_at": "2026-10-31T03:42:33.526649+00:00",
-      "finished_at": "2026-10-31T03:42:33.526649+00:00",
+      "started_at": "2026-10-31T08:27:33.859665+00:00",
+      "finished_at": "2026-10-31T08:27:33.859665+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2771,8 +2771,8 @@
     },
     {
       "request_id": "fixture-00026",
-      "started_at": "2026-10-31T01:11:10.449726+00:00",
-      "finished_at": "2026-10-31T01:11:10.449726+00:00",
+      "started_at": "2026-10-31T05:56:10.782742+00:00",
+      "finished_at": "2026-10-31T05:56:10.782742+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2805,8 +2805,8 @@
     },
     {
       "request_id": "fixture-00025",
-      "started_at": "2026-10-30T22:39:47.372803+00:00",
-      "finished_at": "2026-10-30T22:39:47.372803+00:00",
+      "started_at": "2026-10-31T03:24:47.705819+00:00",
+      "finished_at": "2026-10-31T03:24:47.705819+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2839,8 +2839,8 @@
     },
     {
       "request_id": "fixture-00024",
-      "started_at": "2026-10-30T20:08:24.295880+00:00",
-      "finished_at": "2026-10-30T20:08:24.295880+00:00",
+      "started_at": "2026-10-31T00:53:24.628896+00:00",
+      "finished_at": "2026-10-31T00:53:24.628896+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2873,8 +2873,8 @@
     },
     {
       "request_id": "fixture-00023",
-      "started_at": "2026-10-30T17:37:01.218957+00:00",
-      "finished_at": "2026-10-30T17:37:01.218957+00:00",
+      "started_at": "2026-10-30T22:22:01.551973+00:00",
+      "finished_at": "2026-10-30T22:22:01.551973+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2907,8 +2907,8 @@
     },
     {
       "request_id": "fixture-00022",
-      "started_at": "2026-10-30T15:05:38.142034+00:00",
-      "finished_at": "2026-10-30T15:05:38.142034+00:00",
+      "started_at": "2026-10-30T19:50:38.475050+00:00",
+      "finished_at": "2026-10-30T19:50:38.475050+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2941,8 +2941,8 @@
     },
     {
       "request_id": "fixture-00021",
-      "started_at": "2026-10-30T12:34:15.065111+00:00",
-      "finished_at": "2026-10-30T12:34:15.065111+00:00",
+      "started_at": "2026-10-30T17:19:15.398127+00:00",
+      "finished_at": "2026-10-30T17:19:15.398127+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2975,8 +2975,8 @@
     },
     {
       "request_id": "fixture-00020",
-      "started_at": "2026-10-30T10:02:51.988188+00:00",
-      "finished_at": "2026-10-30T10:02:51.988188+00:00",
+      "started_at": "2026-10-30T14:47:52.321204+00:00",
+      "finished_at": "2026-10-30T14:47:52.321204+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3009,8 +3009,8 @@
     },
     {
       "request_id": "fixture-00019",
-      "started_at": "2026-10-30T07:31:28.911264+00:00",
-      "finished_at": "2026-10-30T07:31:28.911264+00:00",
+      "started_at": "2026-10-30T12:16:29.244280+00:00",
+      "finished_at": "2026-10-30T12:16:29.244280+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3043,8 +3043,8 @@
     },
     {
       "request_id": "fixture-00018",
-      "started_at": "2026-10-30T05:00:05.834341+00:00",
-      "finished_at": "2026-10-30T05:00:05.834341+00:00",
+      "started_at": "2026-10-30T09:45:06.167357+00:00",
+      "finished_at": "2026-10-30T09:45:06.167357+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3077,8 +3077,8 @@
     },
     {
       "request_id": "fixture-00017",
-      "started_at": "2026-10-30T02:28:42.757418+00:00",
-      "finished_at": "2026-10-30T02:28:42.757418+00:00",
+      "started_at": "2026-10-30T07:13:43.090434+00:00",
+      "finished_at": "2026-10-30T07:13:43.090434+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3111,8 +3111,8 @@
     },
     {
       "request_id": "fixture-00016",
-      "started_at": "2026-10-29T23:57:19.680495+00:00",
-      "finished_at": "2026-10-29T23:57:19.680495+00:00",
+      "started_at": "2026-10-30T04:42:20.013511+00:00",
+      "finished_at": "2026-10-30T04:42:20.013511+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3145,8 +3145,8 @@
     },
     {
       "request_id": "fixture-00015",
-      "started_at": "2026-10-29T21:25:56.603572+00:00",
-      "finished_at": "2026-10-29T21:25:56.603572+00:00",
+      "started_at": "2026-10-30T02:10:56.936588+00:00",
+      "finished_at": "2026-10-30T02:10:56.936588+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3179,8 +3179,8 @@
     },
     {
       "request_id": "fixture-00014",
-      "started_at": "2026-10-29T18:54:33.526649+00:00",
-      "finished_at": "2026-10-29T18:54:33.526649+00:00",
+      "started_at": "2026-10-29T23:39:33.859665+00:00",
+      "finished_at": "2026-10-29T23:39:33.859665+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3213,8 +3213,8 @@
     },
     {
       "request_id": "fixture-00013",
-      "started_at": "2026-10-29T16:23:10.449726+00:00",
-      "finished_at": "2026-10-29T16:23:10.449726+00:00",
+      "started_at": "2026-10-29T21:08:10.782742+00:00",
+      "finished_at": "2026-10-29T21:08:10.782742+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3247,8 +3247,8 @@
     },
     {
       "request_id": "fixture-00012",
-      "started_at": "2026-10-29T13:51:47.372803+00:00",
-      "finished_at": "2026-10-29T13:51:47.372803+00:00",
+      "started_at": "2026-10-29T18:36:47.705819+00:00",
+      "finished_at": "2026-10-29T18:36:47.705819+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3281,8 +3281,8 @@
     },
     {
       "request_id": "fixture-00011",
-      "started_at": "2026-10-29T11:20:24.295880+00:00",
-      "finished_at": "2026-10-29T11:20:24.295880+00:00",
+      "started_at": "2026-10-29T16:05:24.628896+00:00",
+      "finished_at": "2026-10-29T16:05:24.628896+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3315,8 +3315,8 @@
     },
     {
       "request_id": "fixture-00010",
-      "started_at": "2026-10-29T08:49:01.218957+00:00",
-      "finished_at": "2026-10-29T08:49:01.218957+00:00",
+      "started_at": "2026-10-29T13:34:01.551973+00:00",
+      "finished_at": "2026-10-29T13:34:01.551973+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3349,8 +3349,8 @@
     },
     {
       "request_id": "fixture-00009",
-      "started_at": "2026-10-29T06:17:38.142034+00:00",
-      "finished_at": "2026-10-29T06:17:38.142034+00:00",
+      "started_at": "2026-10-29T11:02:38.475050+00:00",
+      "finished_at": "2026-10-29T11:02:38.475050+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3383,8 +3383,8 @@
     },
     {
       "request_id": "fixture-00008",
-      "started_at": "2026-10-29T03:46:15.065111+00:00",
-      "finished_at": "2026-10-29T03:46:15.065111+00:00",
+      "started_at": "2026-10-29T08:31:15.398127+00:00",
+      "finished_at": "2026-10-29T08:31:15.398127+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3417,8 +3417,8 @@
     },
     {
       "request_id": "fixture-00007",
-      "started_at": "2026-10-29T01:14:51.988188+00:00",
-      "finished_at": "2026-10-29T01:14:51.988188+00:00",
+      "started_at": "2026-10-29T05:59:52.321204+00:00",
+      "finished_at": "2026-10-29T05:59:52.321204+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3451,8 +3451,8 @@
     },
     {
       "request_id": "fixture-00006",
-      "started_at": "2026-10-28T22:43:28.911264+00:00",
-      "finished_at": "2026-10-28T22:43:28.911264+00:00",
+      "started_at": "2026-10-29T03:28:29.244280+00:00",
+      "finished_at": "2026-10-29T03:28:29.244280+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3485,8 +3485,8 @@
     },
     {
       "request_id": "fixture-00005",
-      "started_at": "2026-10-28T20:12:05.834341+00:00",
-      "finished_at": "2026-10-28T20:12:05.834341+00:00",
+      "started_at": "2026-10-29T00:57:06.167357+00:00",
+      "finished_at": "2026-10-29T00:57:06.167357+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3519,8 +3519,8 @@
     },
     {
       "request_id": "fixture-00004",
-      "started_at": "2026-10-28T17:40:42.757418+00:00",
-      "finished_at": "2026-10-28T17:40:42.757418+00:00",
+      "started_at": "2026-10-28T22:25:43.090434+00:00",
+      "finished_at": "2026-10-28T22:25:43.090434+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3553,8 +3553,8 @@
     },
     {
       "request_id": "fixture-00003",
-      "started_at": "2026-10-28T15:09:19.680495+00:00",
-      "finished_at": "2026-10-28T15:09:19.680495+00:00",
+      "started_at": "2026-10-28T19:54:20.013511+00:00",
+      "finished_at": "2026-10-28T19:54:20.013511+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3587,8 +3587,8 @@
     },
     {
       "request_id": "fixture-00002",
-      "started_at": "2026-10-28T12:37:56.603572+00:00",
-      "finished_at": "2026-10-28T12:37:56.603572+00:00",
+      "started_at": "2026-10-28T17:22:56.936588+00:00",
+      "finished_at": "2026-10-28T17:22:56.936588+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3621,8 +3621,8 @@
     },
     {
       "request_id": "fixture-00001",
-      "started_at": "2026-10-28T10:06:33.526649+00:00",
-      "finished_at": "2026-10-28T10:06:33.526649+00:00",
+      "started_at": "2026-10-28T14:51:33.859665+00:00",
+      "finished_at": "2026-10-28T14:51:33.859665+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3655,8 +3655,8 @@
     },
     {
       "request_id": "fixture-00000",
-      "started_at": "2026-10-28T07:35:10.449726+00:00",
-      "finished_at": "2026-10-28T07:35:10.449726+00:00",
+      "started_at": "2026-10-28T12:20:10.782742+00:00",
+      "finished_at": "2026-10-28T12:20:10.782742+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3953,7 +3953,7 @@
   "logs": {
     "items": [
       {
-        "timestamp": "2026-11-04T03:35:46.449726+00:00",
+        "timestamp": "2026-11-04T08:20:46.782742+00:00",
         "path": "/v1/chat/completions",
         "status": 200,
         "duration_ms": 815
@@ -3965,103 +3965,1080 @@
   "backups": {
     "items": [
       {
-        "name": "2026-11-04T03-35-46.930076+00-00-4c9a4114",
+        "name": "2026-11-04T08-20-47.259522+00-00-2d9b7569",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.939129+00:00",
+        "created_at": "2026-11-04T08:20:47.269153+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.911637+00-00-6ce8d108",
+        "name": "2026-11-04T08-20-47.244342+00-00-df6fb80a",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.919948+00:00",
+        "created_at": "2026-11-04T08:20:47.252052+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.895833+00-00-f4dc0eeb",
+        "name": "2026-11-04T08-20-47.227524+00-00-7eb75f4c",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.902936+00:00",
+        "created_at": "2026-11-04T08:20:47.236152+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.878206+00-00-5b200530",
+        "name": "2026-11-04T08-20-47.207923+00-00-c874849c",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.887468+00:00",
+        "created_at": "2026-11-04T08:20:47.219317+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.861541+00-00-473b88a5",
+        "name": "2026-11-04T08-20-47.191112+00-00-a406e510",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.870061+00:00",
+        "created_at": "2026-11-04T08:20:47.199353+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.846974+00-00-f310eaa5",
+        "name": "2026-11-04T08-20-47.172204+00-00-406b8c4a",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.854117+00:00",
+        "created_at": "2026-11-04T08:20:47.182122+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.830207+00-00-fc1fb057",
+        "name": "2026-11-04T08-20-47.154463+00-00-f9abfac5",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.838138+00:00",
+        "created_at": "2026-11-04T08:20:47.164422+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.809401+00-00-af0197b3",
+        "name": "2026-11-04T08-20-47.132186+00-00-e9da42e1",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.821471+00:00",
+        "created_at": "2026-11-04T08:20:47.142219+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.768716+00-00-5b03ce04",
+        "name": "2026-11-04T08-20-47.112510+00-00-5463eda3",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.787931+00:00",
+        "created_at": "2026-11-04T08:20:47.120985+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.749125+00-00-d2912876",
+        "name": "2026-11-04T08-20-47.097098+00-00-7d7d1071",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.760261+00:00",
+        "created_at": "2026-11-04T08:20:47.105023+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.723792+00-00-20cf8841",
+        "name": "2026-11-04T08-20-47.075558+00-00-87df1493",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.733406+00:00",
+        "created_at": "2026-11-04T08:20:47.086139+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.429582+00-00-35575330",
+        "name": "2026-11-04T08-20-46.760397+00-00-4a972f0b",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.437184+00:00",
+        "created_at": "2026-11-04T08:20:46.770227+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.412984+00-00-30d7c241",
+        "name": "2026-11-04T08-20-46.745068+00-00-41990f57",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.420845+00:00",
+        "created_at": "2026-11-04T08:20:46.753349+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.392047+00-00-09e14eeb",
+        "name": "2026-11-04T08-20-46.725562+00-00-d24b5ef2",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.405527+00:00",
+        "created_at": "2026-11-04T08:20:46.735492+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.379249+00-00-ed9c3267",
+        "name": "2026-11-04T08-20-46.708467+00-00-20eff37e",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.385287+00:00",
+        "created_at": "2026-11-04T08:20:46.716498+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-04T03-35-46.300811+00-00-e3a30438",
+        "name": "2026-11-04T08-20-46.658680+00-00-810c7310",
         "integrity": "not_checked",
-        "created_at": "2026-11-04T03:35:46.335452+00:00",
+        "created_at": "2026-11-04T08:20:46.661752+00:00",
         "manifest": "sha256_present"
       }
     ],
     "total": 16,
     "limit": 20
+  },
+  "management": {
+    "capabilities": {
+      "connection_management": true,
+      "model_approval": true,
+      "model_discovery": true,
+      "application_management": true
+    },
+    "providers": [
+      {
+        "id": "mimo",
+        "name": "MiMo",
+        "base_url": "https://api.xiaomimimo.com/v1",
+        "resource_type": "api",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "deepseek",
+        "name": "DeepSeek",
+        "base_url": "https://api.deepseek.com/v1",
+        "resource_type": "api",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "zhipu",
+        "name": "GLM / 智谱",
+        "base_url": "https://open.bigmodel.cn/api/paas/v4",
+        "resource_type": "api",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "kimi",
+        "name": "Kimi",
+        "base_url": "https://api.moonshot.ai/v1",
+        "resource_type": "api",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "openai",
+        "name": "OpenAI",
+        "base_url": "https://api.openai.com/v1",
+        "resource_type": "api",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "chatgpt",
+        "name": "ChatGPT 个人订阅",
+        "base_url": "https://api.openai.com/v1",
+        "resource_type": "chatgpt_subscription",
+        "can_create": false,
+        "credential_type": "oauth"
+      },
+      {
+        "id": "anthropic",
+        "name": "Anthropic",
+        "base_url": "https://api.anthropic.com/v1",
+        "resource_type": "api",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "openai-compatible",
+        "name": "OpenAI 兼容中转",
+        "base_url": null,
+        "resource_type": "api",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "kimi-code",
+        "name": "Kimi Coding Plan",
+        "base_url": "https://api.kimi.com/coding/v1",
+        "resource_type": "token_plan",
+        "can_create": true,
+        "credential_type": "api_key"
+      },
+      {
+        "id": "glm-coding",
+        "name": "GLM Coding Plan (preset only)",
+        "base_url": "https://open.bigmodel.cn/api/coding/paas/v4",
+        "resource_type": "token_plan",
+        "can_create": true,
+        "credential_type": "api_key"
+      }
+    ],
+    "connections": [
+      {
+        "name": "MiMo",
+        "provider": "mimo",
+        "resource_type": "api",
+        "base_url": "https://api.xiaomimimo.com/v1",
+        "enabled": true,
+        "timeout_seconds": 60.0,
+        "stream_usage": true,
+        "token_parameter": "max_tokens",
+        "workspace_id": null,
+        "anthropic_version": "2026-10-21",
+        "allowed_models": [
+          "mimo-fixture"
+        ],
+        "default_model": "mimo-fixture",
+        "id": "mimo-default",
+        "api_key_configured": true,
+        "plan": null,
+        "revision": "ffa09c2e0226072acee059f08d48a79d2870733ebc3a603a442b07dabdea4fc1",
+        "approval_revision": 1,
+        "editable_fields": [
+          "name",
+          "enabled",
+          "base_url",
+          "api_key",
+          "timeout_seconds"
+        ],
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.112261+00:00",
+          "discovered_at": "2026-11-04T08:20:47.112261+00:00",
+          "current": true,
+          "count": 2,
+          "models": [
+            "mimo-fixture",
+            "demo-unapproved"
+          ],
+          "error_code": null
+        }
+      },
+      {
+        "name": "DeepSeek",
+        "provider": "deepseek",
+        "resource_type": "api",
+        "base_url": "https://api.deepseek.com/v1",
+        "enabled": true,
+        "timeout_seconds": 60.0,
+        "stream_usage": true,
+        "token_parameter": "max_tokens",
+        "workspace_id": null,
+        "anthropic_version": "2026-10-21",
+        "allowed_models": [
+          "deepseek-fixture"
+        ],
+        "default_model": "deepseek-fixture",
+        "id": "deepseek",
+        "api_key_configured": true,
+        "plan": null,
+        "revision": "5b53eb6191f192d25924ff8ea56a654139e1042943b334e1ecc412a5a28b48f7",
+        "approval_revision": 1,
+        "editable_fields": [
+          "name",
+          "enabled",
+          "base_url",
+          "api_key",
+          "timeout_seconds",
+          "stream_usage",
+          "token_parameter",
+          "workspace_id",
+          "anthropic_version"
+        ],
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.131601+00:00",
+          "discovered_at": "2026-11-04T08:20:47.131601+00:00",
+          "current": true,
+          "count": 1,
+          "models": [
+            "deepseek-fixture"
+          ],
+          "error_code": null
+        }
+      },
+      {
+        "name": "Kimi Coding Plan",
+        "provider": "kimi-code",
+        "resource_type": "token_plan",
+        "base_url": "https://api.kimi.com/coding/v1",
+        "enabled": true,
+        "timeout_seconds": 60.0,
+        "stream_usage": true,
+        "token_parameter": "max_tokens",
+        "workspace_id": null,
+        "anthropic_version": "2026-10-21",
+        "allowed_models": [
+          "kimi-for-coding"
+        ],
+        "default_model": "kimi-for-coding",
+        "id": "coding",
+        "api_key_configured": true,
+        "plan": {
+          "tier": null,
+          "use": "personal_interactive_coding",
+          "reasoning_effort": "low",
+          "extra_usage_policy": "forbid"
+        },
+        "revision": "5009d4b2d1218d04fb13993a3e03c425adff64dfb6110368859163ce65ddc1a2",
+        "approval_revision": 1,
+        "editable_fields": [
+          "name",
+          "enabled",
+          "base_url",
+          "api_key",
+          "timeout_seconds",
+          "stream_usage",
+          "token_parameter",
+          "workspace_id",
+          "anthropic_version",
+          "plan"
+        ],
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.154170+00:00",
+          "discovered_at": "2026-11-04T08:20:47.154170+00:00",
+          "current": true,
+          "count": 1,
+          "models": [
+            "kimi-for-coding"
+          ],
+          "error_code": null
+        }
+      },
+      {
+        "name": "ChatGPT Personal",
+        "provider": "chatgpt",
+        "resource_type": "chatgpt_subscription",
+        "base_url": "https://api.openai.com/v1",
+        "enabled": true,
+        "timeout_seconds": 60.0,
+        "stream_usage": true,
+        "token_parameter": "max_tokens",
+        "workspace_id": null,
+        "anthropic_version": "2026-10-21",
+        "allowed_models": [],
+        "default_model": null,
+        "id": "subscription",
+        "api_key_configured": false,
+        "plan": null,
+        "revision": "aede21b6aa211759fcba79d1a37a5729c40fa96f8d939444e122c7c5b9728e74",
+        "approval_revision": 1,
+        "editable_fields": [
+          "name",
+          "enabled",
+          "timeout_seconds"
+        ],
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.171992+00:00",
+          "discovered_at": "2026-11-04T08:20:47.171992+00:00",
+          "current": true,
+          "count": 0,
+          "models": [],
+          "error_code": null
+        }
+      },
+      {
+        "name": "Anthropic",
+        "provider": "anthropic",
+        "resource_type": "api",
+        "base_url": "https://api.anthropic.com/v1",
+        "enabled": true,
+        "timeout_seconds": 60.0,
+        "stream_usage": true,
+        "token_parameter": "max_tokens",
+        "workspace_id": null,
+        "anthropic_version": "2026-10-21",
+        "allowed_models": [
+          "claude-fixture"
+        ],
+        "default_model": "claude-fixture",
+        "id": "anthropic",
+        "api_key_configured": true,
+        "plan": null,
+        "revision": "f029a7264ec429f29d5c258113639907f868305affd2b6169b63c2375ca26480",
+        "approval_revision": 1,
+        "editable_fields": [
+          "name",
+          "enabled",
+          "base_url",
+          "api_key",
+          "timeout_seconds",
+          "stream_usage",
+          "token_parameter",
+          "workspace_id",
+          "anthropic_version"
+        ],
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.190872+00:00",
+          "discovered_at": "2026-11-04T08:20:47.190872+00:00",
+          "current": true,
+          "count": 1,
+          "models": [
+            "claude-fixture"
+          ],
+          "error_code": null
+        }
+      },
+      {
+        "name": "OpenAI Demo",
+        "provider": "openai",
+        "resource_type": "api",
+        "base_url": "https://api.openai.com/v1",
+        "enabled": true,
+        "timeout_seconds": 60.0,
+        "stream_usage": true,
+        "token_parameter": "max_tokens",
+        "workspace_id": null,
+        "anthropic_version": "2026-10-21",
+        "allowed_models": [
+          "demo-text"
+        ],
+        "default_model": "demo-text",
+        "id": "openai-demo",
+        "api_key_configured": true,
+        "plan": null,
+        "revision": "0a19932f4ed35a60080907fc5e1bfe49f6fe2bab391ee8611273b86d1f4aab9c",
+        "approval_revision": 3,
+        "editable_fields": [
+          "name",
+          "enabled",
+          "base_url",
+          "api_key",
+          "timeout_seconds",
+          "stream_usage",
+          "token_parameter",
+          "workspace_id",
+          "anthropic_version"
+        ],
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.207704+00:00",
+          "discovered_at": "2026-11-04T08:20:47.207704+00:00",
+          "current": true,
+          "count": 2,
+          "models": [
+            "demo-text",
+            "demo-text-small"
+          ],
+          "error_code": null
+        }
+      }
+    ],
+    "models": {
+      "mimo-default": {
+        "connection_id": "mimo-default",
+        "connection_enabled": true,
+        "approval_revision": 1,
+        "default_model": "mimo-fixture",
+        "protocol": "chat-completions",
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.112261+00:00",
+          "discovered_at": "2026-11-04T08:20:47.112261+00:00",
+          "current": true,
+          "count": 2,
+          "models": [
+            "mimo-fixture",
+            "demo-unapproved"
+          ],
+          "error_code": null
+        },
+        "models": [
+          {
+            "id": "mimo-fixture",
+            "discovery": "listed",
+            "approved": true,
+            "default": true,
+            "authorized_applications": [
+              "legacy",
+              "demo-app-1",
+              "demo-app-2",
+              "demo-app-3"
+            ],
+            "effective_applications": [
+              "legacy",
+              "demo-app-1",
+              "demo-app-2",
+              "demo-app-3"
+            ],
+            "verification": [
+              {
+                "state": "success",
+                "outcome": "success",
+                "verified_at": "2026-11-04T03:17:24.628896+00:00",
+                "request_id": "fixture-00063",
+                "actual_model": "mimo-fixture",
+                "protocol": "chat-completions",
+                "capability": "text_nonstream",
+                "scope": "model_connection_configuration",
+                "current_configuration": true,
+                "account_access_observed": "allowed",
+                "live_availability": "unknown"
+              }
+            ],
+            "verified_capabilities": [
+              "text_nonstream"
+            ],
+            "live_availability": "unknown"
+          },
+          {
+            "id": "demo-unapproved",
+            "discovery": "listed",
+            "approved": false,
+            "default": false,
+            "authorized_applications": [
+              "legacy",
+              "demo-app-1",
+              "demo-app-2",
+              "demo-app-3"
+            ],
+            "effective_applications": [],
+            "verification": [],
+            "verified_capabilities": [],
+            "live_availability": "unknown"
+          }
+        ],
+        "counts": {
+          "discovered": 2,
+          "approved": 1,
+          "application_authorized": 1,
+          "historically_verified": 1
+        },
+        "live_availability": "unknown"
+      },
+      "deepseek": {
+        "connection_id": "deepseek",
+        "connection_enabled": true,
+        "approval_revision": 1,
+        "default_model": "deepseek-fixture",
+        "protocol": "chat-completions",
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.131601+00:00",
+          "discovered_at": "2026-11-04T08:20:47.131601+00:00",
+          "current": true,
+          "count": 1,
+          "models": [
+            "deepseek-fixture"
+          ],
+          "error_code": null
+        },
+        "models": [
+          {
+            "id": "deepseek-fixture",
+            "discovery": "listed",
+            "approved": true,
+            "default": true,
+            "authorized_applications": [
+              "legacy",
+              "demo-app-1",
+              "demo-app-2",
+              "demo-app-3"
+            ],
+            "effective_applications": [
+              "legacy",
+              "demo-app-1",
+              "demo-app-2",
+              "demo-app-3"
+            ],
+            "verification": [
+              {
+                "state": "success",
+                "outcome": "success",
+                "verified_at": "2026-11-04T05:48:47.705819+00:00",
+                "request_id": "fixture-00064",
+                "actual_model": "deepseek-fixture",
+                "protocol": "chat-completions",
+                "capability": "text_nonstream",
+                "scope": "model_connection_configuration",
+                "current_configuration": true,
+                "account_access_observed": "allowed",
+                "live_availability": "unknown"
+              }
+            ],
+            "verified_capabilities": [
+              "text_nonstream"
+            ],
+            "live_availability": "unknown"
+          }
+        ],
+        "counts": {
+          "discovered": 1,
+          "approved": 1,
+          "application_authorized": 1,
+          "historically_verified": 1
+        },
+        "live_availability": "unknown"
+      },
+      "coding": {
+        "connection_id": "coding",
+        "connection_enabled": true,
+        "approval_revision": 1,
+        "default_model": "kimi-for-coding",
+        "protocol": "chat-completions",
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.154170+00:00",
+          "discovered_at": "2026-11-04T08:20:47.154170+00:00",
+          "current": true,
+          "count": 1,
+          "models": [
+            "kimi-for-coding"
+          ],
+          "error_code": null
+        },
+        "models": [
+          {
+            "id": "kimi-for-coding",
+            "discovery": "listed",
+            "approved": true,
+            "default": true,
+            "authorized_applications": [
+              "demo-app-1",
+              "demo-app-2",
+              "demo-app-3"
+            ],
+            "effective_applications": [
+              "demo-app-1",
+              "demo-app-2",
+              "demo-app-3"
+            ],
+            "verification": [
+              {
+                "state": "success",
+                "outcome": "success",
+                "verified_at": "2026-11-04T00:46:01.551973+00:00",
+                "request_id": "fixture-00062",
+                "actual_model": "kimi-for-coding",
+                "protocol": "chat-completions",
+                "capability": "text_nonstream",
+                "scope": "model_connection_configuration",
+                "current_configuration": true,
+                "account_access_observed": "allowed",
+                "live_availability": "unknown"
+              }
+            ],
+            "verified_capabilities": [
+              "text_nonstream"
+            ],
+            "live_availability": "unknown"
+          }
+        ],
+        "counts": {
+          "discovered": 1,
+          "approved": 1,
+          "application_authorized": 1,
+          "historically_verified": 1
+        },
+        "live_availability": "unknown"
+      },
+      "subscription": {
+        "connection_id": "subscription",
+        "connection_enabled": true,
+        "approval_revision": 1,
+        "default_model": null,
+        "protocol": "responses",
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.171992+00:00",
+          "discovered_at": "2026-11-04T08:20:47.171992+00:00",
+          "current": true,
+          "count": 0,
+          "models": [],
+          "error_code": null
+        },
+        "models": [],
+        "counts": {
+          "discovered": 0,
+          "approved": 0,
+          "application_authorized": 0,
+          "historically_verified": 0
+        },
+        "live_availability": "unknown"
+      },
+      "anthropic": {
+        "connection_id": "anthropic",
+        "connection_enabled": true,
+        "approval_revision": 1,
+        "default_model": "claude-fixture",
+        "protocol": "anthropic-messages",
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.190872+00:00",
+          "discovered_at": "2026-11-04T08:20:47.190872+00:00",
+          "current": true,
+          "count": 1,
+          "models": [
+            "claude-fixture"
+          ],
+          "error_code": null
+        },
+        "models": [
+          {
+            "id": "claude-fixture",
+            "discovery": "listed",
+            "approved": true,
+            "default": true,
+            "authorized_applications": [
+              "legacy"
+            ],
+            "effective_applications": [
+              "legacy"
+            ],
+            "verification": [],
+            "verified_capabilities": [],
+            "live_availability": "unknown"
+          }
+        ],
+        "counts": {
+          "discovered": 1,
+          "approved": 1,
+          "application_authorized": 1,
+          "historically_verified": 0
+        },
+        "live_availability": "unknown"
+      },
+      "openai-demo": {
+        "connection_id": "openai-demo",
+        "connection_enabled": true,
+        "approval_revision": 3,
+        "default_model": "demo-text",
+        "protocol": "chat-completions",
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T08:20:47.207704+00:00",
+          "discovered_at": "2026-11-04T08:20:47.207704+00:00",
+          "current": true,
+          "count": 2,
+          "models": [
+            "demo-text",
+            "demo-text-small"
+          ],
+          "error_code": null
+        },
+        "models": [
+          {
+            "id": "demo-text",
+            "discovery": "listed",
+            "approved": true,
+            "default": true,
+            "authorized_applications": [
+              "legacy"
+            ],
+            "effective_applications": [
+              "legacy"
+            ],
+            "verification": [],
+            "verified_capabilities": [],
+            "live_availability": "unknown"
+          },
+          {
+            "id": "demo-text-small",
+            "discovery": "listed",
+            "approved": false,
+            "default": false,
+            "authorized_applications": [
+              "legacy"
+            ],
+            "effective_applications": [],
+            "verification": [],
+            "verified_capabilities": [],
+            "live_availability": "unknown"
+          }
+        ],
+        "counts": {
+          "discovered": 2,
+          "approved": 1,
+          "application_authorized": 1,
+          "historically_verified": 0
+        },
+        "live_availability": "unknown"
+      }
+    },
+    "applications": [
+      {
+        "id": "legacy",
+        "name": "Legacy client (0.1.x)",
+        "created_at": "2026-11-04T08:20:46.696927+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": false,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": null,
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": null,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "revision": "fdd257095eb8f9aa12d1d9af43c232d9b3484e135d8bdb3a95fa52c243cb33fc"
+      },
+      {
+        "id": "demo-app-1",
+        "name": "Cursor Workspace",
+        "created_at": "2026-11-04T08:20:46.777714+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": 500000,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "revision": "8b55c1bfedf64a58cae2561d2ff73a12274d73fa8daa6f4a62f6efa5de62da47"
+      },
+      {
+        "id": "demo-app-2",
+        "name": "Personal Notebook",
+        "created_at": "2026-11-04T08:20:46.779388+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "revision": "ac976ea93fcb3b058e1c069012026a0b166ff66d55055dee409ac89cb1f0faf0"
+      },
+      {
+        "id": "demo-app-3",
+        "name": "Research Tools",
+        "created_at": "2026-11-04T08:20:46.780844+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "revision": "7c969a354c80eb1259263a54469492473d04cd3505e4ce2ca240d18dbf1f4ede"
+      },
+      {
+        "id": "demo-app-4",
+        "name": "Disabled integration",
+        "created_at": "2026-11-04T08:20:47.073776+00:00",
+        "revoked_at": "2026-11-04T08:20:47.074740+00:00",
+        "active": false,
+        "policy": {
+          "allow_token_plans": false,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": null,
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": null,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "revision": "3d0b5f4ba9278df41eb91a6d17c0a303accf5c9cee56506b18a60509157e3efd"
+      }
+    ],
+    "quotas": {
+      "legacy": {
+        "id": "legacy",
+        "day": "2026-11-04",
+        "timezone": "UTC",
+        "policy": {
+          "allow_token_plans": false,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": null,
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": null,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "requests": 0,
+        "in_flight_requests": 0,
+        "uncertain_requests": 0,
+        "remaining_tokens": null,
+        "token_quota_state": "unlimited",
+        "historical_requests_excluded": 0,
+        "charged_or_reserved_tokens": 0,
+        "unknown_token_requests": 0,
+        "estimated_reserved_tokens": 0,
+        "estimated_cost_or_reservation": {},
+        "unknown_cost_requests": 0,
+        "billed_cost": null,
+        "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+      },
+      "demo-app-1": {
+        "id": "demo-app-1",
+        "day": "2026-11-04",
+        "timezone": "UTC",
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": 500000,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "requests": 22,
+        "in_flight_requests": 0,
+        "uncertain_requests": 2,
+        "remaining_tokens": null,
+        "token_quota_state": "blocked_unknown_usage",
+        "historical_requests_excluded": 0,
+        "charged_or_reserved_tokens": 131510,
+        "unknown_token_requests": 2,
+        "estimated_reserved_tokens": 9790,
+        "estimated_cost_or_reservation": {
+          "USD": "0.174508000"
+        },
+        "unknown_cost_requests": 2,
+        "billed_cost": null,
+        "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+      },
+      "demo-app-2": {
+        "id": "demo-app-2",
+        "day": "2026-11-04",
+        "timezone": "UTC",
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "requests": 22,
+        "in_flight_requests": 0,
+        "uncertain_requests": 1,
+        "remaining_tokens": null,
+        "token_quota_state": "unlimited",
+        "historical_requests_excluded": 0,
+        "charged_or_reserved_tokens": 133150,
+        "unknown_token_requests": 1,
+        "estimated_reserved_tokens": 4330,
+        "estimated_cost_or_reservation": {
+          "USD": "0.173840000"
+        },
+        "unknown_cost_requests": 1,
+        "billed_cost": null,
+        "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+      },
+      "demo-app-3": {
+        "id": "demo-app-3",
+        "day": "2026-11-04",
+        "timezone": "UTC",
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "requests": 21,
+        "in_flight_requests": 0,
+        "uncertain_requests": 1,
+        "remaining_tokens": null,
+        "token_quota_state": "unlimited",
+        "historical_requests_excluded": 0,
+        "charged_or_reserved_tokens": 126840,
+        "unknown_token_requests": 1,
+        "estimated_reserved_tokens": 7560,
+        "estimated_cost_or_reservation": {},
+        "unknown_cost_requests": 21,
+        "billed_cost": null,
+        "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+      },
+      "demo-app-4": {
+        "id": "demo-app-4",
+        "day": "2026-11-04",
+        "timezone": "UTC",
+        "policy": {
+          "allow_token_plans": false,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": null,
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": null,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "requests": 0,
+        "in_flight_requests": 0,
+        "uncertain_requests": 0,
+        "remaining_tokens": null,
+        "token_quota_state": "unlimited",
+        "historical_requests_excluded": 0,
+        "charged_or_reserved_tokens": 0,
+        "unknown_token_requests": 0,
+        "estimated_reserved_tokens": 0,
+        "estimated_cost_or_reservation": {},
+        "unknown_cost_requests": 0,
+        "billed_cost": null,
+        "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+      }
+    }
   }
 }
