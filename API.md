@@ -91,3 +91,12 @@
 前端读取/写入最长等待 20 秒；AbortSignal 用于取消被替代的读取。写入超时不证明操作未发生，不能自动重试，应该提示刷新核对。
 
 `null`、缺失字段、真实零分别处理。费用用十进制字符串按币种展示，不把订阅费用、未知余额填成零。配额包含保守预留，日配额固定 UTC；历史趋势按 UTC 日分组。调用最终状态、上游结果、下游交付、用量完整性分别展示。
+
+## 新后端提交核对（2026-11-04）
+
+页面实现仍以上方基线 `5e3fa03` 的 v1 接口为准。设计时核对了 Selark 最新提交 [`b8c26446385a138554aadc69aae51a046201f165`](https://github.com/nbcctwya/Selark/tree/b8c26446385a138554aadc69aae51a046201f165)，与本前端相关的差异如下：
+
+- v1 的 `snapshot`、`records`、`logs`、`backups`、`model-approval` 保持兼容；前端无需修改即可使用。
+- `snapshot.service` 的健康检查改为使用 `server_url(config)`，不再限定 127.0.0.1 / localhost / 0.0.0.0 主机；返回字段与投影不变。
+- 新增日常管理接口（[说明](https://github.com/nbcctwya/Selark/blob/b8c26446385a138554aadc69aae51a046201f165/docs/development/management-api.md)）：`/api/capabilities`、`/api/providers`、连接列表 / 创建 / 修改、显式模型发现、批量审批、默认模型设置、应用创建 / 策略修改 / 撤销、应用配额。错误体增加可选 `code`。
+- 本次前端**没有接入**这些新接口：`DashboardApi` 与模拟适配器未扩展，页面仍只提供单模型启用 / 禁用，其余操作明确提示通过 CLI 管理。接入意图见 `BACKEND_REQUESTS.md`。
