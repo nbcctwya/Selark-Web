@@ -12,6 +12,7 @@ import type { Manage } from './app/manage';
 import { RecordsPanel } from './components/Records';
 import { Button, Empty, Kbd, Pill, Segmented, Skeleton, useNow } from './components/ui';
 import { useDashboard } from './hooks/useDashboard';
+import { useVisibleInterval } from './hooks/useVisibleInterval';
 import { relative, shortTime } from './lib/format';
 import { ApplicationsPage } from './pages/ApplicationsPage';
 import { ConnectionsPage } from './pages/ConnectionsPage';
@@ -35,6 +36,12 @@ function readTheme(): ThemePref {
 const systemDark = () => typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches;
 const typing = (el: Element | null) => !!el && (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement || el instanceof HTMLSelectElement || (el as HTMLElement).isContentEditable);
 
+function Freshness({ authRequired, loading, loadedAt, stale }: { authRequired: boolean; loading: boolean; loadedAt: number | null; stale: boolean }) {
+  // Updating the relative time must not re-render charts, tables or management forms.
+  const now = useNow(loadedAt && !authRequired ? 15000 : null);
+  return <span className="freshness" role="status">{authRequired ? '未登录' : loading ? '读取中…' : loadedAt ? <>{stale && <Icon name="alert" size={13} />}{relative(new Date(loadedAt).toISOString(), now)}更新</> : ''}</span>;
+}
+
 export default function App(props: { api: DashboardApi; bootstrap?: string | null; developmentControls?: ReactNode }) {
   return <ToastProvider><Workspace {...props} /></ToastProvider>;
 }
@@ -56,7 +63,6 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
   const s = data.snapshot;
   const caps = useMemo(() => resolveCapabilities(data.capabilities, s), [data.capabilities, s]);
   const manage = useMemo<Manage>(() => ({ api: data.api, read: data.read, run: data.run, saving: data.saving, ...caps }), [data.api, data.read, data.run, data.saving, caps]);
-  const now = useNow();
   const meta = pages.find(p => p.key === page)!;
 
   useEffect(() => {
@@ -91,15 +97,11 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
   const { refresh, loading } = data;
 
   // Auto refresh while visible and idle; pauses during dialogs, typing, offline and in-flight reads.
-  useEffect(() => {
-    if (!s || data.authRequired) return;
-    const id = setInterval(() => {
-      if (document.visibilityState !== 'visible' || loading || !navigator.onLine) return;
-      if (document.querySelector('dialog[open]') || typing(document.activeElement)) return;
-      void refresh();
-    }, AUTO_REFRESH_MS);
-    return () => clearInterval(id);
-  }, [s, data.authRequired, loading, refresh]);
+  useVisibleInterval(useCallback(() => {
+    if (loading || !navigator.onLine) return;
+    if (document.querySelector('dialog[open]') || typing(document.activeElement)) return;
+    void refresh();
+  }, [loading, refresh]), s && !data.authRequired ? AUTO_REFRESH_MS : null);
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
@@ -170,7 +172,7 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
           <p className="crumb" aria-hidden="true"><span>工作空间</span><Icon name="chevronRight" size={13} /><b>{meta.title}</b></p>
           <div className="topbar-right">
             {s && <Pill tone={readOnly ? 'neutral' : 'info'} title={readOnly ? caps.why.connection_management : caps.can.model_discovery ? '可管理连接、模型与应用' : '离线模式：可本地管理，模型发现已关闭'}>{readOnly ? '只读' : caps.can.model_discovery ? '本机管理' : '离线管理'}</Pill>}
-            <span className="freshness" role="status">{data.authRequired ? '未登录' : loading && !s ? '读取中…' : data.loadedAt ? <>{data.stale && <Icon name="alert" size={13} />}{relative(new Date(data.loadedAt).toISOString(), now)}更新</> : ''}</span>
+            <Freshness authRequired={data.authRequired} loading={loading && !s} loadedAt={data.loadedAt} stale={data.stale} />
             <Button variant="ghost" icon="search" aria-label="搜索与跳转" className="only-mobile" onClick={() => setPalette(true)} />
             <Button variant="ghost" icon={dark ? 'sun' : 'moon'} aria-label={dark ? '切换浅色' : '切换深色'} className="only-mobile" onClick={() => setThemePref(dark ? 'light' : 'dark')} />
             <Button icon="refresh" className={`refresh${loading ? ' spinning' : ''}`} disabled={loading || Boolean(data.saving)} onClick={() => void refresh()}>

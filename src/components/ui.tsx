@@ -1,9 +1,10 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import type { ButtonHTMLAttributes, KeyboardEvent, ReactNode } from 'react';
 import { Icon } from './Icon';
 import type { IconName } from './Icon';
 import { hueIndex, initials, tone as toneOf } from '../lib/format';
 import type { Tone } from '../lib/format';
+import { useVisibleInterval } from '../hooks/useVisibleInterval';
 
 export function Pill({ tone = 'neutral', children, dot = true, title }: { tone?: Tone; children: ReactNode; dot?: boolean; title?: string }) {
   return <span className={`pill tone-${tone}`} title={title}>{dot && <span className="pill-dot" aria-hidden="true" />}{children}</span>;
@@ -113,9 +114,9 @@ export function Skeleton({ className = '' }: { className?: string }) {
 }
 
 /** Ticks once a while so relative times ("3 分钟前") stay honest without re-reading data. */
-export function useNow(interval = 15000) {
+export function useNow(interval: number | null = 15000) {
   const [now, setNow] = useState(() => Date.now());
-  useEffect(() => { const id = setInterval(() => setNow(Date.now()), interval); return () => clearInterval(id); }, [interval]);
+  useVisibleInterval(useCallback(() => setNow(Date.now()), []), interval);
   return now;
 }
 

@@ -64,6 +64,23 @@ test('five pages, filters, pagination and request details work without an API se
   await expect(page.getByRole('heading', { name: /异常调用/ })).toBeVisible();
   await nav(page, '连接与模型').click();
   await expect(page.getByRole('heading', { name: 'OpenAI Demo' })).toBeVisible();
+  // Hidden tabs stop their freshness clock as well as API polling, then refresh on return.
+  await expect(page.getByRole('button', { name: '刷新', exact: true })).toBeEnabled();
+  await page.clock.install();
+  const freshness = page.locator('.freshness');
+  const before = await freshness.innerText();
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await page.clock.fastForward(120000);
+  await expect(freshness).toHaveText(before);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await expect(page.getByRole('button', { name: '刷新', exact: true })).toBeEnabled();
+  await expect(freshness).toHaveText('刚刚更新');
   expect(errors).toEqual([]);
   expect(urls.every(url => new URL(url).origin === 'http://127.0.0.1:5173')).toBe(true);
   expect(urls.some(url => new URL(url).pathname.startsWith('/api/'))).toBe(false);
