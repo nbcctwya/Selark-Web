@@ -185,3 +185,9 @@ npm run test:browser
 `tools/api-types/` 是独立、锁定版本的生成工具，保持页面工程的 TypeScript 7；其 Undici 依赖固定到修复版本。生成器只接受本地引用，并禁止联网。
 `npm run check:api` 只比较生成结果，不重写文件。CI 检查类型与固定规范一致，Selark 的契约测试还核对规范副本、真实路由和响应。
 不要手工编辑 `src/api/generated.ts` 或在组件中另外复制接口字段。交付时提供前端提交及这里记录的后端基线。
+
+## 前端核对记录（2026-11-04）
+
+重新设计的页面按本文 v2 契约实现，并核对了 Selark 最新提交 [`fbaa811e308c0bf8098d72afd3401934501b14a4`](https://github.com/nbcctwya/Selark/tree/fbaa811e308c0bf8098d72afd3401934501b14a4)：其 `docs/api/dashboard.openapi.json` 与本仓库 `contracts/dashboard.openapi.json` 完全一致，`npm run check:api` 通过，无需重新生成类型。
+
+页面使用的方法：查询类方法、`getCapabilities`、`getProviders`、`createConnection`、`getConnection`、`updateConnection`、`discoverModels`、`approveModels`（单个开关与批量都走此接口）、`setDefaultModel`、`createApplication`、`getApplication`、`updateApplicationPolicy`、`revokeApplication`。`setModelApproval`、`getConnections`、`getConnectionModels`、`getApplications`、`getApplicationQuota` 仍保留在适配器中，但页面目前从 snapshot 读取同样的列表、目录与配额。

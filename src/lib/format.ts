@@ -93,7 +93,7 @@ const labels: Record<string, string> = {
   unreachable_or_invalid: '离线或响应无效', degraded: '运行异常', sent: '已发送', reported: '历史已报告',
   connected: '已授权', not_connected: '未授权', disconnected: '未授权', new: '新建', ready: '就绪',
   estimated: '估算', not_priced: '未定价', inconsistent: '计数矛盾', regressed: '计数回退', uncontradicted: '未发现矛盾',
-  listed: '目录中', missing: '目录中已缺失', unlisted: '目录中已缺失', manual: '手动添加',
+  listed: '目录中', not_in_catalog: '目录中已缺失', missing: '目录中已缺失', unlisted: '目录中已缺失', manual: '手动添加', disabled: '已停用',
   blocked_locally: '本地受阻', allowed: '历史可访问', denied: '历史被拒绝',
   api_key: 'API Key', oauth: 'OAuth', live: '实时', chat: '对话',
   reported_total: '供应商报告总量', unknown_hold: '未知 · 保守预留',

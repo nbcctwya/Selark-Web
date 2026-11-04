@@ -13,13 +13,13 @@ export type Go = (page: 'overview' | 'connections' | 'usage' | 'applications' | 
 function ModelRanking({ usage, snapshot, detailed = false }: { usage: Usage; snapshot: Snapshot; detailed?: boolean }) {
   const models = usage.models;
   const max = Math.max(1, ...models.map(m => m.requests));
-  const name = (id: string) => snapshot.connections.find(c => c.id === id)?.name ?? id;
+  const name = (id: string | null) => (id ? snapshot.connections.find(c => c.id === id)?.name ?? id : '未知连接');
   if (!models.length) return <Empty icon="layers" title="暂无模型用量">所选范围内没有调用；分布会随真实记录更新。</Empty>;
   if (!detailed) return <ol className="ranking">{models.map((m, i) => <li key={`${m.connection_id}::${m.model}`}>
     <span className="rank">{i + 1}</span>
     <div className="ranking-body">
-      <p><span className="mono strong" title={m.model}>{m.model || '未知模型'}</span><span className="ranking-value">{number(m.requests)} 次</span></p>
-      <Bar value={m.requests} max={max} label={`${m.model} ${m.requests} 次调用`} />
+      <p><span className="mono strong" title={m.model ?? undefined}>{m.model || '未知模型'}</span><span className="ranking-value">{number(m.requests)} 次</span></p>
+      <Bar value={m.requests} max={max} label={`${m.model ?? '未知模型'} ${m.requests} 次调用`} />
       <small>{name(m.connection_id)} · {compact(m.known_tokens.total_tokens)} 已报告 Token</small>
     </div>
   </li>)}</ol>;

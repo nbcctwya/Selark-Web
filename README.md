@@ -4,7 +4,7 @@
 
 [Selark 主仓库](https://github.com/nbcctwya/Selark)通过 Git submodule 将本仓库引入 `frontend/`，固定到经过验收的提交。本仓库更新后，Selark 由集成维护者主动更新引用。
 
-这是前端设计与交互开发的起点。五个页面已有可运行的组件骨架，视觉设计交给 Claude 继续完成。当前日常 `selark dashboard` 仍使用原页面；设计交回后，由 Codex 负责正式接入。
+本仓库是 Selark Dashboard 的重新设计版本：五个页面（资源概览、连接与模型、用量分析、应用管理、运行监控）均已按新的视觉系统实现，并接入日常管理：新建 / 编辑连接与 Key 轮换、显式模型发现、单个与批量启用、默认模型，新建应用（一次性令牌）、策略编辑与撤销。支持桌面 / 手机、浅色 / 深色 / 跟随系统、键盘操作（`1`–`5` 切换页面、`R` 刷新、`⌘K` / `Ctrl+K` / `/` 打开命令面板）。当前日常 `selark dashboard` 仍使用原页面；正式接入由 Codex 负责。
 
 ## 启动
 
@@ -53,12 +53,18 @@ src/
   mocks/management.ts   # 连接、模型、应用编辑的内存流程
   mocks/contract.ts     # 仅开发/测试使用的规范校验
   mocks/Workbench.tsx   # 仅开发模式加载的场景工具栏
-  hooks/useDashboard.ts # 加载、刷新、错误、会话失效、模型写入
-  components/          # 筛选、统计、调用列表与详情等共用组件
-  pages/               # 连接、应用、监控页面；概览和用量在 App 中组合
-  App.tsx              # 页面组合与导航
+  hooks/useDashboard.ts # 加载、局部失败、旧快照、会话失效、记录分页、能力开关、写入执行（不自动重试）
+  app/manage.tsx        # 管理上下文：DashboardApi、写入执行、四项能力开关及关闭原因
+  lib/format.ts         # 未知值、十进制金额、时间与状态文案
+  lib/domain.ts         # 授权、可用性、配额等领域文案
+  components/          # 基础组件（ui）、SVG 图表、表单、侧边详情 / 确认 / 提示、命令面板、筛选、记录
+  pages/               # 概览与用量、连接与模型、应用、监控
+  pages/connections/   # 新建 / 设置连接表单、模型目录（发现、批量、默认）
+  pages/applications/  # 策略编辑器、新建应用与一次性令牌、撤销
+  App.tsx              # 外壳、导航、主题、快捷键、自动刷新
   main.tsx             # 开发/正式适配器选择
-  styles.css           # 可替换的基础样式
+  styles.css           # 设计系统（CSS 变量，浅色 / 深色）
+public/favicon.svg     # 本地图标
 API.md                 # 当前真实接口、字段口径及交互约定
 CLAUDE.md              # 给 Claude 的任务与交付说明
 BACKEND_REQUESTS.md    # 记录设计中需要的新后端能力

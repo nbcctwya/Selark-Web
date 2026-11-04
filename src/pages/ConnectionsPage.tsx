@@ -1,10 +1,12 @@
-import { useMemo, useRef, useState } from 'react';
-import type { KeyboardEvent, ReactNode } from 'react';
-import type { CatalogModel, Connection, ModelApproval, ResourceType, Snapshot } from '../api/types';
-import type { Outcome } from '../hooks/useDashboard';
+import { useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
+import type { Connection, ResourceType, Snapshot } from '../api/types';
+import { useManage } from '../app/manage';
 import { Icon } from '../components/Icon';
-import { ConfirmDialog, Sheet } from '../components/Overlay';
-import { Avatar, Bar, Button, DefinitionList, Empty, Panel, Pill, Segmented, Switch, Tag, Unknown } from '../components/ui';
+import { Sheet, useToast } from '../components/Overlay';
+import { Avatar, Bar, Button, DefinitionList, Empty, Panel, Pill, Segmented, Tabs, Tag, Unknown } from '../components/ui';
+import { ConnectionSettings, CreateConnection } from './connections/ConnectionForms';
+import { ModelCatalog } from './connections/ModelCatalog';
 import { authorizationText, availabilityText, connectionHeadline, discoveryText } from '../lib/domain';
 import { blockerLabels, dateTime, label, number, percent, relative } from '../lib/format';
 
@@ -27,7 +29,9 @@ function Layers({ c, size = 'md' }: { c: Connection; size?: 'sm' | 'md' }) {
   </dl>;
 }
 
-export function ConnectionsPage({ snapshot, saving, onChange, openId, onOpen }: { snapshot: Snapshot; saving: string | null; onChange: (change: ModelApproval) => Promise<Outcome | null>; openId: string | null; onOpen: (id: string | null) => void }) {
+export function ConnectionsPage({ snapshot, openId, onOpen, creating, onCreating }: { snapshot: Snapshot; openId: string | null; onOpen: (id: string | null) => void; creating: boolean; onCreating: (open: boolean) => void }) {
+  const { can, why } = useManage();
+  const toast = useToast();
   const [search, setSearch] = useState('');
   const [type, setType] = useState<TypeFilter>('all');
   const term = search.trim().toLowerCase();
@@ -39,9 +43,16 @@ export function ConnectionsPage({ snapshot, saving, onChange, openId, onOpen }: 
   const visible = connections.filter(c => (type === 'all' || c.resource_type === type)
     && (!term || [c.name, c.id, c.provider, ...c.model_catalog.models.map(m => m.id)].some(v => v.toLowerCase().includes(term))));
   const types = [...new Set(connections.map(c => c.resource_type))];
-  const editable = snapshot.capabilities.model_approval;
+  const editable = can.model_approval;
+  const createButton = <Button variant="primary" icon="sparkle" disabled={!can.connection_management} title={can.connection_management ? undefined : why.connection_management} onClick={() => onCreating(true)}>新建连接</Button>;
+  const createSheet = <Sheet open={creating} onClose={() => onCreating(false)} labelId="create-connection-title" eyebrow="连接" title="新建连接" subtitle="添加 API 或 Key 型 Token Plan；Key 只保存在本机。">
+    {creating && <CreateConnection snapshot={snapshot} onCreated={id => { onCreating(false); onOpen(id); toast({ tone: 'good', text: `连接 ${id} 已创建。尚未发现或启用任何模型。` }); }} />}
+  </Sheet>;
 
-  if (!connections.length) return <Panel><Empty icon="connections" title="还没有连接">在终端使用 Selark CLI 添加 API、Token Plan 或 ChatGPT 订阅连接后，它们会显示在这里。</Empty></Panel>;
+  if (!connections.length) return <>
+    <Panel><Empty icon="connections" title="还没有连接">{can.connection_management ? '添加第一个 API 或 Token Plan 连接；ChatGPT 订阅需先在终端完成 OAuth 授权。' : '在终端使用 Selark CLI 添加连接后，它们会显示在这里。'}<p>{createButton}</p></Empty></Panel>
+    {createSheet}
+  </>;
 
   return <>
     <section className="layer-summary" aria-label="全部连接的模型四层状态">
@@ -62,7 +73,8 @@ export function ConnectionsPage({ snapshot, saving, onChange, openId, onOpen }: 
       {types.length > 1 && <Segmented label="资源类型" size="sm" value={type} onChange={setType}
         options={[{ value: 'all' as TypeFilter, label: '全部' }, ...types.map(t => ({ value: t as TypeFilter, label: label(t) }))]} />}
       <span className="toolbar-count">{visible.length} / {connections.length} 个连接</span>
-      <Pill tone={editable ? 'info' : 'neutral'}>{editable ? '可管理模型启用' : '只读'}</Pill>
+      <Pill tone={editable ? 'info' : 'neutral'}>{editable ? '可管理模型' : '模型只读'}</Pill>
+      {createButton}
     </div>
 
     {!visible.length ? <Panel><Empty icon="search" title="没有匹配的连接">换个关键词或资源类型试试。</Empty></Panel>
@@ -88,109 +100,32 @@ export function ConnectionsPage({ snapshot, saving, onChange, openId, onOpen }: 
             {c.availability.blockers.map(b => <Tag key={b} tone="muted"><Icon name="alert" size={12} />{blockerLabels[b] ?? b}</Tag>)}
             {matches.slice(0, 3).map(m => <Tag key={m} mono tone="accent">{m}</Tag>)}
           </div>}
-          <footer className="entity-foot"><span>{c.models.length} 个已启用 · {c.model_catalog.models.length} 个目录模型</span><span className="entity-go">{editable ? '管理模型' : '查看详情'}<Icon name="arrowRight" size={14} /></span></footer>
+          <footer className="entity-foot"><span>{c.models.length} 个已启用 · {c.model_catalog.models.length} 个目录模型</span><span className="entity-go">{editable || can.connection_management ? '管理' : '查看详情'}<Icon name="arrowRight" size={14} /></span></footer>
         </article>;
       })}</div>}
 
-    <ConnectionSheet snapshot={snapshot} id={openId} saving={saving} onChange={onChange} onClose={() => onOpen(null)} />
+    <ConnectionSheet snapshot={snapshot} id={openId} onClose={() => onOpen(null)} />
+    {createSheet}
   </>;
 }
 
-function Tabs<T extends string>({ value, onChange, tabs, label: name }: { value: T; onChange: (value: T) => void; tabs: [T, string][]; label: string }) {
-  const refs = useRef<(HTMLButtonElement | null)[]>([]);
-  function onKey(event: KeyboardEvent, index: number) {
-    const delta = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
-    if (!delta) return;
-    event.preventDefault();
-    const next = (index + delta + tabs.length) % tabs.length;
-    onChange(tabs[next][0]); refs.current[next]?.focus();
-  }
-  return <div className="tabs" role="tablist" aria-label={name}>{tabs.map(([key, text], index) =>
-    <button key={key} type="button" role="tab" id={`tab-${key}`} aria-controls={`panel-${key}`} aria-selected={value === key} tabIndex={value === key ? 0 : -1}
-      ref={el => { refs.current[index] = el; }} onClick={() => onChange(key)} onKeyDown={e => onKey(e, index)}>{text}</button>)}</div>;
-}
-
-function ConnectionSheet({ snapshot, id, saving, onChange, onClose }: { snapshot: Snapshot; id: string | null; saving: string | null; onChange: (change: ModelApproval) => Promise<Outcome | null>; onClose: () => void }) {
+function ConnectionSheet({ snapshot, id, onClose }: { snapshot: Snapshot; id: string | null; onClose: () => void }) {
   const c = id ? snapshot.connections.find(item => item.id === id) ?? null : null;
-  const [tab, setTab] = useState<'models' | 'auth' | 'quota'>('models');
+  const [tab, setTab] = useState<'models' | 'auth' | 'quota' | 'settings'>('models');
   const [lastId, setLastId] = useState(id);
   if (lastId !== id) { setLastId(id); setTab('models'); }
   return <Sheet open={Boolean(c)} onClose={onClose} labelId="connection-title" eyebrow={c ? `${label(c.resource_type)} · ${c.provider}` : ''}
-    title={c?.name ?? ''} subtitle={c && <span className="mono">{c.id}</span>}>
+    title={c?.name ?? ''} subtitle={c && <span className="mono">{c.id}{!c.enabled && ' · 已停用'}</span>}>
     {c && <>
-      <Tabs label="连接详情" value={tab} onChange={setTab} tabs={[['models', `模型目录 · ${c.model_catalog.models.length}`], ['auth', '连接与授权'], ['quota', '官方套餐窗口']]} />
+      <Tabs label="连接详情" value={tab} onChange={setTab} tabs={[['models', `模型目录 · ${c.model_catalog.models.length}`], ['auth', '授权与验证'], ['quota', '官方套餐窗口'], ['settings', '设置']]} />
       <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} className="tabpanel">
-        {tab === 'models' && <ModelCatalog key={c.id} c={c} editable={snapshot.capabilities.model_approval} saving={saving} onChange={onChange} />}
+        {tab === 'models' && <ModelCatalog key={c.id} c={c} />}
         {tab === 'auth' && <ConnectionFacts c={c} />}
         {tab === 'quota' && <ProviderQuota c={c} />}
+        {tab === 'settings' && <ConnectionSettings key={c.id} id={c.id} />}
       </div>
     </>}
   </Sheet>;
-}
-
-function ModelCatalog({ c, editable, saving, onChange }: { c: Connection; editable: boolean; saving: string | null; onChange: (change: ModelApproval) => Promise<Outcome | null> }) {
-  const [search, setSearch] = useState('');
-  const [scope, setScope] = useState<'all' | 'approved' | 'disabled'>('all');
-  const [pending, setPending] = useState<CatalogModel | null>(null);
-  const [status, setStatus] = useState<Outcome | null>(null);
-  const models = c.model_catalog.models.filter(m => m.id.toLowerCase().includes(search.trim().toLowerCase()) && (scope === 'all' || m.approved === (scope === 'approved')));
-  const enabledOnly = c.models.filter(m => !c.model_catalog.models.some(item => item.id === m));
-
-  async function toggle(model: CatalogModel, clearDefault = false) {
-    if (!editable || saving) return;
-    if (model.approved && model.default && !clearDefault) { setPending(model); return; }
-    setStatus(null);
-    const outcome = await onChange({ connection_id: c.id, model: model.id, enabled: !model.approved, revision: c.model_catalog.approval_revision, clear_default: clearDefault });
-    if (outcome) setStatus(outcome);
-  }
-
-  return <>
-    <Layers c={c} />
-    <div className={`mode-note${editable ? '' : ' readonly'}`}>
-      <Icon name={editable ? 'info' : 'lock'} size={16} />
-      <p>{editable
-        ? '启用只改变本机资源池，应用策略继续独立生效；启用不会自动设为默认。禁用后不再接收该模型的新调用，已派发请求继续结算。'
-        : '只读模式：模型启用状态只能查看。启用、禁用与默认模型请在终端通过 Selark CLI 管理。'}</p>
-    </div>
-    <div className="toolbar toolbar-tight">
-      <label className="search-field"><Icon name="search" size={16} /><span className="sr-only">查找模型</span>
-        <input type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="查找模型" autoComplete="off" /></label>
-      <Segmented label="启用状态" size="sm" value={scope} onChange={setScope} options={[{ value: 'all', label: '全部' }, { value: 'approved', label: '已启用' }, { value: 'disabled', label: '未启用' }]} />
-      <span className="toolbar-count">{models.length} 个模型</span>
-    </div>
-    {status && <p className={`inline-status tone-${status.tone}`} role="status"><Icon name={status.tone === 'good' ? 'check' : 'alert'} size={16} />{status.text}</p>}
-    {!c.model_catalog.models.length ? <Empty icon="layers" title="目录中还没有模型">{c.discovery.state === 'never' ? '尚未执行模型发现。' : '最近一次发现没有返回模型。'}模型发现通过 CLI 显式触发，页面不会访问供应商。</Empty>
-      : !models.length ? <Empty icon="search" title="没有匹配的模型">调整搜索词或启用状态筛选。</Empty>
-      : <ul className="model-list">{models.map(m => {
-        const key = `${c.id}::${m.id}`, busy = saving === key;
-        const lastVerified = m.verification.find(v => v.verified_at)?.verified_at;
-        return <li key={m.id} className={`model-row${m.approved ? ' on' : ''}`}>
-          <div className="model-main">
-            <p className="model-name"><span className="mono">{m.id}</span>
-              {m.default && <Tag tone="accent"><Icon name="star" size={11} />默认模型</Tag>}
-              {m.discovery !== 'listed' && <Tag tone="muted">{label(m.discovery)}</Tag>}
-            </p>
-            <p className="model-meta">
-              <span title="应用策略匹配数 / 考虑连接与启用后的实际生效数">应用授权 <b>{m.authorized_applications.length}</b> 匹配 · <b>{m.effective_applications.length}</b> 生效</span>
-              <span>{m.verified_capabilities.length ? m.verified_capabilities.map(cap => label(cap)).join(' / ') : '尚无模型级证据'}{lastVerified ? ` · ${relative(lastVerified)}` : ''}</span>
-              <span className="unknown-text">实时可用性{label(m.live_availability)}</span>
-            </p>
-          </div>
-          <div className="model-control">
-            <span className={`model-state${m.approved ? ' on' : ''}`}>{busy ? '保存中…' : m.approved ? '已启用' : '未启用'}</span>
-            {editable ? <Switch checked={m.approved} label={`启用 ${m.id}`} disabled={Boolean(saving)} busy={busy} onChange={() => void toggle(m)} />
-              : <Icon name="lock" size={15} title="只读" />}
-          </div>
-        </li>;
-      })}</ul>}
-    {enabledOnly.length > 0 && <p className="note"><Icon name="alert" size={14} />已启用但不在当前目录中：{enabledOnly.join('、')}</p>}
-    <ConfirmDialog open={Boolean(pending)} danger title="禁用默认模型？" confirmLabel="禁用并清除默认"
-      onCancel={() => setPending(null)}
-      onConfirm={() => { const model = pending; setPending(null); if (model) void toggle(model, true); }}>
-      <p><b className="mono">{pending?.id}</b> 是 {c.name} 的当前默认模型。</p>
-      <p>禁用会同时<strong>清除默认值</strong>；之后应用需显式指定模型，或在 CLI 中选择新的默认模型。重新启用不会自动恢复默认。</p>
-    </ConfirmDialog>
-  </>;
 }
 
 function ConnectionFacts({ c }: { c: Connection }) {
@@ -222,7 +157,7 @@ function ConnectionFacts({ c }: { c: Connection }) {
       ['协议', c.model_catalog.protocol ? label(c.model_catalog.protocol) : null],
       ['审批版本', <span key="r" className="mono">r{c.model_catalog.approval_revision}</span>],
     ]} /></section>
-    <p className="sheet-hint"><Icon name="terminal" size={15} />连接、密钥、OAuth 与模型发现在终端通过 Selark CLI 管理；Dashboard 不刷新 OAuth、不查询套餐、不调用模型。</p>
+    <p className="sheet-hint"><Icon name="terminal" size={15} />OAuth 登录与退出在终端通过 Selark CLI 完成；Dashboard 不刷新 OAuth、不查询套餐、不调用模型。只有「发现模型」会读取供应商目录。</p>
   </>;
 }
 

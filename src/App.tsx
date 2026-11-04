@@ -7,6 +7,8 @@ import { FiltersBar } from './components/FiltersBar';
 import { Icon, Mark } from './components/Icon';
 import type { IconName } from './components/Icon';
 import { ToastProvider } from './components/Overlay';
+import { ManageContext, resolveCapabilities } from './app/manage';
+import type { Manage } from './app/manage';
 import { RecordsPanel } from './components/Records';
 import { Button, Empty, Kbd, Pill, Segmented, Skeleton, useNow } from './components/ui';
 import { useDashboard } from './hooks/useDashboard';
@@ -50,7 +52,10 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
   const [online, setOnline] = useState(() => typeof navigator === 'undefined' || navigator.onLine !== false);
   const query = useMemo(() => ({ offset, errors: errorsOnly }), [offset, errorsOnly]);
   const data = useDashboard(api, bootstrap, filters, query);
+  const [creating, setCreating] = useState<'connection' | 'application' | null>(null);
   const s = data.snapshot;
+  const caps = useMemo(() => resolveCapabilities(data.capabilities, s), [data.capabilities, s]);
+  const manage = useMemo<Manage>(() => ({ api: data.api, run: data.run, saving: data.saving, ...caps }), [data.api, data.run, data.saving, caps]);
   const now = useNow();
   const meta = pages.find(p => p.key === page)!;
 
@@ -72,12 +77,13 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
   }, []);
 
   // A 401 clears every resource value; also drop any open detail so nothing stale stays on screen.
-  useEffect(() => { if (data.authRequired) { setOpenConnection(null); setOpenApplication(null); } }, [data.authRequired]);
+  useEffect(() => { if (data.authRequired) { setOpenConnection(null); setOpenApplication(null); setCreating(null); } }, [data.authRequired]);
 
   const go = useCallback((next: Page, id?: string) => {
     setPage(next); setOffset(0); setErrorsOnly(next === 'monitor');
     setOpenConnection(next === 'connections' && id ? id : null);
     setOpenApplication(next === 'applications' && id ? id : null);
+    setCreating(null);
     document.getElementById('main')?.focus({ preventScroll: true });
     scrollTo({ top: 0 });
   }, []);
@@ -111,19 +117,22 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
   const commands = useMemo<Command[]>(() => [
     ...pages.map((p, i) => ({ id: `p:${p.key}`, group: '页面', title: p.title, hint: p.description, icon: p.icon, shortcut: String(i + 1), run: () => go(p.key) })),
     { id: 'a:refresh', group: '操作', title: '刷新数据', icon: 'refresh', shortcut: 'R', run: () => void refresh() },
+    ...(caps.can.connection_management ? [{ id: 'a:new-connection', group: '操作', title: '新建连接', icon: 'connections' as const, keywords: 'create add connection', run: () => { go('connections'); setCreating('connection'); } }] : []),
+    ...(caps.can.application_management ? [{ id: 'a:new-application', group: '操作', title: '新建应用', icon: 'apps' as const, keywords: 'create add application token', run: () => { go('applications'); setCreating('application'); } }] : []),
     { id: 'a:light', group: '操作', title: '使用浅色主题', icon: 'sun', run: () => setThemePref('light') },
     { id: 'a:dark', group: '操作', title: '使用深色主题', icon: 'moon', run: () => setThemePref('dark') },
     { id: 'a:system', group: '操作', title: '主题跟随系统', icon: 'system', run: () => setThemePref('system') },
-  ], [go, refresh]);
+  ], [go, refresh, caps.can.connection_management, caps.can.application_management]);
 
   const showFilters = Boolean(s) && (page === 'overview' || page === 'usage' || page === 'monitor');
   const records = s && <RecordsPanel snapshot={s} records={data.records} failure={data.failures.records} loading={data.recordsLoading}
     errorsOnly={errorsOnly} onErrors={value => { setErrorsOnly(value); setOffset(0); }} onOffset={setOffset}
     compact={page === 'overview'} onSeeAll={page === 'overview' ? () => go('usage') : undefined} />;
   const partial = s ? [...s.issues, ...(Object.values(data.failures).some(Boolean) ? ['部分数据读取失败，可刷新重试。'] : [])] : [];
-  const readOnly = s ? !s.capabilities.model_approval : false;
+  const anyWrite = caps.can.connection_management || caps.can.application_management || caps.can.model_approval;
+  const readOnly = Boolean(s) && !anyWrite;
 
-  return <>
+  return <ManageContext.Provider value={manage}>
     <a className="skip" href="#main">跳至主内容</a>
     {developmentControls}
     <div className="shell">
@@ -160,7 +169,7 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
           <div className="topbar-brand"><Mark size={26} /><span>Selark</span></div>
           <p className="crumb" aria-hidden="true"><span>工作空间</span><Icon name="chevronRight" size={13} /><b>{meta.title}</b></p>
           <div className="topbar-right">
-            {s && <Pill tone={readOnly ? 'neutral' : 'info'} title={readOnly ? '服务端关闭了模型写入' : '可启用 / 禁用模型'}>{readOnly ? '只读' : '本机管理'}</Pill>}
+            {s && <Pill tone={readOnly ? 'neutral' : 'info'} title={readOnly ? caps.why.connection_management : caps.can.model_discovery ? '可管理连接、模型与应用' : '离线模式：可本地管理，模型发现已关闭'}>{readOnly ? '只读' : caps.can.model_discovery ? '本机管理' : '离线管理'}</Pill>}
             <span className="freshness" role="status">{data.authRequired ? '未登录' : loading && !s ? '读取中…' : data.loadedAt ? <>{data.stale && <Icon name="alert" size={13} />}{relative(new Date(data.loadedAt).toISOString(), now)}更新</> : ''}</span>
             <Button variant="ghost" icon="search" aria-label="搜索与跳转" className="only-mobile" onClick={() => setPalette(true)} />
             <Button variant="ghost" icon={dark ? 'sun' : 'moon'} aria-label={dark ? '切换浅色' : '切换深色'} className="only-mobile" onClick={() => setThemePref(dark ? 'light' : 'dark')} />
@@ -181,16 +190,17 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
           {!online && <div className="banner banner-warn" role="status"><Icon name="wifiOff" size={17} /><p>浏览器当前离线。{s ? `页面显示的是 ${shortTime(s.checked_at)} 的快照，` : ''}自动刷新已暂停。</p></div>}
           {data.stale && s && <div className="banner banner-warn" role="alert"><Icon name="alert" size={17} /><p><b>读取失败：</b>{data.error} 下方为 {shortTime(s.checked_at)} 的旧快照，可能已过时。</p><Button size="sm" onClick={() => void refresh()}>重试</Button></div>}
           {partial.length > 0 && <div className="banner banner-info" role="status"><Icon name="info" size={17} /><p>{partial.join(' ')}</p></div>}
-          {readOnly && page === 'connections' && <div className="banner banner-muted" role="status"><Icon name="lock" size={17} /><p>只读模式：此 Dashboard 不提供模型写入入口。连接、应用策略、密钥与额度始终通过 CLI 管理。</p></div>}
+          {readOnly && (page === 'connections' || page === 'applications') && <div className="banner banner-muted" role="status"><Icon name="lock" size={17} /><p>{caps.why.connection_management} 页面只展示当前状态。</p></div>}
+          {s && !readOnly && !caps.can.model_discovery && page === 'connections' && <div className="banner banner-muted" role="status"><Icon name="wifiOff" size={17} /><p>{caps.why.model_discovery}</p></div>}
 
           {data.authRequired ? <AuthRequired message={data.authMessage} />
             : !s ? (loading ? <Loading /> : <section className="panel"><Empty icon="alert" tone="error" title="暂时无法读取工作空间，请刷新重试。">{data.error}<p><Button variant="primary" icon="refresh" onClick={() => void refresh()}>重新读取</Button></p></Empty></section>)
             : <div className={`page page-${page}`} key={page}>
               {showFilters && page !== 'monitor' && <FiltersBar snapshot={s} filters={filters} onChange={changeFilters} />}
               {page === 'overview' && <OverviewPage snapshot={s} go={go} records={records} />}
-              {page === 'connections' && <ConnectionsPage snapshot={s} saving={data.saving} onChange={data.setModelApproval} openId={openConnection} onOpen={setOpenConnection} />}
+              {page === 'connections' && <ConnectionsPage snapshot={s} openId={openConnection} onOpen={setOpenConnection} creating={creating === 'connection'} onCreating={open => setCreating(open ? 'connection' : null)} />}
               {page === 'usage' && <UsagePage snapshot={s} records={records} />}
-              {page === 'applications' && <ApplicationsPage snapshot={s} openId={openApplication} onOpen={setOpenApplication} />}
+              {page === 'applications' && <ApplicationsPage snapshot={s} openId={openApplication} onOpen={setOpenApplication} creating={creating === 'application'} onCreating={open => setCreating(open ? 'application' : null)} />}
               {page === 'monitor' && <><MonitorPage snapshot={s} logs={data.logs} backups={data.backups} failures={data.failures} /><FiltersBar snapshot={s} filters={filters} onChange={changeFilters} />{records}</>}
             </div>}
 
@@ -199,7 +209,7 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
       </div>
     </div>
     <CommandPalette open={palette} onClose={() => setPalette(false)} base={commands} snapshot={s} go={go} />
-  </>;
+  </ManageContext.Provider>;
 }
 
 function AuthRequired({ message }: { message: string }) {

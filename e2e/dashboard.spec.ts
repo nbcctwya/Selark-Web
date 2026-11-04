@@ -107,10 +107,164 @@ test('model writes confirm defaults, enforce read-only and require a second acti
   sheet = await openConnection(page, 'OpenAI Demo');
   const conflicted = sheet.getByRole('switch', { name: '启用 demo-text-small' });
   await conflicted.click();
-  await expect(sheet.getByRole('status')).toContainText('操作不会自动重试');
+  await expect(sheet.getByRole('alert')).toContainText('操作不会自动重试');
   await expect(conflicted).toHaveAttribute('aria-checked', 'false');
   await conflicted.click();
   await expect(conflicted).toHaveAttribute('aria-checked', 'true');
+});
+
+test('connections can be created, discovered, approved, defaulted and edited without echoing keys', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  await expect(metrics(page)).toBeVisible();
+  await nav(page, '连接与模型').click();
+  await page.getByRole('button', { name: '新建连接' }).click();
+  const create = page.getByRole('dialog', { name: '新建连接' });
+  await expect(create.getByRole('radio', { name: /ChatGPT 个人订阅/ })).toBeDisabled();
+  await create.getByRole('radio', { name: /OpenAI 兼容中转/ }).click();
+  await create.getByRole('button', { name: '创建连接' }).click();
+  await expect(create.getByText('此供应商需要填写接口地址。')).toBeVisible();
+  await create.getByLabel('连接 ID').fill('deepseek');
+  await create.getByLabel('接口地址').fill('http://relay.example/v1');
+  await create.getByLabel('API Key').fill('sk-fixture-only');
+  await expect(create.getByText('该连接 ID 已存在。')).toBeVisible();
+  await expect(create.getByText('非本机地址必须使用 HTTPS。')).toBeVisible();
+  await create.getByLabel('连接 ID').fill('my-relay');
+  await create.getByLabel('接口地址').fill('https://relay.example/v1');
+  await expect(create.getByLabel('API Key')).toHaveAttribute('type', 'password');
+  await create.getByRole('button', { name: '创建连接' }).click();
+
+  const sheet = page.getByRole('dialog', { name: 'OpenAI 兼容中转' });
+  await expect(sheet).toBeVisible();
+  await expect(sheet.getByText('目录中还没有模型')).toBeVisible();
+  await sheet.getByRole('button', { name: '发现模型' }).click();
+  await expect(sheet.getByRole('status')).toContainText('新模型不会自动启用');
+  await expect(sheet.getByRole('switch', { name: '启用 demo-text', exact: true })).toHaveAttribute('aria-checked', 'false');
+  await sheet.getByRole('button', { name: '启用目录全部' }).click();
+  await expect(sheet.getByRole('switch', { name: '启用 demo-text', exact: true })).toHaveAttribute('aria-checked', 'true');
+  await expect(sheet.getByText('默认模型', { exact: true })).toHaveCount(0);
+  await sheet.getByRole('button', { name: '将 demo-text 设为默认模型' }).click();
+  await expect(sheet.getByText('默认模型', { exact: true })).toHaveCount(1);
+
+  await sheet.getByRole('checkbox', { name: '选择 demo-text', exact: true }).check();
+  await sheet.getByRole('checkbox', { name: '选择 demo-text-small' }).check();
+  await sheet.getByRole('button', { name: '禁用所选' }).click();
+  await expect(page.getByRole('dialog', { name: '禁用默认模型？' })).toContainText('本次将禁用 2 个模型');
+  await page.getByRole('button', { name: '禁用并清除默认' }).click();
+  await expect(sheet.getByRole('switch', { name: '启用 demo-text-small' })).toHaveAttribute('aria-checked', 'false');
+  await expect(sheet.getByText('默认模型', { exact: true })).toHaveCount(0);
+
+  await sheet.getByRole('tab', { name: '设置' }).click();
+  await sheet.getByLabel('显示名称').fill('我的中转');
+  await sheet.getByRole('button', { name: '更换 Key' }).click();
+  await sheet.getByLabel('新的 API Key').fill('sk-rotated-fixture');
+  await expect(sheet.getByText('2 项修改')).toBeVisible();
+  await sheet.getByRole('button', { name: '保存修改' }).click();
+  const renamed = page.getByRole('dialog', { name: '我的中转' });
+  await expect(renamed.getByRole('status')).toContainText('已保存');
+  await expect(renamed.getByLabel('新的 API Key')).toHaveCount(0);
+  await expect(page.locator('input[type="password"]')).toHaveCount(0);
+  expect(await page.content()).not.toContain('sk-rotated-fixture');
+  await renamed.getByRole('switch', { name: '启用连接' }).click();
+  await renamed.getByRole('button', { name: '保存修改' }).click();
+  await page.getByRole('button', { name: '停用并保存' }).click();
+  await expect(page.getByRole('dialog', { name: '我的中转' })).toContainText('已停用');
+  expect(errors).toEqual([]);
+});
+
+test('discovery failures keep the old catalog and offline mode closes discovery only', async ({ page }) => {
+  await page.goto('/');
+  await expect(metrics(page)).toBeVisible();
+  await scenario(page, 'discovery-error');
+  await expect(metrics(page)).toBeVisible();
+  let sheet = await openConnection(page, 'OpenAI Demo');
+  await sheet.getByRole('button', { name: '重新发现' }).click();
+  await expect(sheet.getByRole('alert')).toContainText('发现失败');
+  await expect(sheet.getByRole('alert')).toContainText('已保留上次目录');
+  await expect(sheet.getByRole('switch', { name: '启用 demo-text', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '关闭详情' }).click();
+
+  await scenario(page, 'offline-mode');
+  await expect(metrics(page)).toBeVisible();
+  await expect(page.getByText('离线管理')).toBeVisible();
+  sheet = await openConnection(page, 'OpenAI Demo');
+  await expect(sheet.getByRole('button', { name: '重新发现' })).toBeDisabled();
+  await expect(sheet.getByRole('switch', { name: '启用 demo-text-small' })).toBeEnabled();
+  await page.getByRole('button', { name: '关闭详情' }).click();
+  await nav(page, '应用管理').click();
+  await expect(page.getByRole('button', { name: '新建应用' })).toBeEnabled();
+
+  await scenario(page, 'readonly');
+  await expect(metrics(page)).toBeVisible();
+  await nav(page, '应用管理').click();
+  await expect(page.getByRole('button', { name: '新建应用' })).toBeDisabled();
+  await nav(page, '连接与模型').click();
+  await expect(page.getByRole('button', { name: '新建连接' })).toBeDisabled();
+});
+
+test('applications show a one-time token, edit policies with revisions and revoke after confirmation', async ({ page }) => {
+  await page.goto('/');
+  await expect(metrics(page)).toBeVisible();
+  await nav(page, '应用管理').click();
+  await page.getByRole('button', { name: '新建应用' }).click();
+  let create = page.getByRole('dialog', { name: '新建应用' });
+  await create.getByRole('button', { name: '创建并生成令牌' }).click();
+  await expect(create.getByText('请输入应用名称。')).toBeVisible();
+  await create.getByLabel('应用名称').fill('我的编辑器');
+  await create.getByRole('radiogroup', { name: '允许连接' }).getByRole('radio', { name: '指定' }).click();
+  await expect(create.getByText('请选择至少一个连接')).toBeVisible();
+  await create.getByRole('checkbox', { name: /DeepSeek/ }).check();
+  await create.getByLabel('日 Token 上限').fill('0');
+  await create.getByRole('button', { name: '创建并生成令牌' }).click();
+  await expect(create.getByText(/请输入 1–/).first()).toBeVisible();
+  await create.getByLabel('日 Token 上限').fill('100000');
+  await create.getByRole('button', { name: '创建并生成令牌' }).click();
+  const token = create.getByLabel('一次性调用令牌');
+  await expect(token).toHaveValue(/^demo-only-not-a-real-token-/);
+  await expect(create).toContainText('这是唯一一次显示此令牌');
+  await create.getByRole('button', { name: '我已保存，关闭' }).click();
+  await expect(page.getByLabel('一次性调用令牌')).toHaveCount(0);
+  expect(await page.content()).not.toContain('demo-only-not-a-real-token');
+  await page.getByRole('button', { name: '新建应用' }).click();
+  create = page.getByRole('dialog', { name: '新建应用' });
+  await expect(create.getByLabel('一次性调用令牌')).toHaveCount(0);
+  await create.getByRole('button', { name: '关闭详情' }).click();
+
+  await page.getByRole('button', { name: '我的编辑器', exact: true }).click();
+  const sheet = page.getByRole('dialog', { name: '我的编辑器' });
+  await sheet.getByRole('tab', { name: '策略与撤销' }).click();
+  await expect(sheet.getByLabel('日 Token 上限')).toHaveValue('100000');
+  await sheet.getByLabel('并发上限').fill('2');
+  await sheet.getByRole('button', { name: '保存策略' }).click();
+  await expect(sheet.getByRole('status')).toContainText('策略已保存（1 项）');
+  await sheet.getByRole('button', { name: '撤销令牌' }).click();
+  const confirm = page.getByRole('dialog', { name: '撤销「我的编辑器」？' });
+  await confirm.getByRole('button', { name: '取消' }).click();
+  await expect(sheet.getByRole('button', { name: '撤销令牌' })).toBeVisible();
+  await sheet.getByRole('button', { name: '撤销令牌' }).click();
+  await page.getByRole('button', { name: '永久撤销' }).click();
+  await expect(sheet.getByText(/令牌已撤销.*已接纳的请求继续完成/)).toBeVisible();
+  await expect(sheet).toContainText('应用 · 已撤销');
+  await expect(sheet.getByRole('button', { name: '撤销令牌' })).toHaveCount(0);
+});
+
+test('a policy conflict refreshes the form and never resends the edit', async ({ page }) => {
+  await page.goto('/');
+  await expect(metrics(page)).toBeVisible();
+  await scenario(page, 'conflict');
+  await expect(metrics(page)).toBeVisible();
+  await nav(page, '应用管理').click();
+  await page.getByRole('button', { name: 'Personal Notebook', exact: true }).click();
+  const sheet = page.getByRole('dialog', { name: 'Personal Notebook' });
+  await sheet.getByRole('tab', { name: '策略与撤销' }).click();
+  await sheet.getByLabel('每分钟请求').fill('30');
+  await sheet.getByRole('button', { name: '保存策略' }).click();
+  await expect(sheet.getByRole('alert')).toContainText('表单已重置为最新策略');
+  await expect(sheet.getByLabel('每分钟请求')).toHaveValue('');
+  await sheet.getByLabel('每分钟请求').fill('30');
+  await sheet.getByRole('button', { name: '保存策略' }).click();
+  await expect(sheet.getByRole('status')).toContainText('策略已保存');
 });
 
 test('empty, partial, failed, unknown, offline and expired states remain distinct', async ({ page }) => {
@@ -217,7 +371,8 @@ test('production build uses same-origin HTTP under CSP, survives reload and clea
     expect(request.headers()['x-selark-session']).toBe('fixture-browser-session');
     expect(request.headers().cookie).toBeUndefined();
     if (expired) { await route.fulfill({ status: 401, json: { error: '管理会话已失效。' } }); return; }
-    const values: Record<string, unknown> = { '/api/snapshot': fixture.snapshot, '/api/records': { items: fixture.records.slice(0, 25), total: 65, offset: 0, limit: 25 }, '/api/logs': fixture.logs, '/api/backups': fixture.backups };
+    const values: Record<string, unknown> = { '/api/snapshot': fixture.snapshot, '/api/records': { items: fixture.records.slice(0, 25), total: 65, offset: 0, limit: 25 }, '/api/logs': fixture.logs, '/api/backups': fixture.backups, '/api/capabilities': fixture.management.capabilities };
+    if (!(path in values)) throw new Error(`Unexpected API request ${request.method()} ${path}`);
     await route.fulfill({ json: values[path] });
   });
   await page.goto('http://127.0.0.1:5174/#login=fixture-login');

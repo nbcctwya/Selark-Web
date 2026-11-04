@@ -1,16 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ApiError } from '../api/http';
-import type { Backups, DashboardApi, Filters, Logs, ModelApproval, RecordsPage, Snapshot } from '../api/types';
+import type { Backups, Capabilities, DashboardApi, Filters, Logs, RecordsPage, Snapshot } from '../api/types';
 
 export interface RecordQueryState { offset: number; errors: boolean }
 export interface Outcome { tone: 'good' | 'warn' | 'bad'; text: string }
-type Part = 'records' | 'logs' | 'backups';
+/** Result of one explicit write. `code` mirrors the backend's machine code for 4xx responses. */
+export type WriteResult<T> = { ok: true; value: T; refreshed: boolean } | { ok: false; status: number | null; code?: string; outcome: Outcome };
+export interface WriteOptions { key: string; timeout?: number; refreshOn409?: boolean }
+type Part = 'records' | 'logs' | 'backups' | 'capabilities';
 
 export interface DashboardState {
   snapshot: Snapshot | null;
   records: RecordsPage | null;
   logs: Logs | null;
   backups: Backups | null;
+  /** Operation switches from GET /api/capabilities; null when unreadable (all management entries stay closed). */
+  capabilities: Capabilities | null;
   /** Per-section read failures. A missing section is never rendered as "empty". */
   failures: Record<Part, string | null>;
   loading: boolean;
@@ -24,9 +29,9 @@ export interface DashboardState {
 }
 
 const READ_TIMEOUT = 20000;
-const noFailures: Record<Part, string | null> = { records: null, logs: null, backups: null };
+const noFailures: Record<Part, string | null> = { records: null, logs: null, backups: null, capabilities: null };
 const initial: DashboardState = {
-  snapshot: null, records: null, logs: null, backups: null, failures: noFailures,
+  snapshot: null, records: null, logs: null, backups: null, capabilities: null, failures: noFailures,
   loading: true, recordsLoading: false, stale: false, error: null, authRequired: false, authMessage: '', loadedAt: null,
 };
 
@@ -100,14 +105,15 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
       await api.initialize(bootstrap);
       controller.signal.throwIfAborted();
       const snapshot = await api.snapshot(filters, controller.signal);
-      const [records, logs, backups] = await Promise.allSettled([
+      const [records, logs, backups, capabilities] = await Promise.allSettled([
         api.records({ ...pinned(filters, snapshot), offset: used.offset, errors: used.errors }, controller.signal),
         api.logs(controller.signal),
         api.backups(controller.signal),
+        api.getCapabilities(controller.signal),
       ]);
       controller.signal.throwIfAborted();
       if (version !== generation.current) return false;
-      const expired = [records, logs, backups].find(r => r.status === 'rejected' && isExpired(r.reason));
+      const expired = [records, logs, backups, capabilities].find(r => r.status === 'rejected' && isExpired(r.reason));
       if (expired?.status === 'rejected') throw expired.reason;
       const fail = (result: PromiseSettledResult<unknown>, fallback: string) => result.status === 'rejected' ? reason(result.reason, fallback) : null;
       snapshotRef.current = snapshot;
@@ -116,7 +122,8 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
         records: records.status === 'fulfilled' ? records.value : null,
         logs: logs.status === 'fulfilled' ? logs.value : null,
         backups: backups.status === 'fulfilled' ? backups.value : null,
-        failures: { records: fail(records, '调用记录暂不可读。'), logs: fail(logs, '日志暂不可读。'), backups: fail(backups, '备份目录暂不可读。') },
+        capabilities: capabilities.status === 'fulfilled' ? capabilities.value : null,
+        failures: { records: fail(records, '调用记录暂不可读。'), logs: fail(logs, '日志暂不可读。'), backups: fail(backups, '备份目录暂不可读。'), capabilities: fail(capabilities, '操作开关暂不可读，管理入口已关闭。') },
         loading: false, recordsLoading: false, stale: false, error: null, authRequired: false, authMessage: '', loadedAt: Date.now(),
       });
       return true;
@@ -152,39 +159,44 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
 
   useEffect(() => () => mutation.current?.abort(), [api]);
 
-  /** One explicit write. Never retried automatically: a timeout does not prove the change did not happen. */
-  const setModelApproval = useCallback(async (change: ModelApproval): Promise<Outcome | null> => {
+  /**
+   * One explicit write. Never retried: a timeout or lost response does not prove the change did not happen.
+   * Success refreshes the snapshot. 409 refreshes too (unless the caller handles the code itself) and asks
+   * the user to act again; a 401 clears everything on screen.
+   */
+  const run = useCallback(async <T,>(operation: (signal: AbortSignal) => Promise<T>, options: WriteOptions): Promise<WriteResult<T> | null> => {
     if (locked.current) return null;
     locked.current = true;
-    setSaving(`${change.connection_id}::${change.model}`);
+    setSaving(options.key);
     const controller = new AbortController();
     mutation.current = controller;
-    const timer = setTimeout(() => controller.abort(new DOMException('保存超时', 'TimeoutError')), READ_TIMEOUT);
+    const timer = setTimeout(() => controller.abort(new DOMException('保存超时', 'TimeoutError')), options.timeout ?? READ_TIMEOUT);
     try {
-      const result = await api.setModelApproval(change, controller.signal);
-      const loaded = await refresh();
-      const verb = result.enabled ? '已启用' : '已禁用';
-      return loaded
-        ? { tone: 'good', text: `${result.model} ${verb}。应用授权保持不变${result.default_model === null && change.clear_default ? '，默认模型已清除' : ''}。` }
-        : { tone: 'warn', text: `${result.model} ${verb}，但快照未能刷新；请刷新核对当前状态。` };
+      const value = await operation(controller.signal);
+      clearTimeout(timer);
+      const refreshed = await refresh();
+      return { ok: true, value, refreshed };
     } catch (error) {
       if (isExpired(error)) { expire(error.message); return null; }
-      if (error instanceof ApiError && error.status === 409) {
-        await refresh();
-        return { tone: 'warn', text: `${error.message} 已刷新最新状态，请核对后再次操作；操作不会自动重试。` };
+      if (error instanceof ApiError) {
+        if (error.status === 409 && error.code !== 'default_model_confirmation' && options.refreshOn409 !== false) {
+          await refresh();
+          return { ok: false, status: 409, code: error.code, outcome: { tone: 'warn', text: `${error.message} 已刷新最新状态，请核对后再次操作；操作不会自动重试。` } };
+        }
+        return { ok: false, status: error.status, code: error.code, outcome: { tone: error.status >= 500 ? 'bad' : 'warn', text: `${error.message}${error.status === 405 ? ' 当前启动模式不允许此操作。' : ''}` } };
       }
       if (controller.signal.aborted || isAbort(error)) {
-        return { tone: 'warn', text: '保存超时，结果尚未确认。请刷新核对；操作不会自动重试。' };
+        return { ok: false, status: null, outcome: { tone: 'warn', text: '请求超时，结果尚未确认。请刷新核对；操作不会自动重试。' } };
       }
-      return { tone: 'bad', text: `${reason(error, '保存结果未确认，请刷新查看。')} 操作不会自动重试。` };
+      return { ok: false, status: null, outcome: { tone: 'bad', text: `${reason(error, '连接中断。')} 结果尚未确认，请刷新核对；操作不会自动重试。` } };
     } finally {
       clearTimeout(timer);
       locked.current = false;
       setSaving(null);
     }
-  }, [api, refresh, expire]);
+  }, [refresh, expire]);
 
-  return { ...state, saving, refresh, setModelApproval };
+  return { ...state, saving, refresh, run, api };
 }
 
 export type Dashboard = ReturnType<typeof useDashboard>;

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import type { Application, Snapshot } from '../api/types';
+import { useManage } from '../app/manage';
 import { Icon } from '../components/Icon';
-import { Sheet } from '../components/Overlay';
-import { Avatar, Bar, DefinitionList, Empty, Panel, Pill, Segmented, Tag, Unknown } from '../components/ui';
+import { Sheet, useToast } from '../components/Overlay';
+import { Avatar, Bar, Button, DefinitionList, Empty, Panel, Pill, Segmented, Tabs, Tag, Unknown } from '../components/ui';
+import { ApplicationSettings, CreateApplication } from './applications/ApplicationForms';
 import { allowList, quotaHeadline } from '../lib/domain';
 import { compact, dateTime, decimalString, label, money, number, relative } from '../lib/format';
 
@@ -24,13 +26,22 @@ function QuotaBlock({ app }: { app: Application }) {
   </div>;
 }
 
-export function ApplicationsPage({ snapshot, openId, onOpen }: { snapshot: Snapshot; openId: string | null; onOpen: (id: string | null) => void }) {
+export function ApplicationsPage({ snapshot, openId, onOpen, creating, onCreating }: { snapshot: Snapshot; openId: string | null; onOpen: (id: string | null) => void; creating: boolean; onCreating: (open: boolean) => void }) {
+  const { can, why } = useManage();
+  const toast = useToast();
+  const createButton = <Button variant="primary" icon="sparkle" disabled={!can.application_management} title={can.application_management ? undefined : why.application_management} onClick={() => onCreating(true)}>新建应用</Button>;
+  const createSheet = <Sheet open={creating} onClose={() => onCreating(false)} labelId="create-application-title" eyebrow="应用" title="新建应用" subtitle="为一个调用方生成独立令牌，并设置它能使用的资源与限额。">
+    {creating && <CreateApplication snapshot={snapshot} onDone={() => { onCreating(false); toast({ tone: 'good', text: '应用已创建，令牌已从页面清除。' }); }} />}
+  </Sheet>;
   const [scope, setScope] = useState<'active' | 'all'>('all');
   const apps = snapshot.applications;
   const active = apps.filter(a => a.active).length;
   const visible = scope === 'active' ? apps.filter(a => a.active) : apps;
   const day = apps[0]?.quota.day;
-  if (!apps.length) return <Panel><Empty icon="apps" title="尚无可显示的应用">在终端为调用方创建应用令牌后，它们的身份、权限与今日配额会显示在这里。页面不会显示令牌明文或摘要。</Empty></Panel>;
+  if (!apps.length) return <>
+    <Panel><Empty icon="apps" title="尚无可显示的应用">为调用方创建应用后，它们的身份、权限与今日配额会显示在这里。页面不会显示令牌明文或摘要。<p>{createButton}</p></Empty></Panel>
+    {createSheet}
+  </>;
   return <>
     <div className="toolbar">
       <div className="summary-chips">
@@ -38,8 +49,9 @@ export function ApplicationsPage({ snapshot, openId, onOpen }: { snapshot: Snaps
         {day && <span><Icon name="calendar" size={14} />配额日 {day} UTC</span>}
       </div>
       <Segmented label="应用范围" size="sm" value={scope} onChange={setScope} options={[{ value: 'all', label: '全部' }, { value: 'active', label: '仅有效' }]} />
+      {createButton}
     </div>
-    <p className="page-note"><Icon name="info" size={14} />配额按 UTC 今日计算，包含实际用量与保守预留，不受用量筛选影响；历史用量请在「用量分析」查看。应用策略、令牌与额度通过 CLI 管理。</p>
+    <p className="page-note"><Icon name="info" size={14} />配额按 UTC 今日计算，包含实际用量与保守预留，不受用量筛选影响；历史用量请在「用量分析」查看。编辑策略或撤销令牌请打开应用详情。</p>
     <div className="card-grid">{visible.map(app => {
       const p = app.policy;
       const models = app.effective_resources.reduce((n, r) => n + r.models.length, 0);
@@ -63,18 +75,25 @@ export function ApplicationsPage({ snapshot, openId, onOpen }: { snapshot: Snaps
           {app.effective_resources.length > 4 && <Tag tone="muted">+{app.effective_resources.length - 4}</Tag>}
           {!app.effective_resources.length && <Tag tone="muted">暂无获权资源</Tag>}
         </div>
-        <footer className="entity-foot"><span>{app.effective_resources.length} 个连接 · {models} 个获准模型</span><span className="entity-go">权限详情<Icon name="arrowRight" size={14} /></span></footer>
+        <footer className="entity-foot"><span>{app.effective_resources.length} 个连接 · {models} 个获准模型</span><span className="entity-go">{can.application_management && app.active ? '管理' : '权限详情'}<Icon name="arrowRight" size={14} /></span></footer>
       </article>;
     })}</div>
-    <ApplicationSheet app={openId ? apps.find(a => a.id === openId) ?? null : null} onClose={() => onOpen(null)} />
+    <ApplicationSheet app={openId ? apps.find(a => a.id === openId) ?? null : null} snapshot={snapshot} onClose={() => onOpen(null)} />
+    {createSheet}
   </>;
 }
 
-function ApplicationSheet({ app, onClose }: { app: Application | null; onClose: () => void }) {
+function ApplicationSheet({ app, snapshot, onClose }: { app: Application | null; snapshot: Snapshot; onClose: () => void }) {
   const p = app?.policy, q = app?.quota;
+  const [tab, setTab] = useState<'overview' | 'policy'>('overview');
+  const [lastId, setLastId] = useState(app?.id);
+  if (lastId !== app?.id) { setLastId(app?.id); setTab('overview'); }
   return <Sheet open={Boolean(app)} onClose={onClose} labelId="application-title" eyebrow={app ? (app.active ? '应用 · 令牌有效' : '应用 · 已撤销') : ''}
     title={app?.name ?? ''} subtitle={app && <span className="mono">{app.id}</span>}>
     {app && p && q && <>
+      <Tabs label="应用详情" value={tab} onChange={setTab} tabs={[['overview', '概览与配额'], ['policy', app.active ? '策略与撤销' : '策略']]} />
+      <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`} className="tabpanel">
+      {tab === 'policy' ? <ApplicationSettings key={app.id} id={app.id} snapshot={snapshot} /> : <>
       <section className="detail-section"><h3>当前实际获准的资源</h3>
         {app.effective_resources.length ? <ul className="resource-tree">{app.effective_resources.map(r => <li key={r.id}>
           <p><strong>{r.name}</strong><Tag>{label(r.resource_type)}</Tag></p>
@@ -110,7 +129,9 @@ function ApplicationSheet({ app, onClose }: { app: Application | null; onClose: 
         ['创建时间', `${dateTime(app.created_at)}（${relative(app.created_at)}）`],
         ['撤销时间', app.revoked_at ? dateTime(app.revoked_at) : '未撤销'],
       ]} /></section>
-      <p className="sheet-hint"><Icon name="terminal" size={15} />策略、额度与令牌在终端通过 Selark CLI 管理。页面不显示令牌明文或摘要。</p>
+      <p className="sheet-hint"><Icon name="shield" size={15} />页面不显示令牌明文或摘要；令牌只在创建时显示一次。</p>
+      </>}
+      </div>
     </>}
   </Sheet>;
 }

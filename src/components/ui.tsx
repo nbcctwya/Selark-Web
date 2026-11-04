@@ -135,3 +135,18 @@ export function useWidth<T extends HTMLElement>(fallback = 640) {
   }, []);
   return [ref, width] as const;
 }
+
+/** WAI-ARIA tabs: arrow keys move focus and selection. Panels use id `panel-<key>`. */
+export function Tabs<T extends string>({ value, onChange, tabs, label: name }: { value: T; onChange: (value: T) => void; tabs: [T, string][]; label: string }) {
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  function onKey(event: KeyboardEvent, index: number) {
+    const delta = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+    if (!delta) return;
+    event.preventDefault();
+    const next = (index + delta + tabs.length) % tabs.length;
+    onChange(tabs[next][0]); refs.current[next]?.focus();
+  }
+  return <div className="tabs" role="tablist" aria-label={name}>{tabs.map(([key, text], index) =>
+    <button key={key} type="button" role="tab" id={`tab-${key}`} aria-controls={`panel-${key}`} aria-selected={value === key} tabIndex={value === key ? 0 : -1}
+      ref={el => { refs.current[index] = el; }} onClick={() => onChange(key)} onKeyDown={e => onKey(e, index)}>{text}</button>)}</div>;
+}
