@@ -1,0 +1,4067 @@
+{
+  "fixture_only": true,
+  "contract": "selark-dashboard-v1",
+  "reference_time": "2026-11-04T03:35:46.971402+00:00",
+  "snapshot": {
+    "checked_at": "2026-11-04T03:35:46.971402+00:00",
+    "version": "0.10.0",
+    "scope": "local_instance",
+    "ok": true,
+    "issues": [],
+    "connections": [
+      {
+        "id": "mimo-default",
+        "name": "MiMo",
+        "provider": "mimo",
+        "resource_type": "api",
+        "enabled": true,
+        "models": [
+          "mimo-fixture"
+        ],
+        "default_model": "mimo-fixture",
+        "client_allowed_models": [
+          "mimo-fixture"
+        ],
+        "authorization": {
+          "kind": "api_key",
+          "credential_configured": true,
+          "remote_validity": "unknown"
+        },
+        "verification": {
+          "state": "success",
+          "verified_at": "2026-11-03T22:32:24.295880+00:00",
+          "age_seconds": 18202,
+          "model": "mimo-fixture",
+          "scope": "connection_configuration"
+        },
+        "availability": {
+          "state": "unknown",
+          "checked_live": false,
+          "blockers": []
+        },
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T03:35:46.768417+00:00",
+          "discovered_at": "2026-11-04T03:35:46.768417+00:00",
+          "current": true,
+          "count": 2
+        },
+        "model_catalog": {
+          "counts": {
+            "discovered": 2,
+            "approved": 1,
+            "application_authorized": 1,
+            "historically_verified": 1
+          },
+          "protocol": "chat-completions",
+          "approval_revision": 1,
+          "models": [
+            {
+              "id": "mimo-fixture",
+              "discovery": "listed",
+              "approved": true,
+              "default": true,
+              "authorized_applications": [
+                "legacy",
+                "demo-app-1",
+                "demo-app-2",
+                "demo-app-3"
+              ],
+              "effective_applications": [
+                "legacy",
+                "demo-app-1",
+                "demo-app-2",
+                "demo-app-3"
+              ],
+              "verified_capabilities": [
+                "text_nonstream"
+              ],
+              "live_availability": "unknown",
+              "verification": [
+                {
+                  "state": "success",
+                  "outcome": "success",
+                  "verified_at": "2026-11-03T22:32:24.295880+00:00",
+                  "request_id": "fixture-00063",
+                  "actual_model": "mimo-fixture",
+                  "protocol": "chat-completions",
+                  "capability": "text_nonstream",
+                  "scope": "model_connection_configuration",
+                  "current_configuration": true,
+                  "account_access_observed": "allowed",
+                  "live_availability": "unknown"
+                }
+              ]
+            },
+            {
+              "id": "demo-unapproved",
+              "discovery": "listed",
+              "approved": false,
+              "default": false,
+              "authorized_applications": [
+                "legacy",
+                "demo-app-1",
+                "demo-app-2",
+                "demo-app-3"
+              ],
+              "effective_applications": [],
+              "verified_capabilities": [],
+              "live_availability": "unknown",
+              "verification": []
+            }
+          ]
+        },
+        "provider_quota": {
+          "state": "unknown",
+          "remaining_tokens": null,
+          "windows": [],
+          "reported_counters": []
+        }
+      },
+      {
+        "id": "deepseek",
+        "name": "DeepSeek",
+        "provider": "deepseek",
+        "resource_type": "api",
+        "enabled": true,
+        "models": [
+          "deepseek-fixture"
+        ],
+        "default_model": "deepseek-fixture",
+        "client_allowed_models": [
+          "deepseek-fixture"
+        ],
+        "authorization": {
+          "kind": "api_key",
+          "credential_configured": true,
+          "remote_validity": "unknown"
+        },
+        "verification": {
+          "state": "success",
+          "verified_at": "2026-11-04T01:03:47.372803+00:00",
+          "age_seconds": 9119,
+          "model": "deepseek-fixture",
+          "scope": "connection_configuration"
+        },
+        "availability": {
+          "state": "unknown",
+          "checked_live": false,
+          "blockers": []
+        },
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T03:35:46.809165+00:00",
+          "discovered_at": "2026-11-04T03:35:46.809165+00:00",
+          "current": true,
+          "count": 1
+        },
+        "model_catalog": {
+          "counts": {
+            "discovered": 1,
+            "approved": 1,
+            "application_authorized": 1,
+            "historically_verified": 1
+          },
+          "protocol": "chat-completions",
+          "approval_revision": 1,
+          "models": [
+            {
+              "id": "deepseek-fixture",
+              "discovery": "listed",
+              "approved": true,
+              "default": true,
+              "authorized_applications": [
+                "legacy",
+                "demo-app-1",
+                "demo-app-2",
+                "demo-app-3"
+              ],
+              "effective_applications": [
+                "legacy",
+                "demo-app-1",
+                "demo-app-2",
+                "demo-app-3"
+              ],
+              "verified_capabilities": [
+                "text_nonstream"
+              ],
+              "live_availability": "unknown",
+              "verification": [
+                {
+                  "state": "success",
+                  "outcome": "success",
+                  "verified_at": "2026-11-04T01:03:47.372803+00:00",
+                  "request_id": "fixture-00064",
+                  "actual_model": "deepseek-fixture",
+                  "protocol": "chat-completions",
+                  "capability": "text_nonstream",
+                  "scope": "model_connection_configuration",
+                  "current_configuration": true,
+                  "account_access_observed": "allowed",
+                  "live_availability": "unknown"
+                }
+              ]
+            }
+          ]
+        },
+        "provider_quota": {
+          "state": "unknown",
+          "remaining_tokens": null,
+          "windows": [],
+          "reported_counters": []
+        }
+      },
+      {
+        "id": "coding",
+        "name": "Kimi Coding Plan",
+        "provider": "kimi-code",
+        "resource_type": "token_plan",
+        "enabled": true,
+        "models": [
+          "kimi-for-coding"
+        ],
+        "default_model": "kimi-for-coding",
+        "client_allowed_models": [],
+        "authorization": {
+          "kind": "api_key",
+          "credential_configured": true,
+          "remote_validity": "unknown"
+        },
+        "verification": {
+          "state": "success",
+          "verified_at": "2026-11-03T20:01:01.218957+00:00",
+          "age_seconds": 27285,
+          "model": "kimi-for-coding",
+          "scope": "connection_configuration"
+        },
+        "availability": {
+          "state": "unknown",
+          "checked_live": false,
+          "blockers": []
+        },
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T03:35:46.829964+00:00",
+          "discovered_at": "2026-11-04T03:35:46.829964+00:00",
+          "current": true,
+          "count": 1
+        },
+        "model_catalog": {
+          "counts": {
+            "discovered": 1,
+            "approved": 1,
+            "application_authorized": 1,
+            "historically_verified": 1
+          },
+          "protocol": "chat-completions",
+          "approval_revision": 1,
+          "models": [
+            {
+              "id": "kimi-for-coding",
+              "discovery": "listed",
+              "approved": true,
+              "default": true,
+              "authorized_applications": [
+                "demo-app-1",
+                "demo-app-2",
+                "demo-app-3"
+              ],
+              "effective_applications": [
+                "demo-app-1",
+                "demo-app-2",
+                "demo-app-3"
+              ],
+              "verified_capabilities": [
+                "text_nonstream"
+              ],
+              "live_availability": "unknown",
+              "verification": [
+                {
+                  "state": "success",
+                  "outcome": "success",
+                  "verified_at": "2026-11-03T20:01:01.218957+00:00",
+                  "request_id": "fixture-00062",
+                  "actual_model": "kimi-for-coding",
+                  "protocol": "chat-completions",
+                  "capability": "text_nonstream",
+                  "scope": "model_connection_configuration",
+                  "current_configuration": true,
+                  "account_access_observed": "allowed",
+                  "live_availability": "unknown"
+                }
+              ]
+            }
+          ]
+        },
+        "provider_quota": {
+          "state": "never",
+          "remaining_tokens": null,
+          "current_remaining_tokens": null,
+          "historical_snapshot": true,
+          "checked_at": null,
+          "age_seconds": null,
+          "extra_usage": "unknown",
+          "membership_status": "unknown",
+          "conflicting_fields": false,
+          "invalid_fields": false,
+          "windows": [],
+          "reported_counters": []
+        }
+      },
+      {
+        "id": "subscription",
+        "name": "ChatGPT Personal",
+        "provider": "chatgpt",
+        "resource_type": "chatgpt_subscription",
+        "enabled": true,
+        "models": [],
+        "default_model": null,
+        "client_allowed_models": [],
+        "authorization": {
+          "kind": "oauth",
+          "state": "new",
+          "remote_validity": "unknown",
+          "access_expired": true,
+          "expires_at": null,
+          "refresh_available": false,
+          "refresh_state": "ready",
+          "plan_permission": false,
+          "ready": false
+        },
+        "verification": {
+          "state": "never",
+          "verified_at": null,
+          "age_seconds": null,
+          "model": null,
+          "scope": "connection_configuration"
+        },
+        "availability": {
+          "state": "blocked_locally",
+          "checked_live": false,
+          "blockers": [
+            "models_not_configured",
+            "authorization_not_ready"
+          ]
+        },
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T03:35:46.846757+00:00",
+          "discovered_at": "2026-11-04T03:35:46.846757+00:00",
+          "current": true,
+          "count": 0
+        },
+        "model_catalog": {
+          "counts": {
+            "discovered": 0,
+            "approved": 0,
+            "application_authorized": 0,
+            "historically_verified": 0
+          },
+          "protocol": "responses",
+          "approval_revision": 1,
+          "models": []
+        },
+        "provider_quota": {
+          "state": "unknown",
+          "remaining_tokens": null,
+          "windows": [],
+          "reported_counters": []
+        }
+      },
+      {
+        "id": "anthropic",
+        "name": "Anthropic",
+        "provider": "anthropic",
+        "resource_type": "api",
+        "enabled": true,
+        "models": [
+          "claude-fixture"
+        ],
+        "default_model": "claude-fixture",
+        "client_allowed_models": [
+          "claude-fixture"
+        ],
+        "authorization": {
+          "kind": "api_key",
+          "credential_configured": true,
+          "remote_validity": "unknown"
+        },
+        "verification": {
+          "state": "never",
+          "verified_at": null,
+          "age_seconds": null,
+          "model": null,
+          "scope": "connection_configuration"
+        },
+        "availability": {
+          "state": "unknown",
+          "checked_live": false,
+          "blockers": []
+        },
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T03:35:46.861221+00:00",
+          "discovered_at": "2026-11-04T03:35:46.861221+00:00",
+          "current": true,
+          "count": 1
+        },
+        "model_catalog": {
+          "counts": {
+            "discovered": 1,
+            "approved": 1,
+            "application_authorized": 1,
+            "historically_verified": 0
+          },
+          "protocol": "anthropic-messages",
+          "approval_revision": 1,
+          "models": [
+            {
+              "id": "claude-fixture",
+              "discovery": "listed",
+              "approved": true,
+              "default": true,
+              "authorized_applications": [
+                "legacy"
+              ],
+              "effective_applications": [
+                "legacy"
+              ],
+              "verified_capabilities": [],
+              "live_availability": "unknown",
+              "verification": []
+            }
+          ]
+        },
+        "provider_quota": {
+          "state": "unknown",
+          "remaining_tokens": null,
+          "windows": [],
+          "reported_counters": []
+        }
+      },
+      {
+        "id": "openai-demo",
+        "name": "OpenAI Demo",
+        "provider": "openai",
+        "resource_type": "api",
+        "enabled": true,
+        "models": [
+          "demo-text"
+        ],
+        "default_model": "demo-text",
+        "client_allowed_models": [
+          "demo-text"
+        ],
+        "authorization": {
+          "kind": "api_key",
+          "credential_configured": true,
+          "remote_validity": "unknown"
+        },
+        "verification": {
+          "state": "never",
+          "verified_at": null,
+          "age_seconds": null,
+          "model": null,
+          "scope": "connection_configuration"
+        },
+        "availability": {
+          "state": "unknown",
+          "checked_live": false,
+          "blockers": []
+        },
+        "discovery": {
+          "state": "success",
+          "checked_at": "2026-11-04T03:35:46.877887+00:00",
+          "discovered_at": "2026-11-04T03:35:46.877887+00:00",
+          "current": true,
+          "count": 2
+        },
+        "model_catalog": {
+          "counts": {
+            "discovered": 2,
+            "approved": 1,
+            "application_authorized": 1,
+            "historically_verified": 0
+          },
+          "protocol": "chat-completions",
+          "approval_revision": 3,
+          "models": [
+            {
+              "id": "demo-text",
+              "discovery": "listed",
+              "approved": true,
+              "default": true,
+              "authorized_applications": [
+                "legacy"
+              ],
+              "effective_applications": [
+                "legacy"
+              ],
+              "verified_capabilities": [],
+              "live_availability": "unknown",
+              "verification": []
+            },
+            {
+              "id": "demo-text-small",
+              "discovery": "listed",
+              "approved": false,
+              "default": false,
+              "authorized_applications": [
+                "legacy"
+              ],
+              "effective_applications": [],
+              "verified_capabilities": [],
+              "live_availability": "unknown",
+              "verification": []
+            }
+          ]
+        },
+        "provider_quota": {
+          "state": "unknown",
+          "remaining_tokens": null,
+          "windows": [],
+          "reported_counters": []
+        }
+      }
+    ],
+    "applications": [
+      {
+        "id": "legacy",
+        "name": "Legacy client (0.1.x)",
+        "created_at": "2026-11-04T03:35:46.367001+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": false,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": null,
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": null,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "quota": {
+          "day": "2026-11-04",
+          "timezone": "UTC",
+          "policy": {
+            "allow_token_plans": false,
+            "allow_chatgpt_subscriptions": false,
+            "chatgpt_output_reservation": null,
+            "allowed_connections": null,
+            "allowed_models": null,
+            "requests_per_minute": null,
+            "max_concurrent_requests": null,
+            "max_output_tokens": null,
+            "max_estimated_input_tokens": null,
+            "daily_token_limit": null,
+            "daily_budget": null,
+            "budget_currency": "USD"
+          },
+          "requests": 0,
+          "in_flight_requests": 0,
+          "uncertain_requests": 0,
+          "remaining_tokens": null,
+          "token_quota_state": "unlimited",
+          "historical_requests_excluded": 0,
+          "charged_or_reserved_tokens": 0,
+          "unknown_token_requests": 0,
+          "estimated_reserved_tokens": 0,
+          "estimated_cost_or_reservation": {},
+          "unknown_cost_requests": 0,
+          "billed_cost": null,
+          "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+        },
+        "effective_resources": [
+          {
+            "id": "mimo-default",
+            "name": "MiMo",
+            "resource_type": "api",
+            "models": [
+              "mimo-fixture"
+            ]
+          },
+          {
+            "id": "deepseek",
+            "name": "DeepSeek",
+            "resource_type": "api",
+            "models": [
+              "deepseek-fixture"
+            ]
+          },
+          {
+            "id": "anthropic",
+            "name": "Anthropic",
+            "resource_type": "api",
+            "models": [
+              "claude-fixture"
+            ]
+          },
+          {
+            "id": "openai-demo",
+            "name": "OpenAI Demo",
+            "resource_type": "api",
+            "models": [
+              "demo-text"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "demo-app-1",
+        "name": "Cursor Workspace",
+        "created_at": "2026-11-04T03:35:46.443843+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": 500000,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "quota": {
+          "day": "2026-11-04",
+          "timezone": "UTC",
+          "policy": {
+            "allow_token_plans": true,
+            "allow_chatgpt_subscriptions": false,
+            "chatgpt_output_reservation": null,
+            "allowed_connections": [
+              "mimo-default",
+              "deepseek",
+              "coding"
+            ],
+            "allowed_models": null,
+            "requests_per_minute": null,
+            "max_concurrent_requests": 4,
+            "max_output_tokens": null,
+            "max_estimated_input_tokens": null,
+            "daily_token_limit": 500000,
+            "daily_budget": null,
+            "budget_currency": "USD"
+          },
+          "requests": 22,
+          "in_flight_requests": 0,
+          "uncertain_requests": 2,
+          "remaining_tokens": null,
+          "token_quota_state": "blocked_unknown_usage",
+          "historical_requests_excluded": 0,
+          "charged_or_reserved_tokens": 131510,
+          "unknown_token_requests": 2,
+          "estimated_reserved_tokens": 9790,
+          "estimated_cost_or_reservation": {
+            "USD": "0.174508000"
+          },
+          "unknown_cost_requests": 2,
+          "billed_cost": null,
+          "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+        },
+        "effective_resources": [
+          {
+            "id": "mimo-default",
+            "name": "MiMo",
+            "resource_type": "api",
+            "models": [
+              "mimo-fixture"
+            ]
+          },
+          {
+            "id": "deepseek",
+            "name": "DeepSeek",
+            "resource_type": "api",
+            "models": [
+              "deepseek-fixture"
+            ]
+          },
+          {
+            "id": "coding",
+            "name": "Kimi Coding Plan",
+            "resource_type": "token_plan",
+            "models": [
+              "kimi-for-coding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "demo-app-2",
+        "name": "Personal Notebook",
+        "created_at": "2026-11-04T03:35:46.445376+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "quota": {
+          "day": "2026-11-04",
+          "timezone": "UTC",
+          "policy": {
+            "allow_token_plans": true,
+            "allow_chatgpt_subscriptions": false,
+            "chatgpt_output_reservation": null,
+            "allowed_connections": [
+              "mimo-default",
+              "deepseek",
+              "coding"
+            ],
+            "allowed_models": null,
+            "requests_per_minute": null,
+            "max_concurrent_requests": 4,
+            "max_output_tokens": null,
+            "max_estimated_input_tokens": null,
+            "daily_token_limit": null,
+            "daily_budget": null,
+            "budget_currency": "USD"
+          },
+          "requests": 22,
+          "in_flight_requests": 0,
+          "uncertain_requests": 1,
+          "remaining_tokens": null,
+          "token_quota_state": "unlimited",
+          "historical_requests_excluded": 0,
+          "charged_or_reserved_tokens": 133150,
+          "unknown_token_requests": 1,
+          "estimated_reserved_tokens": 4330,
+          "estimated_cost_or_reservation": {
+            "USD": "0.173840000"
+          },
+          "unknown_cost_requests": 1,
+          "billed_cost": null,
+          "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+        },
+        "effective_resources": [
+          {
+            "id": "mimo-default",
+            "name": "MiMo",
+            "resource_type": "api",
+            "models": [
+              "mimo-fixture"
+            ]
+          },
+          {
+            "id": "deepseek",
+            "name": "DeepSeek",
+            "resource_type": "api",
+            "models": [
+              "deepseek-fixture"
+            ]
+          },
+          {
+            "id": "coding",
+            "name": "Kimi Coding Plan",
+            "resource_type": "token_plan",
+            "models": [
+              "kimi-for-coding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "demo-app-3",
+        "name": "Research Tools",
+        "created_at": "2026-11-04T03:35:46.446693+00:00",
+        "revoked_at": null,
+        "active": true,
+        "policy": {
+          "allow_token_plans": true,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": [
+            "mimo-default",
+            "deepseek",
+            "coding"
+          ],
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": 4,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "quota": {
+          "day": "2026-11-04",
+          "timezone": "UTC",
+          "policy": {
+            "allow_token_plans": true,
+            "allow_chatgpt_subscriptions": false,
+            "chatgpt_output_reservation": null,
+            "allowed_connections": [
+              "mimo-default",
+              "deepseek",
+              "coding"
+            ],
+            "allowed_models": null,
+            "requests_per_minute": null,
+            "max_concurrent_requests": 4,
+            "max_output_tokens": null,
+            "max_estimated_input_tokens": null,
+            "daily_token_limit": null,
+            "daily_budget": null,
+            "budget_currency": "USD"
+          },
+          "requests": 21,
+          "in_flight_requests": 0,
+          "uncertain_requests": 1,
+          "remaining_tokens": null,
+          "token_quota_state": "unlimited",
+          "historical_requests_excluded": 0,
+          "charged_or_reserved_tokens": 126840,
+          "unknown_token_requests": 1,
+          "estimated_reserved_tokens": 7560,
+          "estimated_cost_or_reservation": {},
+          "unknown_cost_requests": 21,
+          "billed_cost": null,
+          "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+        },
+        "effective_resources": [
+          {
+            "id": "mimo-default",
+            "name": "MiMo",
+            "resource_type": "api",
+            "models": [
+              "mimo-fixture"
+            ]
+          },
+          {
+            "id": "deepseek",
+            "name": "DeepSeek",
+            "resource_type": "api",
+            "models": [
+              "deepseek-fixture"
+            ]
+          },
+          {
+            "id": "coding",
+            "name": "Kimi Coding Plan",
+            "resource_type": "token_plan",
+            "models": [
+              "kimi-for-coding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "demo-app-4",
+        "name": "Disabled integration",
+        "created_at": "2026-11-04T03:35:46.722341+00:00",
+        "revoked_at": "2026-11-04T03:35:46.723169+00:00",
+        "active": false,
+        "policy": {
+          "allow_token_plans": false,
+          "allow_chatgpt_subscriptions": false,
+          "chatgpt_output_reservation": null,
+          "allowed_connections": null,
+          "allowed_models": null,
+          "requests_per_minute": null,
+          "max_concurrent_requests": null,
+          "max_output_tokens": null,
+          "max_estimated_input_tokens": null,
+          "daily_token_limit": null,
+          "daily_budget": null,
+          "budget_currency": "USD"
+        },
+        "quota": {
+          "day": "2026-11-04",
+          "timezone": "UTC",
+          "policy": {
+            "allow_token_plans": false,
+            "allow_chatgpt_subscriptions": false,
+            "chatgpt_output_reservation": null,
+            "allowed_connections": null,
+            "allowed_models": null,
+            "requests_per_minute": null,
+            "max_concurrent_requests": null,
+            "max_output_tokens": null,
+            "max_estimated_input_tokens": null,
+            "daily_token_limit": null,
+            "daily_budget": null,
+            "budget_currency": "USD"
+          },
+          "requests": 0,
+          "in_flight_requests": 0,
+          "uncertain_requests": 0,
+          "remaining_tokens": null,
+          "token_quota_state": "unlimited",
+          "historical_requests_excluded": 0,
+          "charged_or_reserved_tokens": 0,
+          "unknown_token_requests": 0,
+          "estimated_reserved_tokens": 0,
+          "estimated_cost_or_reservation": {},
+          "unknown_cost_requests": 0,
+          "billed_cost": null,
+          "scope": "Selark 0.5+ admissions; historical usage remains in usage queries"
+        },
+        "effective_resources": []
+      }
+    ],
+    "service": {
+      "state": "not_checked",
+      "reachable": null,
+      "capacity": {},
+      "storage": {}
+    },
+    "usage": {
+      "timezone": "UTC",
+      "filters": {
+        "since": "2026-10-28T03:35:46.956657+00:00",
+        "until": "2026-11-04T03:35:46.956657+00:00"
+      },
+      "summary": {
+        "requests": 65,
+        "known_usage_requests": 61,
+        "missing_usage_requests": 4,
+        "local_rejected_requests": 0,
+        "unknown_consumption_requests": 4,
+        "in_flight_requests": 0,
+        "reported_usage_requests": 61,
+        "upstream_attempts": 65,
+        "unknown_attempt_count_requests": 0,
+        "unknown_time_requests": 0,
+        "status_counts": {
+          "failed": 4,
+          "success": 61
+        },
+        "known_tokens": {
+          "prompt_tokens": 310682,
+          "completion_tokens": 59138,
+          "total_tokens": 369820
+        },
+        "missing_field_requests": {
+          "prompt_tokens": 4,
+          "completion_tokens": 4,
+          "total_tokens": 4
+        },
+        "estimated_cost_by_currency": {
+          "USD": "0.331292000"
+        },
+        "unknown_cost_requests": 24,
+        "billed_cost": null,
+        "resource_accounting": {
+          "scope": "Selark 0.5+ admissions",
+          "requests": 65,
+          "tokens_by_basis": {
+            "unknown_hold": 21680,
+            "reported_total": 369820
+          }
+        },
+        "average_latency_ms": 1483.1076923076923,
+        "latency_samples": 65,
+        "completed_requests": 65,
+        "success_rate": 0.9384615384615385
+      },
+      "group_by": "day",
+      "trend": [
+        {
+          "day": "2026-10-28",
+          "requests": 7,
+          "known_usage_requests": 6,
+          "missing_usage_requests": 1,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 1,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 6,
+          "upstream_attempts": 7,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "failed": 1,
+            "success": 6
+          },
+          "known_tokens": {
+            "prompt_tokens": 8667,
+            "completion_tokens": 1503,
+            "total_tokens": 10170
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 1
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.008784000"
+          },
+          "unknown_cost_requests": 3,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 7,
+            "tokens_by_basis": {
+              "unknown_hold": 1100,
+              "reported_total": 10170
+            }
+          },
+          "completed_requests": 7,
+          "success_rate": 0.8571428571428571,
+          "average_latency_ms": 399.0
+        },
+        {
+          "day": "2026-10-29",
+          "requests": 10,
+          "known_usage_requests": 10,
+          "missing_usage_requests": 0,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 0,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 10,
+          "upstream_attempts": 10,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 10
+          },
+          "known_tokens": {
+            "prompt_tokens": 24605,
+            "completion_tokens": 5945,
+            "total_tokens": 30550
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.030092000"
+          },
+          "unknown_cost_requests": 3,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 10,
+            "tokens_by_basis": {
+              "reported_total": 30550
+            }
+          },
+          "completed_requests": 10,
+          "success_rate": 1.0,
+          "average_latency_ms": 1104.5
+        },
+        {
+          "day": "2026-10-30",
+          "requests": 9,
+          "known_usage_requests": 8,
+          "missing_usage_requests": 1,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 1,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 8,
+          "upstream_attempts": 9,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 8,
+            "failed": 1
+          },
+          "known_tokens": {
+            "prompt_tokens": 29590,
+            "completion_tokens": 8110,
+            "total_tokens": 37700
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 1
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.034660000"
+          },
+          "unknown_cost_requests": 4,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 9,
+            "tokens_by_basis": {
+              "reported_total": 37700,
+              "unknown_hold": 4330
+            }
+          },
+          "completed_requests": 9,
+          "success_rate": 0.8888888888888888,
+          "average_latency_ms": 1893.0
+        },
+        {
+          "day": "2026-10-31",
+          "requests": 10,
+          "known_usage_requests": 10,
+          "missing_usage_requests": 0,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 0,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 10,
+          "upstream_attempts": 10,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 10
+          },
+          "known_tokens": {
+            "prompt_tokens": 48735,
+            "completion_tokens": 14115,
+            "total_tokens": 62850
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.054648000"
+          },
+          "unknown_cost_requests": 4,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 10,
+            "tokens_by_basis": {
+              "reported_total": 62850
+            }
+          },
+          "completed_requests": 10,
+          "success_rate": 1.0,
+          "average_latency_ms": 2681.5
+        },
+        {
+          "day": "2026-11-01",
+          "requests": 9,
+          "known_usage_requests": 8,
+          "missing_usage_requests": 1,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 1,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 8,
+          "upstream_attempts": 9,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 8,
+            "failed": 1
+          },
+          "known_tokens": {
+            "prompt_tokens": 48894,
+            "completion_tokens": 14646,
+            "total_tokens": 63540
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 1
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.068472000"
+          },
+          "unknown_cost_requests": 3,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 9,
+            "tokens_by_basis": {
+              "reported_total": 63540,
+              "unknown_hold": 7560
+            }
+          },
+          "completed_requests": 9,
+          "success_rate": 0.8888888888888888,
+          "average_latency_ms": 740.2222222222222
+        },
+        {
+          "day": "2026-11-02",
+          "requests": 10,
+          "known_usage_requests": 10,
+          "missing_usage_requests": 0,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 0,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 10,
+          "upstream_attempts": 10,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 10
+          },
+          "known_tokens": {
+            "prompt_tokens": 72865,
+            "completion_tokens": 9685,
+            "total_tokens": 82550
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.072220000"
+          },
+          "unknown_cost_requests": 3,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 10,
+            "tokens_by_basis": {
+              "reported_total": 82550
+            }
+          },
+          "completed_requests": 10,
+          "success_rate": 1.0,
+          "average_latency_ms": 1187.5
+        },
+        {
+          "day": "2026-11-03",
+          "requests": 9,
+          "known_usage_requests": 8,
+          "missing_usage_requests": 1,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 1,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 8,
+          "upstream_attempts": 9,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 8,
+            "failed": 1
+          },
+          "known_tokens": {
+            "prompt_tokens": 68198,
+            "completion_tokens": 4382,
+            "total_tokens": 72580
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 1
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.051032000"
+          },
+          "unknown_cost_requests": 4,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 9,
+            "tokens_by_basis": {
+              "reported_total": 72580,
+              "unknown_hold": 8690
+            }
+          },
+          "completed_requests": 9,
+          "success_rate": 0.8888888888888888,
+          "average_latency_ms": 1976.0
+        },
+        {
+          "day": "2026-11-04",
+          "requests": 1,
+          "known_usage_requests": 1,
+          "missing_usage_requests": 0,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 0,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 1,
+          "upstream_attempts": 1,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 1
+          },
+          "known_tokens": {
+            "prompt_tokens": 9128,
+            "completion_tokens": 752,
+            "total_tokens": 9880
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.011384000"
+          },
+          "unknown_cost_requests": 0,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 1,
+            "tokens_by_basis": {
+              "reported_total": 9880
+            }
+          },
+          "completed_requests": 1,
+          "success_rate": 1.0,
+          "average_latency_ms": 2391.0
+        }
+      ],
+      "models": [
+        {
+          "connection_id": "mimo-default",
+          "model": "mimo-fixture",
+          "requests": 22,
+          "known_usage_requests": 20,
+          "missing_usage_requests": 2,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 2,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 20,
+          "upstream_attempts": 22,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "failed": 2,
+            "success": 20
+          },
+          "known_tokens": {
+            "prompt_tokens": 100772,
+            "completion_tokens": 20948,
+            "total_tokens": 121720
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 2,
+            "completion_tokens": 2,
+            "total_tokens": 2
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.163616000"
+          },
+          "unknown_cost_requests": 2,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 22,
+            "tokens_by_basis": {
+              "unknown_hold": 9790,
+              "reported_total": 121720
+            }
+          }
+        },
+        {
+          "connection_id": "deepseek",
+          "model": "deepseek-fixture",
+          "requests": 22,
+          "known_usage_requests": 21,
+          "missing_usage_requests": 1,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 1,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 21,
+          "upstream_attempts": 22,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 21,
+            "failed": 1
+          },
+          "known_tokens": {
+            "prompt_tokens": 109392,
+            "completion_tokens": 19428,
+            "total_tokens": 128820
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 1
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.167676000"
+          },
+          "unknown_cost_requests": 1,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 22,
+            "tokens_by_basis": {
+              "reported_total": 128820,
+              "unknown_hold": 4330
+            }
+          }
+        },
+        {
+          "connection_id": "coding",
+          "model": "kimi-for-coding",
+          "requests": 21,
+          "known_usage_requests": 20,
+          "missing_usage_requests": 1,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 1,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 20,
+          "upstream_attempts": 21,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 20,
+            "failed": 1
+          },
+          "known_tokens": {
+            "prompt_tokens": 100518,
+            "completion_tokens": 18762,
+            "total_tokens": 119280
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 1
+          },
+          "estimated_cost_by_currency": {},
+          "unknown_cost_requests": 21,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 21,
+            "tokens_by_basis": {
+              "reported_total": 119280,
+              "unknown_hold": 7560
+            }
+          }
+        }
+      ],
+      "unknown_time_excluded": 0
+    },
+    "options": {
+      "models": [
+        "deepseek-fixture",
+        "kimi-for-coding",
+        "mimo-fixture"
+      ],
+      "connections": [
+        "coding",
+        "deepseek",
+        "mimo-default"
+      ]
+    },
+    "limits": {
+      "max_concurrent_requests": 4,
+      "max_queued_requests": 16,
+      "queue_timeout_seconds": 10.0,
+      "request_timeout_seconds": 120.0,
+      "body_timeout_seconds": 10.0,
+      "connect_timeout_seconds": 10.0,
+      "pool_timeout_seconds": 5.0,
+      "write_timeout_seconds": 10.0,
+      "send_timeout_seconds": 15.0,
+      "shutdown_grace_seconds": 15.0,
+      "storage_busy_timeout_seconds": 0.1,
+      "max_pending_records": 256
+    },
+    "capabilities": {
+      "model_approval": true
+    }
+  },
+  "records": [
+    {
+      "request_id": "fixture-00064",
+      "started_at": "2026-11-04T01:03:47.372803+00:00",
+      "finished_at": "2026-11-04T01:03:47.372803+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2391.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 9128,
+      "completion_tokens": 752,
+      "total_tokens": 9880,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.011384000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00063",
+      "started_at": "2026-11-03T22:32:24.295880+00:00",
+      "finished_at": "2026-11-03T22:32:24.295880+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2308.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 9001,
+      "completion_tokens": 709,
+      "total_tokens": 9710,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.011128000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00062",
+      "started_at": "2026-11-03T20:01:01.218957+00:00",
+      "finished_at": "2026-11-03T20:01:01.218957+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2225.0,
+      "queue_ms": 120.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 8874,
+      "completion_tokens": 666,
+      "total_tokens": 9540,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00061",
+      "started_at": "2026-11-03T17:29:38.142034+00:00",
+      "finished_at": "2026-11-03T17:29:38.142034+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2142.0,
+      "queue_ms": 105.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 8747,
+      "completion_tokens": 623,
+      "total_tokens": 9370,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.010616000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00060",
+      "started_at": "2026-11-03T14:58:15.065111+00:00",
+      "finished_at": "2026-11-03T14:58:15.065111+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2059.0,
+      "queue_ms": 90.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 8620,
+      "completion_tokens": 580,
+      "total_tokens": 9200,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.010360000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00059",
+      "started_at": "2026-11-03T12:26:51.988188+00:00",
+      "finished_at": "2026-11-03T12:26:51.988188+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1976.0,
+      "queue_ms": 75.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 8493,
+      "completion_tokens": 537,
+      "total_tokens": 9030,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00058",
+      "started_at": "2026-11-03T09:55:28.911264+00:00",
+      "finished_at": "2026-11-03T09:55:28.911264+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1893.0,
+      "queue_ms": 60.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 8366,
+      "completion_tokens": 494,
+      "total_tokens": 8860,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.009848000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00057",
+      "started_at": "2026-11-03T07:24:05.834341+00:00",
+      "finished_at": "2026-11-03T07:24:05.834341+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "failed",
+      "http_status": 504,
+      "upstream_status": null,
+      "duration_ms": 1810.0,
+      "queue_ms": 45.0,
+      "upstream_attempts": 1,
+      "upstream_result": "failed",
+      "delivery_status": "sent",
+      "error_code": "fixture_timeout",
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": false,
+      "usage_known": false,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": "USD",
+        "cost_status": "unknown",
+        "token_basis": "unknown_hold"
+      }
+    },
+    {
+      "request_id": "fixture-00056",
+      "started_at": "2026-11-03T04:52:42.757418+00:00",
+      "finished_at": "2026-11-03T04:52:42.757418+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1727.0,
+      "queue_ms": 30.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 8112,
+      "completion_tokens": 408,
+      "total_tokens": 8520,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00055",
+      "started_at": "2026-11-03T02:21:19.680495+00:00",
+      "finished_at": "2026-11-03T02:21:19.680495+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1644.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7985,
+      "completion_tokens": 365,
+      "total_tokens": 8350,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.009080000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00054",
+      "started_at": "2026-11-02T23:49:56.603572+00:00",
+      "finished_at": "2026-11-02T23:49:56.603572+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1561.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7858,
+      "completion_tokens": 322,
+      "total_tokens": 8180,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.008824000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00053",
+      "started_at": "2026-11-02T21:18:33.526649+00:00",
+      "finished_at": "2026-11-02T21:18:33.526649+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1478.0,
+      "queue_ms": 120.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7731,
+      "completion_tokens": 279,
+      "total_tokens": 8010,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00052",
+      "started_at": "2026-11-02T18:47:10.449726+00:00",
+      "finished_at": "2026-11-02T18:47:10.449726+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1395.0,
+      "queue_ms": 105.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7604,
+      "completion_tokens": 236,
+      "total_tokens": 7840,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.008312000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00051",
+      "started_at": "2026-11-02T16:15:47.372803+00:00",
+      "finished_at": "2026-11-02T16:15:47.372803+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1312.0,
+      "queue_ms": 90.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7477,
+      "completion_tokens": 193,
+      "total_tokens": 7670,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.008056000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00050",
+      "started_at": "2026-11-02T13:44:24.295880+00:00",
+      "finished_at": "2026-11-02T13:44:24.295880+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1229.0,
+      "queue_ms": 75.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7350,
+      "completion_tokens": 150,
+      "total_tokens": 7500,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00049",
+      "started_at": "2026-11-02T11:13:01.218957+00:00",
+      "finished_at": "2026-11-02T11:13:01.218957+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1146.0,
+      "queue_ms": 60.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7223,
+      "completion_tokens": 107,
+      "total_tokens": 7330,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.007544000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00048",
+      "started_at": "2026-11-02T08:41:38.142034+00:00",
+      "finished_at": "2026-11-02T08:41:38.142034+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1063.0,
+      "queue_ms": 45.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 7096,
+      "completion_tokens": 2164,
+      "total_tokens": 9260,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.013588000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00047",
+      "started_at": "2026-11-02T06:10:15.065111+00:00",
+      "finished_at": "2026-11-02T06:10:15.065111+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 980.0,
+      "queue_ms": 30.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6969,
+      "completion_tokens": 2121,
+      "total_tokens": 9090,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00046",
+      "started_at": "2026-11-02T03:38:51.988188+00:00",
+      "finished_at": "2026-11-02T03:38:51.988188+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 897.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6842,
+      "completion_tokens": 2078,
+      "total_tokens": 8920,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.013076000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00045",
+      "started_at": "2026-11-02T01:07:28.911264+00:00",
+      "finished_at": "2026-11-02T01:07:28.911264+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 814.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6715,
+      "completion_tokens": 2035,
+      "total_tokens": 8750,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.012820000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00044",
+      "started_at": "2026-11-01T22:36:05.834341+00:00",
+      "finished_at": "2026-11-01T22:36:05.834341+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 731.0,
+      "queue_ms": 120.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6588,
+      "completion_tokens": 1992,
+      "total_tokens": 8580,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00043",
+      "started_at": "2026-11-01T20:04:42.757418+00:00",
+      "finished_at": "2026-11-01T20:04:42.757418+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 648.0,
+      "queue_ms": 105.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6461,
+      "completion_tokens": 1949,
+      "total_tokens": 8410,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.012308000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00042",
+      "started_at": "2026-11-01T17:33:19.680495+00:00",
+      "finished_at": "2026-11-01T17:33:19.680495+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 565.0,
+      "queue_ms": 90.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6334,
+      "completion_tokens": 1906,
+      "total_tokens": 8240,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.012052000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00041",
+      "started_at": "2026-11-01T15:01:56.603572+00:00",
+      "finished_at": "2026-11-01T15:01:56.603572+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 482.0,
+      "queue_ms": 75.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6207,
+      "completion_tokens": 1863,
+      "total_tokens": 8070,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00040",
+      "started_at": "2026-11-01T12:30:33.526649+00:00",
+      "finished_at": "2026-11-01T12:30:33.526649+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 399.0,
+      "queue_ms": 60.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 6080,
+      "completion_tokens": 1820,
+      "total_tokens": 7900,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.011540000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00039",
+      "started_at": "2026-11-01T09:59:10.449726+00:00",
+      "finished_at": "2026-11-01T09:59:10.449726+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 316.0,
+      "queue_ms": 45.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 5953,
+      "completion_tokens": 1777,
+      "total_tokens": 7730,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.011284000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00038",
+      "started_at": "2026-11-01T07:27:47.372803+00:00",
+      "finished_at": "2026-11-01T07:27:47.372803+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "failed",
+      "http_status": 504,
+      "upstream_status": null,
+      "duration_ms": 233.0,
+      "queue_ms": 30.0,
+      "upstream_attempts": 1,
+      "upstream_result": "failed",
+      "delivery_status": "sent",
+      "error_code": "fixture_timeout",
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": false,
+      "usage_known": false,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "unknown_hold"
+      }
+    },
+    {
+      "request_id": "fixture-00037",
+      "started_at": "2026-11-01T04:56:24.295880+00:00",
+      "finished_at": "2026-11-01T04:56:24.295880+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 150.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 5699,
+      "completion_tokens": 1691,
+      "total_tokens": 7390,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.010772000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00036",
+      "started_at": "2026-11-01T02:25:01.218957+00:00",
+      "finished_at": "2026-11-01T02:25:01.218957+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 3138.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 5572,
+      "completion_tokens": 1648,
+      "total_tokens": 7220,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.010516000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00035",
+      "started_at": "2026-10-31T23:53:38.142034+00:00",
+      "finished_at": "2026-10-31T23:53:38.142034+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 3055.0,
+      "queue_ms": 120.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 5445,
+      "completion_tokens": 1605,
+      "total_tokens": 7050,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00034",
+      "started_at": "2026-10-31T21:22:15.065111+00:00",
+      "finished_at": "2026-10-31T21:22:15.065111+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2972.0,
+      "queue_ms": 105.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 5318,
+      "completion_tokens": 1562,
+      "total_tokens": 6880,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.010004000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00033",
+      "started_at": "2026-10-31T18:50:51.988188+00:00",
+      "finished_at": "2026-10-31T18:50:51.988188+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2889.0,
+      "queue_ms": 90.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 5191,
+      "completion_tokens": 1519,
+      "total_tokens": 6710,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.009748000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00032",
+      "started_at": "2026-10-31T16:19:28.911264+00:00",
+      "finished_at": "2026-10-31T16:19:28.911264+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2806.0,
+      "queue_ms": 75.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 5064,
+      "completion_tokens": 1476,
+      "total_tokens": 6540,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00031",
+      "started_at": "2026-10-31T13:48:05.834341+00:00",
+      "finished_at": "2026-10-31T13:48:05.834341+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2723.0,
+      "queue_ms": 60.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4937,
+      "completion_tokens": 1433,
+      "total_tokens": 6370,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.009236000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00030",
+      "started_at": "2026-10-31T11:16:42.757418+00:00",
+      "finished_at": "2026-10-31T11:16:42.757418+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2640.0,
+      "queue_ms": 45.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4810,
+      "completion_tokens": 1390,
+      "total_tokens": 6200,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.008980000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00029",
+      "started_at": "2026-10-31T08:45:19.680495+00:00",
+      "finished_at": "2026-10-31T08:45:19.680495+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2557.0,
+      "queue_ms": 30.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4683,
+      "completion_tokens": 1347,
+      "total_tokens": 6030,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00028",
+      "started_at": "2026-10-31T06:13:56.603572+00:00",
+      "finished_at": "2026-10-31T06:13:56.603572+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2474.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4556,
+      "completion_tokens": 1304,
+      "total_tokens": 5860,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.008468000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00027",
+      "started_at": "2026-10-31T03:42:33.526649+00:00",
+      "finished_at": "2026-10-31T03:42:33.526649+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2391.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4429,
+      "completion_tokens": 1261,
+      "total_tokens": 5690,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.008212000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00026",
+      "started_at": "2026-10-31T01:11:10.449726+00:00",
+      "finished_at": "2026-10-31T01:11:10.449726+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2308.0,
+      "queue_ms": 120.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4302,
+      "completion_tokens": 1218,
+      "total_tokens": 5520,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00025",
+      "started_at": "2026-10-30T22:39:47.372803+00:00",
+      "finished_at": "2026-10-30T22:39:47.372803+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2225.0,
+      "queue_ms": 105.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4175,
+      "completion_tokens": 1175,
+      "total_tokens": 5350,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.007700000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00024",
+      "started_at": "2026-10-30T20:08:24.295880+00:00",
+      "finished_at": "2026-10-30T20:08:24.295880+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2142.0,
+      "queue_ms": 90.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 4048,
+      "completion_tokens": 1132,
+      "total_tokens": 5180,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.007444000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00023",
+      "started_at": "2026-10-30T17:37:01.218957+00:00",
+      "finished_at": "2026-10-30T17:37:01.218957+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 2059.0,
+      "queue_ms": 75.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 3921,
+      "completion_tokens": 1089,
+      "total_tokens": 5010,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00022",
+      "started_at": "2026-10-30T15:05:38.142034+00:00",
+      "finished_at": "2026-10-30T15:05:38.142034+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1976.0,
+      "queue_ms": 60.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 3794,
+      "completion_tokens": 1046,
+      "total_tokens": 4840,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.006932000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00021",
+      "started_at": "2026-10-30T12:34:15.065111+00:00",
+      "finished_at": "2026-10-30T12:34:15.065111+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1893.0,
+      "queue_ms": 45.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 3667,
+      "completion_tokens": 1003,
+      "total_tokens": 4670,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.006676000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00020",
+      "started_at": "2026-10-30T10:02:51.988188+00:00",
+      "finished_at": "2026-10-30T10:02:51.988188+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1810.0,
+      "queue_ms": 30.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 3540,
+      "completion_tokens": 960,
+      "total_tokens": 4500,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00019",
+      "started_at": "2026-10-30T07:31:28.911264+00:00",
+      "finished_at": "2026-10-30T07:31:28.911264+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "failed",
+      "http_status": 504,
+      "upstream_status": null,
+      "duration_ms": 1727.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "failed",
+      "delivery_status": "sent",
+      "error_code": "fixture_timeout",
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": false,
+      "usage_known": false,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": "USD",
+        "cost_status": "unknown",
+        "token_basis": "unknown_hold"
+      }
+    },
+    {
+      "request_id": "fixture-00018",
+      "started_at": "2026-10-30T05:00:05.834341+00:00",
+      "finished_at": "2026-10-30T05:00:05.834341+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1644.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 3286,
+      "completion_tokens": 874,
+      "total_tokens": 4160,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.005908000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00017",
+      "started_at": "2026-10-30T02:28:42.757418+00:00",
+      "finished_at": "2026-10-30T02:28:42.757418+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1561.0,
+      "queue_ms": 120.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 3159,
+      "completion_tokens": 831,
+      "total_tokens": 3990,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00016",
+      "started_at": "2026-10-29T23:57:19.680495+00:00",
+      "finished_at": "2026-10-29T23:57:19.680495+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1478.0,
+      "queue_ms": 105.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 3032,
+      "completion_tokens": 788,
+      "total_tokens": 3820,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.005396000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00015",
+      "started_at": "2026-10-29T21:25:56.603572+00:00",
+      "finished_at": "2026-10-29T21:25:56.603572+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1395.0,
+      "queue_ms": 90.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2905,
+      "completion_tokens": 745,
+      "total_tokens": 3650,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.005140000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00014",
+      "started_at": "2026-10-29T18:54:33.526649+00:00",
+      "finished_at": "2026-10-29T18:54:33.526649+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1312.0,
+      "queue_ms": 75.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2778,
+      "completion_tokens": 702,
+      "total_tokens": 3480,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00013",
+      "started_at": "2026-10-29T16:23:10.449726+00:00",
+      "finished_at": "2026-10-29T16:23:10.449726+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1229.0,
+      "queue_ms": 60.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2651,
+      "completion_tokens": 659,
+      "total_tokens": 3310,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.004628000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00012",
+      "started_at": "2026-10-29T13:51:47.372803+00:00",
+      "finished_at": "2026-10-29T13:51:47.372803+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1146.0,
+      "queue_ms": 45.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2524,
+      "completion_tokens": 616,
+      "total_tokens": 3140,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.004372000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00011",
+      "started_at": "2026-10-29T11:20:24.295880+00:00",
+      "finished_at": "2026-10-29T11:20:24.295880+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 1063.0,
+      "queue_ms": 30.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2397,
+      "completion_tokens": 573,
+      "total_tokens": 2970,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00010",
+      "started_at": "2026-10-29T08:49:01.218957+00:00",
+      "finished_at": "2026-10-29T08:49:01.218957+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 980.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2270,
+      "completion_tokens": 530,
+      "total_tokens": 2800,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.003860000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00009",
+      "started_at": "2026-10-29T06:17:38.142034+00:00",
+      "finished_at": "2026-10-29T06:17:38.142034+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 897.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2143,
+      "completion_tokens": 487,
+      "total_tokens": 2630,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.003604000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00008",
+      "started_at": "2026-10-29T03:46:15.065111+00:00",
+      "finished_at": "2026-10-29T03:46:15.065111+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 814.0,
+      "queue_ms": 120.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 2016,
+      "completion_tokens": 444,
+      "total_tokens": 2460,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00007",
+      "started_at": "2026-10-29T01:14:51.988188+00:00",
+      "finished_at": "2026-10-29T01:14:51.988188+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 731.0,
+      "queue_ms": 105.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 1889,
+      "completion_tokens": 401,
+      "total_tokens": 2290,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.003092000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00006",
+      "started_at": "2026-10-28T22:43:28.911264+00:00",
+      "finished_at": "2026-10-28T22:43:28.911264+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 648.0,
+      "queue_ms": 90.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 1762,
+      "completion_tokens": 358,
+      "total_tokens": 2120,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.002836000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00005",
+      "started_at": "2026-10-28T20:12:05.834341+00:00",
+      "finished_at": "2026-10-28T20:12:05.834341+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 565.0,
+      "queue_ms": 75.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 1635,
+      "completion_tokens": 315,
+      "total_tokens": 1950,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00004",
+      "started_at": "2026-10-28T17:40:42.757418+00:00",
+      "finished_at": "2026-10-28T17:40:42.757418+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 482.0,
+      "queue_ms": 60.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 1508,
+      "completion_tokens": 272,
+      "total_tokens": 1780,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.002324000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00003",
+      "started_at": "2026-10-28T15:09:19.680495+00:00",
+      "finished_at": "2026-10-28T15:09:19.680495+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 399.0,
+      "queue_ms": 45.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 1381,
+      "completion_tokens": 229,
+      "total_tokens": 1610,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.002068000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00002",
+      "started_at": "2026-10-28T12:37:56.603572+00:00",
+      "finished_at": "2026-10-28T12:37:56.603572+00:00",
+      "caller_id": "demo-app-3",
+      "connection_id": "coding",
+      "model": "kimi-for-coding",
+      "resource_type": "token_plan",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 316.0,
+      "queue_ms": 30.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 1254,
+      "completion_tokens": 186,
+      "total_tokens": 1440,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": null,
+        "cost_status": "not_priced",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00001",
+      "started_at": "2026-10-28T10:06:33.526649+00:00",
+      "finished_at": "2026-10-28T10:06:33.526649+00:00",
+      "caller_id": "demo-app-2",
+      "connection_id": "deepseek",
+      "model": "deepseek-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "success",
+      "http_status": 200,
+      "upstream_status": null,
+      "duration_ms": 233.0,
+      "queue_ms": 15.0,
+      "upstream_attempts": 1,
+      "upstream_result": "success",
+      "delivery_status": "sent",
+      "error_code": null,
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": true,
+      "usage_known": true,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": 1127,
+      "completion_tokens": 143,
+      "total_tokens": 1270,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": "0.001556000",
+        "currency": "USD",
+        "cost_status": "estimated",
+        "token_basis": "reported_total"
+      }
+    },
+    {
+      "request_id": "fixture-00000",
+      "started_at": "2026-10-28T07:35:10.449726+00:00",
+      "finished_at": "2026-10-28T07:35:10.449726+00:00",
+      "caller_id": "demo-app-1",
+      "connection_id": "mimo-default",
+      "model": "mimo-fixture",
+      "resource_type": "api",
+      "purpose": "chat",
+      "status": "failed",
+      "http_status": 504,
+      "upstream_status": null,
+      "duration_ms": 150.0,
+      "queue_ms": 0.0,
+      "upstream_attempts": 1,
+      "upstream_result": "failed",
+      "delivery_status": "sent",
+      "error_code": "fixture_timeout",
+      "upstream_error_code": null,
+      "delivery_error_code": null,
+      "usage_final": false,
+      "usage_known": false,
+      "usage_consistency": "uncontradicted",
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "origin": "live",
+      "cost": {
+        "estimated_cost": null,
+        "currency": "USD",
+        "cost_status": "unknown",
+        "token_basis": "unknown_hold"
+      }
+    }
+  ],
+  "accounting": {
+    "fixture-00064": {
+      "quota_tokens": 9880,
+      "token_basis": "reported_total"
+    },
+    "fixture-00063": {
+      "quota_tokens": 9710,
+      "token_basis": "reported_total"
+    },
+    "fixture-00062": {
+      "quota_tokens": 9540,
+      "token_basis": "reported_total"
+    },
+    "fixture-00061": {
+      "quota_tokens": 9370,
+      "token_basis": "reported_total"
+    },
+    "fixture-00060": {
+      "quota_tokens": 9200,
+      "token_basis": "reported_total"
+    },
+    "fixture-00059": {
+      "quota_tokens": 9030,
+      "token_basis": "reported_total"
+    },
+    "fixture-00058": {
+      "quota_tokens": 8860,
+      "token_basis": "reported_total"
+    },
+    "fixture-00057": {
+      "quota_tokens": 8690,
+      "token_basis": "unknown_hold"
+    },
+    "fixture-00056": {
+      "quota_tokens": 8520,
+      "token_basis": "reported_total"
+    },
+    "fixture-00055": {
+      "quota_tokens": 8350,
+      "token_basis": "reported_total"
+    },
+    "fixture-00054": {
+      "quota_tokens": 8180,
+      "token_basis": "reported_total"
+    },
+    "fixture-00053": {
+      "quota_tokens": 8010,
+      "token_basis": "reported_total"
+    },
+    "fixture-00052": {
+      "quota_tokens": 7840,
+      "token_basis": "reported_total"
+    },
+    "fixture-00051": {
+      "quota_tokens": 7670,
+      "token_basis": "reported_total"
+    },
+    "fixture-00050": {
+      "quota_tokens": 7500,
+      "token_basis": "reported_total"
+    },
+    "fixture-00049": {
+      "quota_tokens": 7330,
+      "token_basis": "reported_total"
+    },
+    "fixture-00048": {
+      "quota_tokens": 9260,
+      "token_basis": "reported_total"
+    },
+    "fixture-00047": {
+      "quota_tokens": 9090,
+      "token_basis": "reported_total"
+    },
+    "fixture-00046": {
+      "quota_tokens": 8920,
+      "token_basis": "reported_total"
+    },
+    "fixture-00045": {
+      "quota_tokens": 8750,
+      "token_basis": "reported_total"
+    },
+    "fixture-00044": {
+      "quota_tokens": 8580,
+      "token_basis": "reported_total"
+    },
+    "fixture-00043": {
+      "quota_tokens": 8410,
+      "token_basis": "reported_total"
+    },
+    "fixture-00042": {
+      "quota_tokens": 8240,
+      "token_basis": "reported_total"
+    },
+    "fixture-00041": {
+      "quota_tokens": 8070,
+      "token_basis": "reported_total"
+    },
+    "fixture-00040": {
+      "quota_tokens": 7900,
+      "token_basis": "reported_total"
+    },
+    "fixture-00039": {
+      "quota_tokens": 7730,
+      "token_basis": "reported_total"
+    },
+    "fixture-00038": {
+      "quota_tokens": 7560,
+      "token_basis": "unknown_hold"
+    },
+    "fixture-00037": {
+      "quota_tokens": 7390,
+      "token_basis": "reported_total"
+    },
+    "fixture-00036": {
+      "quota_tokens": 7220,
+      "token_basis": "reported_total"
+    },
+    "fixture-00035": {
+      "quota_tokens": 7050,
+      "token_basis": "reported_total"
+    },
+    "fixture-00034": {
+      "quota_tokens": 6880,
+      "token_basis": "reported_total"
+    },
+    "fixture-00033": {
+      "quota_tokens": 6710,
+      "token_basis": "reported_total"
+    },
+    "fixture-00032": {
+      "quota_tokens": 6540,
+      "token_basis": "reported_total"
+    },
+    "fixture-00031": {
+      "quota_tokens": 6370,
+      "token_basis": "reported_total"
+    },
+    "fixture-00030": {
+      "quota_tokens": 6200,
+      "token_basis": "reported_total"
+    },
+    "fixture-00029": {
+      "quota_tokens": 6030,
+      "token_basis": "reported_total"
+    },
+    "fixture-00028": {
+      "quota_tokens": 5860,
+      "token_basis": "reported_total"
+    },
+    "fixture-00027": {
+      "quota_tokens": 5690,
+      "token_basis": "reported_total"
+    },
+    "fixture-00026": {
+      "quota_tokens": 5520,
+      "token_basis": "reported_total"
+    },
+    "fixture-00025": {
+      "quota_tokens": 5350,
+      "token_basis": "reported_total"
+    },
+    "fixture-00024": {
+      "quota_tokens": 5180,
+      "token_basis": "reported_total"
+    },
+    "fixture-00023": {
+      "quota_tokens": 5010,
+      "token_basis": "reported_total"
+    },
+    "fixture-00022": {
+      "quota_tokens": 4840,
+      "token_basis": "reported_total"
+    },
+    "fixture-00021": {
+      "quota_tokens": 4670,
+      "token_basis": "reported_total"
+    },
+    "fixture-00020": {
+      "quota_tokens": 4500,
+      "token_basis": "reported_total"
+    },
+    "fixture-00019": {
+      "quota_tokens": 4330,
+      "token_basis": "unknown_hold"
+    },
+    "fixture-00018": {
+      "quota_tokens": 4160,
+      "token_basis": "reported_total"
+    },
+    "fixture-00017": {
+      "quota_tokens": 3990,
+      "token_basis": "reported_total"
+    },
+    "fixture-00016": {
+      "quota_tokens": 3820,
+      "token_basis": "reported_total"
+    },
+    "fixture-00015": {
+      "quota_tokens": 3650,
+      "token_basis": "reported_total"
+    },
+    "fixture-00014": {
+      "quota_tokens": 3480,
+      "token_basis": "reported_total"
+    },
+    "fixture-00013": {
+      "quota_tokens": 3310,
+      "token_basis": "reported_total"
+    },
+    "fixture-00012": {
+      "quota_tokens": 3140,
+      "token_basis": "reported_total"
+    },
+    "fixture-00011": {
+      "quota_tokens": 2970,
+      "token_basis": "reported_total"
+    },
+    "fixture-00010": {
+      "quota_tokens": 2800,
+      "token_basis": "reported_total"
+    },
+    "fixture-00009": {
+      "quota_tokens": 2630,
+      "token_basis": "reported_total"
+    },
+    "fixture-00008": {
+      "quota_tokens": 2460,
+      "token_basis": "reported_total"
+    },
+    "fixture-00007": {
+      "quota_tokens": 2290,
+      "token_basis": "reported_total"
+    },
+    "fixture-00006": {
+      "quota_tokens": 2120,
+      "token_basis": "reported_total"
+    },
+    "fixture-00005": {
+      "quota_tokens": 1950,
+      "token_basis": "reported_total"
+    },
+    "fixture-00004": {
+      "quota_tokens": 1780,
+      "token_basis": "reported_total"
+    },
+    "fixture-00003": {
+      "quota_tokens": 1610,
+      "token_basis": "reported_total"
+    },
+    "fixture-00002": {
+      "quota_tokens": 1440,
+      "token_basis": "reported_total"
+    },
+    "fixture-00001": {
+      "quota_tokens": 1270,
+      "token_basis": "reported_total"
+    },
+    "fixture-00000": {
+      "quota_tokens": 1100,
+      "token_basis": "unknown_hold"
+    }
+  },
+  "logs": {
+    "items": [
+      {
+        "timestamp": "2026-11-04T03:35:46.449726+00:00",
+        "path": "/v1/chat/completions",
+        "status": 200,
+        "duration_ms": 815
+      }
+    ],
+    "omitted": 1,
+    "window": 150
+  },
+  "backups": {
+    "items": [
+      {
+        "name": "2026-11-04T03-35-46.930076+00-00-4c9a4114",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.939129+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.911637+00-00-6ce8d108",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.919948+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.895833+00-00-f4dc0eeb",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.902936+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.878206+00-00-5b200530",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.887468+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.861541+00-00-473b88a5",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.870061+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.846974+00-00-f310eaa5",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.854117+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.830207+00-00-fc1fb057",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.838138+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.809401+00-00-af0197b3",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.821471+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.768716+00-00-5b03ce04",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.787931+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.749125+00-00-d2912876",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.760261+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.723792+00-00-20cf8841",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.733406+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.429582+00-00-35575330",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.437184+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.412984+00-00-30d7c241",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.420845+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.392047+00-00-09e14eeb",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.405527+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.379249+00-00-ed9c3267",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.385287+00:00",
+        "manifest": "sha256_present"
+      },
+      {
+        "name": "2026-11-04T03-35-46.300811+00-00-e3a30438",
+        "integrity": "not_checked",
+        "created_at": "2026-11-04T03:35:46.335452+00:00",
+        "manifest": "sha256_present"
+      }
+    ],
+    "total": 16,
+    "limit": 20
+  }
+}
