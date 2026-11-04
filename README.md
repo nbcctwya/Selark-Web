@@ -2,6 +2,8 @@
 
 [Selark 的独立前端仓库](https://github.com/nbcctwya/Selark-Web)，使用 React + TypeScript + Vite。可以单独克隆、开发和测试，不需要 Python、Selark 安装、真实账户、密钥或本地数据库。
 
+开发或交给 Claude 前请先阅读 [开发约束](AGENTS.md)：零额外模型调用、零自动提示文本、生产静态交付与隐藏页面停止无用轮询。
+
 [Selark 主仓库](https://github.com/nbcctwya/Selark)通过 Git submodule 将本仓库引入 `frontend/`，固定到经过验收的提交。本仓库更新后，Selark 由集成维护者主动更新引用。
 
 本仓库是 Selark Dashboard 的重新设计版本：五个页面（资源概览、连接与模型、用量分析、应用管理、运行监控）均已按新的视觉系统实现，并接入日常管理：新建 / 编辑连接与 Key 轮换、显式模型发现、单个与批量启用、默认模型，新建应用（一次性令牌）、策略编辑与撤销。支持桌面 / 手机、浅色 / 深色 / 跟随系统、键盘操作（`1`–`5` 切换页面、`R` 刷新、`⌘K` / `Ctrl+K` / `/` 打开命令面板）。正式构建由 Selark 主仓库打包为 `selark dashboard` 的页面；独立前端仓库继续支持模拟开发。
