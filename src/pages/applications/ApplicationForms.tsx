@@ -11,24 +11,23 @@ import { dateTime, label, number } from '../../lib/format';
 
 type PolicyPatch = ApplicationPolicy['policy'];
 type ListMode = 'any' | 'list' | 'none';
-type LimitKey = 'requests_per_minute' | 'max_concurrent_requests' | 'max_output_tokens' | 'max_estimated_input_tokens' | 'daily_token_limit' | 'chatgpt_output_reservation';
+type LimitKey = 'requests_per_minute' | 'max_concurrent_requests' | 'max_output_tokens' | 'max_estimated_input_tokens' | 'daily_token_limit';
 const limits: { key: LimitKey; label: string; min: number; max: number; unit: string; hint?: string }[] = [
   { key: 'daily_token_limit', label: '日 Token 上限', min: 1, max: 1e12, unit: 'Token', hint: 'UTC 日计算，含实际用量与保守预留；用量未知时暂停新调用。' },
   { key: 'max_concurrent_requests', label: '并发上限', min: 1, max: 256, unit: '个' },
   { key: 'requests_per_minute', label: '每分钟请求', min: 1, max: 100000, unit: '次/分' },
   { key: 'max_output_tokens', label: '单次输出上限', min: 1, max: 131072, unit: 'Token' },
   { key: 'max_estimated_input_tokens', label: '估算输入上限', min: 1, max: 2000000, unit: 'Token' },
-  { key: 'chatgpt_output_reservation', label: '订阅输出预留', min: 1, max: 131072, unit: 'Token', hint: '仅用于 ChatGPT 订阅的准入预留。' },
 ];
 const DEFAULT_POLICY: Policy = {
-  allow_token_plans: false, allow_chatgpt_subscriptions: false, chatgpt_output_reservation: null, allowed_connections: null, allowed_models: null,
+  allow_token_plans: false, allowed_connections: null, allowed_models: null,
   requests_per_minute: null, max_concurrent_requests: null, max_output_tokens: null, max_estimated_input_tokens: null,
   daily_token_limit: null, daily_budget: null, budget_currency: 'USD',
 };
 
 interface Draft {
   connMode: ListMode; connections: string[]; modelMode: ListMode; models: string[];
-  allow_token_plans: boolean; allow_chatgpt_subscriptions: boolean;
+  allow_token_plans: boolean;
   limits: Record<LimitKey, string>; daily_budget: string; budget_currency: string;
 }
 const mode = (value: string[] | null): ListMode => (value == null ? 'any' : value.length ? 'list' : 'none');
@@ -36,7 +35,7 @@ function toDraft(p: Policy): Draft {
   return {
     connMode: mode(p.allowed_connections ?? null), connections: p.allowed_connections ?? [],
     modelMode: mode(p.allowed_models ?? null), models: p.allowed_models ?? [],
-    allow_token_plans: Boolean(p.allow_token_plans), allow_chatgpt_subscriptions: Boolean(p.allow_chatgpt_subscriptions),
+    allow_token_plans: Boolean(p.allow_token_plans),
     limits: Object.fromEntries(limits.map(l => [l.key, limitText(p[l.key])])) as Record<LimitKey, string>,
     daily_budget: p.daily_budget ?? '', budget_currency: p.budget_currency ?? 'USD',
   };
@@ -44,7 +43,7 @@ function toDraft(p: Policy): Draft {
 function toPolicy(d: Draft): Policy {
   const list = (m: ListMode, items: string[]) => (m === 'any' ? null : m === 'none' ? [] : [...items].sort());
   return {
-    allow_token_plans: d.allow_token_plans, allow_chatgpt_subscriptions: d.allow_chatgpt_subscriptions,
+    allow_token_plans: d.allow_token_plans,
     allowed_connections: list(d.connMode, d.connections), allowed_models: list(d.modelMode, d.models),
     ...Object.fromEntries(limits.map(l => [l.key, parseLimit(d.limits[l.key])])),
     daily_budget: d.daily_budget.trim() || null, budget_currency: d.budget_currency,
@@ -68,14 +67,14 @@ function draftErrors(d: Draft) {
   return errors;
 }
 
-/** Same rule the gateway applies: subscriptions and plans need the flag plus an explicit connection entry. */
+/** Same rule the gateway applies: Token Plans need the flag plus an explicit connection entry. */
 function preview(snapshot: Snapshot, p: Policy) {
   let connections = 0, models = 0;
   for (const c of snapshot.connections) {
     if (!c.enabled) continue;
     if (c.resource_type !== 'api') {
       if (!p.allowed_connections?.includes(c.id)) continue;
-      if (c.resource_type === 'token_plan' ? !p.allow_token_plans : !p.allow_chatgpt_subscriptions) continue;
+      if (!p.allow_token_plans) continue;
     } else if (p.allowed_connections != null && !p.allowed_connections.includes(c.id)) continue;
     const ok = c.model_catalog.models.filter(m => m.approved && (p.allowed_models == null || p.allowed_models.includes(`${c.id}::${m.id}`)));
     if (ok.length) { connections++; models += ok.length; }
@@ -92,7 +91,7 @@ export function PolicyEditor({ draft, onChange, snapshot, errors, disabled }: { 
   const modes = [{ value: 'any' as const, label: '不限' }, { value: 'list' as const, label: '指定' }, { value: 'none' as const, label: '全部拒绝' }];
   const p = preview(snapshot, toPolicy(draft));
   return <>
-    <FormSection title="资源权限" description="「不限」是通配；「全部拒绝」是空列表。ChatGPT 订阅与 Token Plan 还需打开对应开关，并在允许连接中明确列出。">
+    <FormSection title="资源权限" description="「不限」是通配；「全部拒绝」是空列表。Token Plan 还需打开对应开关，并在允许连接中明确列出。">
       <div className="field field-wide">
         <div className="field-row"><span className="field-label">允许连接</span><Segmented label="允许连接" size="sm" value={draft.connMode} onChange={v => set('connMode', v)} options={modes} /></div>
         {draft.connMode === 'list' && <div className="check-grid">{connIds.map(id => {
@@ -112,7 +111,6 @@ export function PolicyEditor({ draft, onChange, snapshot, errors, disabled }: { 
         {errors.models && <p className="field-error" role="alert"><Icon name="alert" size={13} />{errors.models}</p>}
       </div>
       <div className="field field-wide"><ToggleRow label="允许 Token Plan" disabled={disabled} checked={draft.allow_token_plans} onChange={v => set('allow_token_plans', v)} description="套餐资源仅限个人交互式使用。" /></div>
-      <div className="field field-wide"><ToggleRow label="允许 ChatGPT 订阅" disabled={disabled} checked={draft.allow_chatgpt_subscriptions} onChange={v => set('allow_chatgpt_subscriptions', v)} description="订阅资源需要专门权限和明确连接。" /></div>
       <p className="preview field-wide"><Icon name="eye" size={14} />按此策略，当前可用 <b>{p.connections}</b> 个连接 · <b>{p.models}</b> 个已启用模型（还受连接启停与模型启用影响）。</p>
     </FormSection>
     <FormSection title="限额" description="留空表示不单独限制，不等于 0。">

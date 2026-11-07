@@ -138,8 +138,8 @@ test('connections can be created, discovered, approved, defaulted and edited wit
   await nav(page, '连接与模型').click();
   await page.getByRole('button', { name: '新建连接' }).click();
   const create = page.getByRole('dialog', { name: '新建连接' });
-  await expect(create.getByRole('radio', { name: /ChatGPT 个人订阅/ })).toBeDisabled();
-  await create.getByRole('radio', { name: /OpenAI 兼容中转/ }).click();
+  await expect(create.getByRole('radio', { name: /OpenAI/ }).first()).toBeEnabled();
+  await create.getByRole('radio', { name: /通用 API（OpenAI 兼容）/ }).click();
   await create.getByRole('button', { name: '创建连接' }).click();
   await expect(create.getByText('此供应商需要填写接口地址。')).toBeVisible();
   await create.getByLabel('连接 ID').fill('deepseek');
@@ -152,7 +152,7 @@ test('connections can be created, discovered, approved, defaulted and edited wit
   await expect(create.getByLabel('API Key')).toHaveAttribute('type', 'password');
   await create.getByRole('button', { name: '创建连接' }).click();
 
-  const sheet = page.getByRole('dialog', { name: 'OpenAI 兼容中转' });
+  const sheet = page.getByRole('dialog', { name: '通用 API（OpenAI 兼容）' });
   await expect(sheet).toBeVisible();
   await expect(sheet.getByText('目录中还没有模型')).toBeVisible();
   await sheet.getByRole('button', { name: '发现模型' }).click();

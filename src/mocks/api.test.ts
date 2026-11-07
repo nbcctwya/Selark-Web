@@ -103,7 +103,7 @@ describe('mock contract and interactions', () => {
     const snapshot = await api.snapshot(filters);
     expect(snapshot.usage?.summary.requests).toBe(0);
     expect(snapshot.usage?.summary.known_tokens.total_tokens).toBeNull();
-    expect(snapshot.connections).toHaveLength(6);
+    expect(snapshot.connections.map(c => c.id)).toEqual((await api.snapshot({})).connections.map(c => c.id));
     expect((await api.records(filters)).total).toBe(0);
   });
 

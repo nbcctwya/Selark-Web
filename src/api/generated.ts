@@ -72,7 +72,7 @@ export interface paths {
     get: operations["getConnections"];
     /**
      * 创建连接，不自动发现或启用模型
-     * @description Key 只写入，不在任何响应中返回。连接 ID 不可重复或使用 mimo-default；最多 32 个连接。ChatGPT 授权需先通过 CLI。返回 enabled=true、空 allowed_models、default_model=null。
+     * @description Key 只写入，不在任何响应中返回。连接 ID 不可重复或使用 mimo-default；最多 32 个连接。返回 enabled=true、空 allowed_models、default_model=null。
      */
     post: operations["createConnection"];
   };
@@ -247,22 +247,10 @@ export interface components {
     };
     /** Authorization */
     Authorization: {
-      /** Access Expired */
-      access_expired?: boolean | null;
       /** Credential Configured */
       credential_configured?: boolean;
-      /** Expires At */
-      expires_at?: string | null;
       /** Kind */
       kind: string;
-      /** Plan Permission */
-      plan_permission?: boolean;
-      /** Ready */
-      ready?: boolean;
-      /** Refresh Available */
-      refresh_available?: boolean;
-      /** Refresh State */
-      refresh_state?: string;
       /** Remote Validity */
       remote_validity?: string;
       /** State */
@@ -381,7 +369,7 @@ export interface components {
        * Resource Type
        * @enum {string}
        */
-      resource_type: "api" | "token_plan" | "chatgpt_subscription";
+      resource_type: "api" | "token_plan";
       verification: components["schemas"]["Verification"];
     };
     /** ConnectionCreate */
@@ -561,7 +549,7 @@ export interface components {
        * Resource Type
        * @enum {string}
        */
-      resource_type: "api" | "token_plan" | "chatgpt_subscription";
+      resource_type: "api" | "token_plan";
     };
     /** EmptyRequest */
     EmptyRequest: Record<string, never>;
@@ -687,7 +675,7 @@ export interface components {
        * Resource Type
        * @enum {string}
        */
-      resource_type: "api" | "token_plan" | "chatgpt_subscription";
+      resource_type: "api" | "token_plan";
       /** Revision */
       revision: string;
       /** Stream Usage */
@@ -916,11 +904,6 @@ export interface components {
     /** Policy */
     Policy: {
       /**
-       * Allow Chatgpt Subscriptions
-       * @default false
-       */
-      allow_chatgpt_subscriptions?: boolean;
-      /**
        * Allow Token Plans
        * @default false
        */
@@ -940,11 +923,6 @@ export interface components {
        * @default USD
        */
       budget_currency?: string;
-      /**
-       * Chatgpt Output Reservation
-       * @default null
-       */
-      chatgpt_output_reservation?: number | null;
       /**
        * Daily Budget
        * @default null
@@ -979,11 +957,6 @@ export interface components {
     /** Policy */
     PolicyPatch: {
       /**
-       * Allow Chatgpt Subscriptions
-       * @default false
-       */
-      allow_chatgpt_subscriptions?: boolean;
-      /**
        * Allow Token Plans
        * @default false
        */
@@ -1003,11 +976,6 @@ export interface components {
        * @default USD
        */
       budget_currency?: string;
-      /**
-       * Chatgpt Output Reservation
-       * @default null
-       */
-      chatgpt_output_reservation?: number | null;
       /**
        * Daily Budget
        * @default null
@@ -1041,8 +1009,6 @@ export interface components {
     };
     /** PolicyView */
     PolicyView: {
-      /** Allow Chatgpt Subscriptions */
-      allow_chatgpt_subscriptions: boolean;
       /** Allow Token Plans */
       allow_token_plans: boolean;
       /** Allowed Connections */
@@ -1051,8 +1017,6 @@ export interface components {
       allowed_models: string[] | null;
       /** Budget Currency */
       budget_currency: string;
-      /** Chatgpt Output Reservation */
-      chatgpt_output_reservation: number | null;
       /** Daily Budget */
       daily_budget: string | null;
       /** Daily Token Limit */
@@ -1125,9 +1089,9 @@ export interface components {
       can_create: boolean;
       /**
        * Credential Type
-       * @enum {string}
+       * @constant
        */
-      credential_type: "api_key" | "oauth";
+      credential_type: "api_key";
       /** Id */
       id: string;
       /** Name */
@@ -1136,7 +1100,7 @@ export interface components {
        * Resource Type
        * @enum {string}
        */
-      resource_type: "api" | "token_plan" | "chatgpt_subscription";
+      resource_type: "api" | "token_plan";
     };
     ProviderList: {
       items: components["schemas"]["Provider"][];
@@ -1293,7 +1257,7 @@ export interface components {
       /** Request Id */
       request_id: string;
       /** Resource Type */
-      resource_type: ("api" | "token_plan" | "chatgpt_subscription") | null;
+      resource_type: ("api" | "token_plan") | null;
       /** Started At */
       started_at: string | null;
       /** Status */
@@ -2110,7 +2074,7 @@ export interface operations {
   };
   /**
    * 创建连接，不自动发现或启用模型
-   * @description Key 只写入，不在任何响应中返回。连接 ID 不可重复或使用 mimo-default；最多 32 个连接。ChatGPT 授权需先通过 CLI。返回 enabled=true、空 allowed_models、default_model=null。
+   * @description Key 只写入，不在任何响应中返回。连接 ID 不可重复或使用 mimo-default；最多 32 个连接。返回 enabled=true、空 allowed_models、default_model=null。
    */
   createConnection: {
     parameters: {

@@ -132,7 +132,7 @@ export function CreateConnection({ snapshot, onCreated }: { snapshot: Snapshot; 
   const show = (key: keyof typeof errors) => (touched ? errors[key] : null);
 
   return <form className="form" noValidate onSubmit={event => { event.preventDefault(); void submit(); }}>
-    <FormSection title="选择供应商" description="订阅类资源需要先在终端完成 OAuth 授权，这里无法创建。">
+    <FormSection title="选择供应商" description="选择 API 或 Token Plan 供应商，并填写对应的 API Key。">
       <div className="provider-grid field-wide" role="radiogroup" aria-label="供应商">
         {providers.map(p => <button key={p.id} type="button" role="radio" aria-checked={providerId === p.id} disabled={!p.can_create}
           className={`provider-option${providerId === p.id ? ' on' : ''}`}
@@ -262,7 +262,7 @@ export function ConnectionSettings({ id }: { id: string }) {
         <TextInput id={fid} type="url" value={baseUrl} aria-describedby={d} disabled={!editable.has('base_url')} onChange={e => setBaseUrl(e.target.value.trim())} />}</Field>
     </FormSection>
 
-    {(editable.has('api_key') || managed.resource_type !== 'chatgpt_subscription') && <FormSection title="凭据">
+    <FormSection title="凭据">
       <div className="field field-wide key-row">
         <div><p className="toggle-label">API Key</p><p className="toggle-desc">{managed.api_key_configured ? '已在本机配置。出于安全考虑不会显示，也不会以掩码回传。' : '尚未配置 Key。'}</p></div>
         <Pill tone={managed.api_key_configured ? 'good' : 'warn'}>{managed.api_key_configured ? '已配置' : '未配置'}</Pill>
@@ -271,10 +271,9 @@ export function ConnectionSettings({ id }: { id: string }) {
       {rotate && <Field label="新的 API Key" wide error={errors.api_key} hint="保存后立即替换旧 Key；模型目录会标记为过期。">{(fid, d) =>
         <div className="key-input"><TextInput id={fid} type="password" value={apiKey} autoComplete="new-password" aria-describedby={d} autoFocus onChange={e => setApiKey(e.target.value)} />
           <Button size="sm" variant="ghost" onClick={() => { setRotate(false); setApiKey(''); }}>取消</Button></div>}</Field>}
-    </FormSection>}
+    </FormSection>
 
     {fields.size > 0 && <FormSection title="高级设置"><AdvancedFields value={advanced} onChange={setAdvanced} fields={fields} provider={managed.provider} errors={adv} /></FormSection>}
-    {managed.resource_type === 'chatgpt_subscription' && <Notice tone="info">ChatGPT 订阅的 OAuth 登录与退出仍需在终端完成。</Notice>}
     {status && <Notice tone={status.tone}>{status.text}</Notice>}
     {!readOnly && <div className="form-actions">
       <span className="form-dirty">{changed.length ? `${changed.length} 项修改：${changed.map(k => fieldLabels[k] ?? k).join('、')}` : '没有未保存的修改'}</span>

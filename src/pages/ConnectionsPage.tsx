@@ -50,7 +50,7 @@ export function ConnectionsPage({ snapshot, openId, onOpen, creating, onCreating
   </Sheet>;
 
   if (!connections.length) return <>
-    <Panel><Empty icon="connections" title="还没有连接">{can.connection_management ? '添加第一个 API 或 Token Plan 连接；ChatGPT 订阅需先在终端完成 OAuth 授权。' : '在终端使用 Selark CLI 添加连接后，它们会显示在这里。'}<p>{createButton}</p></Empty></Panel>
+    <Panel><Empty icon="connections" title="还没有连接">{can.connection_management ? '添加第一个 API 或 Token Plan 连接。' : '在终端使用 Selark CLI 添加连接后，它们会显示在这里。'}<p>{createButton}</p></Empty></Panel>
     {createSheet}
   </>;
 
@@ -137,18 +137,13 @@ function ConnectionFacts({ c }: { c: Connection }) {
       ['远端凭据有效性', a.remote_validity && a.remote_validity !== 'unknown' ? label(a.remote_validity) : <Unknown key="r">未知 · 未向供应商验证</Unknown>],
       ['当前可用性', <Pill key="v" tone={avail.tone}>{avail.text}</Pill>],
       ['本地阻碍', c.availability.blockers.length ? c.availability.blockers.map(b => blockerLabels[b] ?? b).join('；') : '未发现已知本地阻碍'],
-      ...(a.kind === 'oauth' ? [
-        ['OAuth 访问到期', a.expires_at ? dateTime(a.expires_at) : <Unknown key="e">不适用 / 未知</Unknown>],
-        ['刷新凭据', a.refresh_available == null ? <Unknown key="f" /> : a.refresh_available ? '本地存在' : '未提供'],
-        ['套餐权限', a.plan_permission == null ? <Unknown key="p" /> : a.plan_permission ? '历史已确认' : '未确认'],
-      ] as [string, ReactNode][] : []),
     ]} /></section>
     <section className="detail-section"><h3>历史验证</h3><DefinitionList items={[
       ['连接级验证', <Pill key="s" tone={connectionHeadline(c).tone}>{label(v.state)}</Pill>],
       ['验证时间', v.verified_at ? `${dateTime(v.verified_at)}（${relative(v.verified_at)}）` : '尚无记录'],
       ['验证模型', v.model ? <span className="mono">{v.model}</span> : null],
       ['默认模型', c.default_model ? <span className="mono">{c.default_model}</span> : <Unknown key="d">未设置</Unknown>],
-    ]} /><p className="note">历史成功只证明当时的配置与模型；API Key 已配置或 OAuth 本地就绪不代表远端有效。</p></section>
+    ]} /><p className="note">历史成功只证明当时的配置与模型；API Key 已配置不代表远端有效。</p></section>
     <section className="detail-section"><h3>模型目录</h3><DefinitionList items={[
       ['发现状态', discoveryText[c.discovery.state] ?? label(c.discovery.state)],
       ['最近检查', dateTime(c.discovery.checked_at, '尚未查询')],
@@ -157,7 +152,7 @@ function ConnectionFacts({ c }: { c: Connection }) {
       ['协议', c.model_catalog.protocol ? label(c.model_catalog.protocol) : null],
       ['审批版本', <span key="r" className="mono">r{c.model_catalog.approval_revision}</span>],
     ]} /></section>
-    <p className="sheet-hint"><Icon name="terminal" size={15} />OAuth 登录与退出在终端通过 Selark CLI 完成；Dashboard 不刷新 OAuth、不查询套餐、不调用模型。只有「发现模型」会读取供应商目录。</p>
+    <p className="sheet-hint"><Icon name="terminal" size={15} />Dashboard 不查询套餐、不调用模型。只有「发现模型」会读取供应商目录。</p>
   </>;
 }
 

@@ -4,11 +4,7 @@ import type { Tone } from './format';
 export function authorizationText(c: Connection): { text: string; tone: Tone } {
   const a = c.authorization;
   if (a.state === 'unreadable') return { text: '本地状态不可读', tone: 'bad' };
-  if (a.kind === 'oauth') {
-    if (a.access_expired) return { text: '已到期，待刷新', tone: 'warn' };
-    if (a.ready) return { text: '本地授权就绪', tone: 'good' };
-    return { text: '尚未授权 / 未就绪', tone: 'warn' };
-  }
+
   if (a.credential_configured === false) return { text: '未配置 Key', tone: 'warn' };
   return { text: '已配置 Key', tone: 'neutral' };
 }

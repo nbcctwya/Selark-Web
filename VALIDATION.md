@@ -2,7 +2,7 @@
 
 Claude 的设计交付为 `c656d1932af1753537e56876d8020ffac5883e89`，本次在此基础上完成真实后端适配。接口沿用 Selark `fbaa811` 的基线，OpenAPI 和依赖均未改动；最终发布版本以 Selark 的 submodule 引用及包内资源清单为准。
 
-本次本地环境：Linux / WSL、Node 22.22.3、Python 3.12、Chromium。检查只使用合成账本、临时凭据和本机虚构供应商；真实供应商、OAuth 和模型生成请求为 0。
+本次本地环境：Linux / WSL、Node 22.22.3、Python 3.12、Chromium。检查只使用合成账本、临时凭据和本机虚构供应商；真实供应商和模型生成请求为 0。
 
 | 检查 | 结果 |
 | --- | --- |
@@ -29,4 +29,4 @@ Claude 的设计交付为 `c656d1932af1753537e56876d8020ffac5883e89`，本次在
 
 Selark 通过 `scripts/build_dashboard.py` 打包固定提交，CI 检查产物与源码一致。两个仓库分别触发 Actions；远端结果见 [Selark-Web Actions](https://github.com/nbcctwya/Selark-Web/actions/workflows/ci.yml) 与 [Selark Actions](https://github.com/nbcctwya/Selark/actions/workflows/ci.yml)。
 
-后续修改请基于包含本轮修正的集成提交；交接方式见 [README.md](README.md)，后端契约见 [API.md](API.md)。OAuth、服务控制及备份恢复仍通过 CLI 操作。
+后续修改请基于包含本轮修正的集成提交；交接方式见 [README.md](README.md)，后端契约见 [API.md](API.md)。服务控制及备份恢复仍通过 CLI 操作。

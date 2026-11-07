@@ -73,7 +73,7 @@ export function createManagement(options: {
   }
   function emptyModels(item: ManagedConnection): ManagedModels {
     return { connection_id: item.id, connection_enabled: item.enabled, approval_revision: item.approval_revision,
-      default_model: null, protocol: item.provider === 'anthropic' ? 'anthropic-messages' : item.provider === 'chatgpt' ? 'responses' : 'chat-completions',
+      default_model: null, protocol: item.provider === 'anthropic' ? 'anthropic-messages' : 'chat-completions',
       discovery: clone(item.discovery), models: [], counts: { discovered: 0, approved: 0, application_authorized: 0, historically_verified: 0 }, live_availability: 'unknown' };
   }
   function syncConnection(item: ManagedConnection) {

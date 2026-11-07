@@ -86,7 +86,7 @@ export function relative(value: string | null | undefined, now = Date.now(), fal
 export const utcDay = (day: string) => day.slice(5).replace('-', '/');
 
 const labels: Record<string, string> = {
-  api: 'API', token_plan: 'Token Plan', chatgpt_subscription: 'ChatGPT 订阅',
+  api: 'API', token_plan: 'Token Plan',
   success: '成功', failed: '失败', failure: '失败', cancelled: '已取消', interrupted: '已中断', running: '运行中', unknown: '未知', pending: '待完成',
   unlimited: '未设上限', limited: '有限额', exhausted: '已耗尽', blocked_unknown_usage: '未知用量 · 已暂停',
   never: '尚未验证', stale: '配置已变化', not_checked: '未检查', not_configured: '未配置', unreadable: '不可读',
@@ -95,7 +95,7 @@ const labels: Record<string, string> = {
   estimated: '估算', not_priced: '未定价', inconsistent: '计数矛盾', regressed: '计数回退', uncontradicted: '未发现矛盾',
   listed: '目录中', not_in_catalog: '目录中已缺失', missing: '目录中已缺失', unlisted: '目录中已缺失', manual: '手动添加', disabled: '已停用',
   blocked_locally: '本地受阻', allowed: '历史可访问', denied: '历史被拒绝',
-  api_key: 'API Key', oauth: 'OAuth', live: '实时', chat: '对话',
+  api_key: 'API Key', live: '实时', chat: '对话',
   reported_total: '供应商报告总量', unknown_hold: '未知 · 保守预留',
   text_nonstream: '文本 · 普通', text_stream: '文本 · 流式',
   'chat-completions': 'Chat Completions', responses: 'Responses', 'anthropic-messages': 'Anthropic Messages',
@@ -104,8 +104,8 @@ const labels: Record<string, string> = {
 export const label = (value: string | null | undefined) => (value ? labels[value] ?? value : UNKNOWN);
 
 export const blockerLabels: Record<string, string> = {
-  connection_disabled: '连接已停用', models_not_configured: '尚未启用模型', authorization_not_ready: '授权尚未就绪',
-  access_expired_refresh_required: '访问凭据已过期，需要刷新', plan_preset_only: '仅预设，不支持生成', local_state_unavailable: '本地状态不可读',
+  connection_disabled: '连接已停用', models_not_configured: '尚未启用模型',
+  plan_preset_only: '仅预设，不支持生成', local_state_unavailable: '本地状态不可读',
 };
 
 export type Tone = 'good' | 'warn' | 'bad' | 'info' | 'neutral' | 'unknown';

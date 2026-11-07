@@ -118,12 +118,10 @@ function ApplicationSheet({ app, snapshot, onClose }: { app: Application | null;
         ['允许连接', allowList(p.allowed_connections, '未限定列表（仍受资源类型授权约束）')],
         ['允许模型', allowList(p.allowed_models, '未限定列表')],
         ['Token Plan', p.allow_token_plans ? '明确允许' : '未授权'],
-        ['ChatGPT 订阅', p.allow_chatgpt_subscriptions ? '明确允许' : '未授权'],
         ['并发上限', p.max_concurrent_requests ?? '未单独限制'],
         ['每分钟请求', p.requests_per_minute ?? '未单独限制'],
         ['单次输出上限', p.max_output_tokens == null ? '未单独限制' : number(p.max_output_tokens)],
         ['估算输入上限', p.max_estimated_input_tokens == null ? '未单独限制' : number(p.max_estimated_input_tokens)],
-        ['订阅输出预留', p.chatgpt_output_reservation == null ? '未配置' : number(p.chatgpt_output_reservation)],
       ]} /></section>
       <section className="detail-section"><h3>身份</h3><DefinitionList items={[
         ['创建时间', `${dateTime(app.created_at)}（${relative(app.created_at)}）`],
