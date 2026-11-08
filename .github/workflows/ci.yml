@@ -20,9 +20,6 @@ concurrency:
 jobs:
   frontend:
     runs-on: ubuntu-latest
-    env:
-      # Browser-only checks do not launch the Windows desktop runtime.
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -32,7 +29,8 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - run: npm ci
+      # This job needs browser assets only; native desktop setup runs on Windows.
+      - run: npm ci --ignore-scripts
       - run: npm run setup:api
       - run: npm run check:api
       - run: npm test
