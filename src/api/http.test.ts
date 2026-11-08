@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { ApiError, createHttpApi } from './http';
 import specification from '../../contracts/dashboard.openapi.json';
 import { conforms } from '../mocks/contract';
+import type { ApplicationCreate, ApplicationPolicy } from './types';
 
 function storage() {
   const values = new Map<string, string>();
@@ -54,6 +55,38 @@ describe('real HTTP adapter', () => {
     expect(send).toHaveBeenCalledTimes(1);
     expect(send.mock.calls[0]).toEqual(['/api/session', expect.objectContaining({ method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: 'fixture-login' }), credentials: 'omit', mode: 'same-origin', redirect: 'error', cache: 'no-store' })]);
     expect(saved.getItem('selark-dashboard-session')).toBe('fixture-admin-session');
+  });
+
+  it.each(['http', 'desktop'] as const)('sends current policy fields over %s without changing restrictions or accepting an empty stale draft', async mode => {
+    const send = vi.fn<typeof fetch>().mockImplementation(async () => new Response('{}'));
+    const api = createHttpApi({ fetch: send, storage: storage(), ...(mode === 'desktop' ? { transport: async (path, method, payload, signal) => {
+      await send(path, { method, body: JSON.stringify(payload), signal });
+      return { status: 200, body: {} };
+    } } : {}) });
+    const controller = new AbortController();
+    const policy = {
+      allow_token_plans: false, allowed_connections: [], allowed_models: null,
+      requests_per_minute: 12, max_concurrent_requests: 2, max_output_tokens: 256,
+      max_estimated_input_tokens: 4096, daily_token_limit: 10000, daily_budget: '0.00', budget_currency: 'USD',
+    };
+    expect(Object.keys(policy).sort()).toEqual(Object.keys(specification.components.schemas.Policy.properties).sort());
+    const draft = { ...policy, retired_option: false, retired_limit: null };
+    const original = structuredClone(draft);
+    await api.createApplication({ name: 'Editor', policy: draft }, controller.signal);
+    expect(JSON.parse(String(send.mock.calls.at(-1)![1]!.body))).toEqual({ name: 'Editor', policy });
+    await api.updateApplicationPolicy('sample', { revision: 'a'.repeat(64), policy: draft }, controller.signal);
+    expect(JSON.parse(String(send.mock.calls.at(-1)![1]!.body))).toEqual({ revision: 'a'.repeat(64), policy });
+    expect(send.mock.calls.at(-1)![1]!.signal).toBe(controller.signal);
+    expect(draft).toEqual(original);
+    await api.updateApplicationPolicy('sample', { revision: 'b'.repeat(64), policy: { allowed_models: [] } });
+    expect(JSON.parse(String(send.mock.calls.at(-1)![1]!.body))).toEqual({ revision: 'b'.repeat(64), policy: { allowed_models: [] } });
+    await expect(api.createApplication({ name: 'Editor', policy: { retired_option: true } } as ApplicationCreate)).rejects.toMatchObject({ code: 'empty_policy' });
+    await expect(api.updateApplicationPolicy('sample', { revision: 'c'.repeat(64), policy: { retired_limit: null } } as ApplicationPolicy)).rejects.toMatchObject({ code: 'empty_policy' });
+    await expect(api.updateApplicationPolicy('sample', { revision: 'c'.repeat(64), policy: {} })).rejects.toMatchObject({ code: 'empty_policy' });
+    await expect(api.createApplication({ name: 'Editor', policy: { allowed_models: undefined, retired_option: true } } as ApplicationCreate)).rejects.toMatchObject({ code: 'empty_policy' });
+    expect(send).toHaveBeenCalledTimes(3);
+    await api.createApplication({ name: 'Default' });
+    expect(JSON.parse(String(send.mock.calls.at(-1)![1]!.body))).toEqual({ name: 'Default' });
   });
 
   it('keeps requests relative, sends explicit session headers, and encodes query values', async () => {

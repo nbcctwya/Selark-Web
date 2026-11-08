@@ -1,0 +1,36 @@
+appId: com.selark.desktop
+productName: Selark
+electronDist: node_modules/electron/dist
+directories:
+  output: release
+  buildResources: build
+files:
+  - dist/**/*
+  - electron/**/*
+  - build/icon.ico
+  - package.json
+  - '!electron/**/*.test.cjs'
+  - '!electron/**/__pycache__/**'
+  - '!node_modules/**/*'
+asar: true
+extraResources:
+  - from: ../backend/dist/selark-core
+    to: backend
+    filter: ['**/*']
+npmRebuild: false
+compression: maximum
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  icon: build/icon.ico
+  signAndEditExecutable: true
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Selark
+  deleteAppDataOnUninstall: false
+  artifactName: Selark-Setup-${version}-${arch}.${ext}

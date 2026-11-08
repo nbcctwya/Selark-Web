@@ -309,66 +309,6 @@
         }
       },
       {
-        "id": "subscription",
-        "name": "ChatGPT Personal",
-        "provider": "chatgpt",
-        "resource_type": "chatgpt_subscription",
-        "enabled": true,
-        "models": [],
-        "default_model": null,
-        "client_allowed_models": [],
-        "authorization": {
-          "kind": "oauth",
-          "state": "new",
-          "remote_validity": "unknown",
-          "access_expired": true,
-          "expires_at": null,
-          "refresh_available": false,
-          "refresh_state": "ready",
-          "plan_permission": false,
-          "ready": false
-        },
-        "verification": {
-          "state": "never",
-          "verified_at": null,
-          "age_seconds": null,
-          "model": null,
-          "scope": "connection_configuration"
-        },
-        "availability": {
-          "state": "blocked_locally",
-          "checked_live": false,
-          "blockers": [
-            "models_not_configured",
-            "authorization_not_ready"
-          ]
-        },
-        "discovery": {
-          "state": "success",
-          "checked_at": "2026-11-04T08:20:47.171992+00:00",
-          "discovered_at": "2026-11-04T08:20:47.171992+00:00",
-          "current": true,
-          "count": 0
-        },
-        "model_catalog": {
-          "counts": {
-            "discovered": 0,
-            "approved": 0,
-            "application_authorized": 0,
-            "historically_verified": 0
-          },
-          "protocol": "responses",
-          "approval_revision": 1,
-          "models": []
-        },
-        "provider_quota": {
-          "state": "unknown",
-          "remaining_tokens": null,
-          "windows": [],
-          "reported_counters": []
-        }
-      },
-      {
         "id": "anthropic",
         "name": "Anthropic",
         "provider": "anthropic",
@@ -533,8 +473,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": false,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": null,
           "allowed_models": null,
           "requests_per_minute": null,
@@ -550,8 +488,6 @@
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": false,
-            "allow_chatgpt_subscriptions": false,
-            "chatgpt_output_reservation": null,
             "allowed_connections": null,
             "allowed_models": null,
             "requests_per_minute": null,
@@ -619,8 +555,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -640,8 +574,6 @@
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": true,
-            "allow_chatgpt_subscriptions": false,
-            "chatgpt_output_reservation": null,
             "allowed_connections": [
               "mimo-default",
               "deepseek",
@@ -707,8 +639,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -728,8 +658,6 @@
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": true,
-            "allow_chatgpt_subscriptions": false,
-            "chatgpt_output_reservation": null,
             "allowed_connections": [
               "mimo-default",
               "deepseek",
@@ -795,8 +723,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -816,8 +742,6 @@
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": true,
-            "allow_chatgpt_subscriptions": false,
-            "chatgpt_output_reservation": null,
             "allowed_connections": [
               "mimo-default",
               "deepseek",
@@ -881,8 +805,6 @@
         "active": false,
         "policy": {
           "allow_token_plans": false,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": null,
           "allowed_models": null,
           "requests_per_minute": null,
@@ -898,8 +820,6 @@
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": false,
-            "allow_chatgpt_subscriptions": false,
-            "chatgpt_output_reservation": null,
             "allowed_connections": null,
             "allowed_models": null,
             "requests_per_minute": null,
@@ -4113,14 +4033,6 @@
         "credential_type": "api_key"
       },
       {
-        "id": "chatgpt",
-        "name": "ChatGPT 个人订阅",
-        "base_url": "https://api.openai.com/v1",
-        "resource_type": "chatgpt_subscription",
-        "can_create": false,
-        "credential_type": "oauth"
-      },
-      {
         "id": "anthropic",
         "name": "Anthropic",
         "base_url": "https://api.anthropic.com/v1",
@@ -4283,39 +4195,6 @@
           "models": [
             "kimi-for-coding"
           ],
-          "error_code": null
-        }
-      },
-      {
-        "name": "ChatGPT Personal",
-        "provider": "chatgpt",
-        "resource_type": "chatgpt_subscription",
-        "base_url": "https://api.openai.com/v1",
-        "enabled": true,
-        "timeout_seconds": 60.0,
-        "stream_usage": true,
-        "token_parameter": "max_tokens",
-        "workspace_id": null,
-        "anthropic_version": "2026-10-21",
-        "allowed_models": [],
-        "default_model": null,
-        "id": "subscription",
-        "api_key_configured": false,
-        "plan": null,
-        "revision": "aede21b6aa211759fcba79d1a37a5729c40fa96f8d939444e122c7c5b9728e74",
-        "approval_revision": 1,
-        "editable_fields": [
-          "name",
-          "enabled",
-          "timeout_seconds"
-        ],
-        "discovery": {
-          "state": "success",
-          "checked_at": "2026-11-04T08:20:47.171992+00:00",
-          "discovered_at": "2026-11-04T08:20:47.171992+00:00",
-          "current": true,
-          "count": 0,
-          "models": [],
           "error_code": null
         }
       },
@@ -4615,30 +4494,6 @@
         },
         "live_availability": "unknown"
       },
-      "subscription": {
-        "connection_id": "subscription",
-        "connection_enabled": true,
-        "approval_revision": 1,
-        "default_model": null,
-        "protocol": "responses",
-        "discovery": {
-          "state": "success",
-          "checked_at": "2026-11-04T08:20:47.171992+00:00",
-          "discovered_at": "2026-11-04T08:20:47.171992+00:00",
-          "current": true,
-          "count": 0,
-          "models": [],
-          "error_code": null
-        },
-        "models": [],
-        "counts": {
-          "discovered": 0,
-          "approved": 0,
-          "application_authorized": 0,
-          "historically_verified": 0
-        },
-        "live_availability": "unknown"
-      },
       "anthropic": {
         "connection_id": "anthropic",
         "connection_enabled": true,
@@ -4747,8 +4602,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": false,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": null,
           "allowed_models": null,
           "requests_per_minute": null,
@@ -4769,8 +4622,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -4795,8 +4646,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -4821,8 +4670,6 @@
         "active": true,
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -4847,8 +4694,6 @@
         "active": false,
         "policy": {
           "allow_token_plans": false,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": null,
           "allowed_models": null,
           "requests_per_minute": null,
@@ -4869,8 +4714,6 @@
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": false,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": null,
           "allowed_models": null,
           "requests_per_minute": null,
@@ -4901,8 +4744,6 @@
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -4939,8 +4780,6 @@
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -4977,8 +4816,6 @@
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": true,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": [
             "mimo-default",
             "deepseek",
@@ -5013,8 +4850,6 @@
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": false,
-          "allow_chatgpt_subscriptions": false,
-          "chatgpt_output_reservation": null,
           "allowed_connections": null,
           "allowed_models": null,
           "requests_per_minute": null,

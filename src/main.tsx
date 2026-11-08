@@ -9,7 +9,10 @@ const root = createRoot(document.getElementById('root')!);
 const bootstrap = new URLSearchParams(location.hash.slice(1)).get('login');
 if (location.hash || location.search) history.replaceState(null, '', location.pathname);
 
-if (import.meta.env.DEV) {
+if (window.selark) {
+  const { default: DesktopRoot } = await import('./desktop/DesktopRoot');
+  root.render(<StrictMode><DesktopRoot /></StrictMode>);
+} else if (import.meta.env.DEV) {
   const { default: Workbench } = await import('./mocks/Workbench');
   root.render(<StrictMode><Workbench /></StrictMode>);
 } else {

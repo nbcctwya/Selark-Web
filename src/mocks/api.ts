@@ -160,9 +160,9 @@ export function createMockApi(options: { scenario?: Scenario; delayMs?: number; 
 
   function permitted(app: Application, connection: Connection, model: string) {
     const p = app.policy;
-    if (connection.resource_type !== 'api') {
+    if (connection.resource_type === 'token_plan') {
       if (!p.allowed_connections?.includes(connection.id)) return false;
-      if (connection.resource_type === 'token_plan' ? !p.allow_token_plans : !p.allow_chatgpt_subscriptions) return false;
+      if (!p.allow_token_plans) return false;
     }
     return (p.allowed_connections == null || p.allowed_connections.includes(connection.id))
       && (p.allowed_models == null || p.allowed_models.includes(`${connection.id}::${model}`));

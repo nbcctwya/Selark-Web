@@ -16,3 +16,7 @@ credentials/
 *.log
 .DS_Store
 Thumbs.db
+release/
+.test-profile*/
+artifacts/
+.benchmark/
