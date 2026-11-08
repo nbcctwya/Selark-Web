@@ -47,6 +47,10 @@ jobs:
 
   windows:
     runs-on: windows-latest
+    env:
+      # Fixed versions still use the checksums shipped in the locked installers.
+      ELECTRON_MIRROR: https://npmmirror.com/mirrors/electron/
+      ELECTRON_BUILDER_BINARIES_MIRROR: https://npmmirror.com/mirrors/electron-builder-binaries/
     timeout-minutes: 30
     defaults:
       run:
