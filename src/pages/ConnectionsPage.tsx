@@ -8,7 +8,7 @@ import { Avatar, Bar, Button, DefinitionList, Empty, Panel, Pill, Segmented, Tab
 import { ConnectionSettings, CreateConnection } from './connections/ConnectionForms';
 import { ModelCatalog } from './connections/ModelCatalog';
 import { authorizationText, availabilityText, connectionHeadline, discoveryText } from '../lib/domain';
-import { blockerLabels, dateTime, label, number, percent, relative } from '../lib/format';
+import { blockerLabels, counter, dateTime, label, number, percent, relative } from '../lib/format';
 
 type TypeFilter = 'all' | ResourceType;
 
@@ -178,7 +178,7 @@ function ProviderQuota({ c }: { c: Connection }) {
         <small>重置：{dateTime(w.reset_at, '未知')}</small></li>)}</ul></section>}
     {q.reported_counters.length > 0 && <section className="detail-section"><h3>报告计数</h3><div className="table-wrap"><table className="table compact">
       <thead><tr><th scope="col">窗口</th><th scope="col">单位</th><th scope="col" className="num">上限</th><th scope="col" className="num">已用</th><th scope="col" className="num">剩余</th><th scope="col">重置</th></tr></thead>
-      <tbody>{q.reported_counters.map((w, i) => <tr key={`${w.window}-${i}`}><td>{w.window}</td><td>{w.unit}</td><td className="num">{number(w.limit)}</td><td className="num">{number(w.used)}</td><td className="num">{number(w.remaining)}</td><td>{dateTime(w.reset_at, '未知')}</td></tr>)}</tbody>
+      <tbody>{q.reported_counters.map((w, i) => <tr key={`${w.window}-${i}`}><td>{w.window}</td><td>{w.unit}</td><td className="num">{counter(w.limit)}</td><td className="num">{counter(w.used)}</td><td className="num">{counter(w.remaining)}</td><td>{dateTime(w.reset_at, '未知')}</td></tr>)}</tbody>
     </table></div></section>}
     {!q.windows.length && !q.reported_counters.length && <Empty icon="gauge" title="没有历史套餐窗口">{c.resource_type === 'api' ? '按量 API 通常没有套餐窗口。' : '尚无供应商报告的套餐窗口。'}</Empty>}
   </>;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { compact, decimalString, duration, money, number, percent, relative, tone } from './format';
+import { compact, counter, decimalString, duration, money, number, percent, relative, tone } from './format';
 
 describe('display formatting', () => {
   it('never renders unknown values as zero', () => {
@@ -9,9 +9,16 @@ describe('display formatting', () => {
     expect(compact(null)).toBe('未知');
     expect(percent(null)).toBe('未知');
     expect(duration(null)).toBe('未知');
+    expect(counter(null)).toBe('未知');
+    expect(counter(undefined)).toBe('未知');
+    expect(counter('0')).toBe('0');
+    expect(counter('invalid')).toBe('未知');
+    expect(counter('1.5')).toBe('未知');
   });
 
-  it('keeps decimal money strings exact and separates currencies', () => {
+  it('keeps decimal counters and money exact and separates currencies', () => {
+    expect(counter('1000')).toBe('1,000');
+    expect(counter('9223372036854775807')).toBe('9,223,372,036,854,775,807');
     expect(decimalString('0.174508000')).toBe('0.174508');
     expect(decimalString('12.500000000')).toBe('12.50');
     expect(decimalString('1234567.000000001')).toBe('1,234,567.000000001');

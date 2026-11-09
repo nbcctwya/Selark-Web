@@ -13,6 +13,12 @@ export function number(value: number | null | undefined, fallback = UNKNOWN): st
   return Number.isInteger(value) ? integer.format(value) : decimal.format(value);
 }
 
+/** Provider counters are decimal strings and can exceed JavaScript's safe integer range. */
+export function counter(value: string | null | undefined, fallback = UNKNOWN): string {
+  if (value == null || !/^\d{1,19}$/.test(value)) return fallback;
+  return integer.format(BigInt(value));
+}
+
 export function compact(value: number | null | undefined, fallback = UNKNOWN): string {
   if (value == null || !Number.isFinite(value)) return fallback;
   return Math.abs(value) < 10000 ? number(value) : compactFormat.format(value);

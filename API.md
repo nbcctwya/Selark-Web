@@ -10,7 +10,7 @@
 - [Dashboard 功能说明](https://github.com/nbcctwya/Selark/blob/b8c26446385a138554aadc69aae51a046201f165/docs/guides/dashboard.md)
 
 后端实现基线包含查询、连接、模型及应用管理 API；它与 OpenAPI 文档版本分别记录。
-完整字段、请求和响应以本仓库固定的 [Dashboard OpenAPI](contracts/dashboard.openapi.json) 为准，其文档版本为 `2.0.0`。
+完整字段、请求和响应以本仓库固定的 [Dashboard OpenAPI](contracts/dashboard.openapi.json) 为准，其文档版本为 `2.1.0`。
 规范由 Selark 导出，前端的 `src/api/generated.ts` 自动生成；`src/api/types.ts` 提供便于组件使用的别名和 `DashboardApi`。
 主仓库维护入口为 [HTTP 接口文档](https://github.com/nbcctwya/Selark/tree/main/docs/api)，新增管理的业务说明固定到 [当前后端基线](https://github.com/nbcctwya/Selark/blob/b8c26446385a138554aadc69aae51a046201f165/docs/development/management-api.md)。
 后端升级时同步规范、生成类型、fixture 和此基线；设计中的新需求记录到 `BACKEND_REQUESTS.md`。
@@ -95,6 +95,12 @@
 前端普通读取/写入默认等待 20 秒，`discoverModels` 默认等待 45 秒。传入 AbortSignal 时由调用方控制取消及截止时间；写入取消或超时不证明服务端未完成。写入超时不证明操作未发生，不能自动重试，应该提示刷新核对。
 
 `null`、缺失字段、真实零分别处理。费用用十进制字符串按币种展示，不把订阅费用、未知余额填成零。配额包含保守预留，日配额固定 UTC；历史趋势按 UTC 日分组。调用最终状态、上游结果、下游交付、用量完整性分别展示。
+
+`provider_quota.reported_counters` 的 `limit/used/remaining` 为十进制整数字符串或 null，单位由 `unit` 表示。展示须保留 64 位整数精度，不能先转为 JavaScript Number；`"0"` 是真实零，null 才是未知。2.1.0 修正规范中的计数类型，实际 API 的字符串格式保持不变。
+
+调用记录新增 `reasoning_tokens/thinking_tokens`，分别投影供应商 `completion_tokens_details.reasoning_tokens` 和 `output_tokens_details.thinking_tokens`，值为十进制整数字符串或 null。未报告或无效计数为 null；有效报告即使与总量矛盾也保留，并结合 `usage_final/usage_consistency` 展示，不加到总 Token 或费用。接口只投影这两个计数，不开放原始用量对象。
+
+`usage.models` 按连接 ID 与模型 ID 分组，始终返回 `completed_requests/success_rate/average_latency_ms/latency_samples`。成功率的分母为 success、failed、cancelled、interrupted；平均耗时只使用这些已结束请求中非负且小于 10¹⁵ ms 的有效样本。没有已结束请求或有效耗时样本时，对应比率或平均值为 null；真实零耗时为 0。
 
 ## 新增管理方法
 

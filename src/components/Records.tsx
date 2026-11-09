@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Application, RecordsPage, RequestRecord, Snapshot } from '../api/types';
-import { dateTime, decimalString, duration, label, number, shortTime } from '../lib/format';
+import { counter, dateTime, decimalString, duration, label, number, shortTime } from '../lib/format';
 import { Icon } from './Icon';
 import { Sheet } from './Overlay';
 import { Button, DefinitionList, Empty, Panel, Pill, Segmented, StatusPill, Tag, Unknown } from './ui';
@@ -83,8 +83,9 @@ function RecordDetail({ record: r, snapshot, onClose }: { record: RequestRecord 
       ]} /><p className="note">端到端耗时包含排队与下游传输，不是首 Token 延迟。</p></section>
       <section className="detail-section"><h3>用量</h3><DefinitionList items={[
         ['输入 Token', number(r.prompt_tokens)], ['输出 Token', number(r.completion_tokens)], ['总 Token', number(r.total_tokens)],
+        ['报告推理 Token', counter(r.reasoning_tokens)], ['报告思考 Token', counter(r.thinking_tokens)],
         ['用量一致性', label(r.usage_consistency)], ['配额核算口径', r.cost.token_basis ? label(r.cost.token_basis) : null],
-      ]} /></section>
+      ]} /><p className="note">推理与思考计数按供应商报告展示，未报告或无效时为未知；不额外加到总 Token 或费用中。总用量是否完整、是否一致请看对应状态。</p></section>
       <section className="detail-section"><h3>费用</h3><DefinitionList items={[
         ['费用估算', r.cost.estimated_cost == null || !r.cost.currency ? <Unknown>未知 / 未定价</Unknown> : <span className="mono-num">{r.cost.currency} {decimalString(r.cost.estimated_cost)}</span>],
         ['费用口径', r.cost.cost_status ? label(r.cost.cost_status) : null],

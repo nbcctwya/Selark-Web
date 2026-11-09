@@ -34,6 +34,11 @@ test('five pages, filters, pagination and request details work without an API se
   await expect(detail).toContainText('调用详情');
   await expect(detail).toContainText('上游结果');
   await expect(detail).toContainText('下游交付');
+  const recordId = await detail.locator('.sheet-sub').innerText();
+  const record = fixture.records.find(row => row.request_id === recordId)!;
+  const reported = (label: string) => detail.locator('.deflist > div').filter({ has: page.locator('dt', { hasText: label }) }).locator('dd');
+  await expect(reported('报告推理 Token')).toHaveText(record.reasoning_tokens == null ? '未知' : BigInt(record.reasoning_tokens).toLocaleString('zh-CN'));
+  await expect(reported('报告思考 Token')).toHaveText(record.thinking_tokens == null ? '未知' : BigInt(record.thinking_tokens).toLocaleString('zh-CN'));
   await page.getByRole('button', { name: '关闭详情' }).click();
   await expect(detail).toHaveCount(0);
 
@@ -64,6 +69,12 @@ test('five pages, filters, pagination and request details work without an API se
   await expect(page.getByRole('heading', { name: /异常调用/ })).toBeVisible();
   await nav(page, '连接与模型').click();
   await expect(page.getByRole('heading', { name: 'OpenAI Demo' })).toBeVisible();
+  const plan = fixture.snapshot.connections.find(c => c.resource_type === 'token_plan')!;
+  const planSheet = await openConnection(page, plan.name);
+  await planSheet.getByRole('tab', { name: '官方套餐窗口' }).click();
+  await expect(planSheet.getByRole('row').filter({ hasText: 'unscoped' }).getByRole('cell'))
+    .toHaveText(['unscoped', 'provider_units', '1,000', '900', '100', '未知']);
+  await page.getByRole('button', { name: '关闭详情' }).click();
   // Hidden tabs stop their freshness clock as well as API polling, then refresh on return.
   await expect(page.getByRole('button', { name: '刷新', exact: true })).toBeEnabled();
   await page.clock.install();
@@ -236,10 +247,22 @@ test('applications show a one-time token, edit policies with revisions and revok
   await create.getByRole('button', { name: '创建并生成令牌' }).click();
   await expect(create.getByText(/请输入 1–/).first()).toBeVisible();
   await create.getByLabel('日 Token 上限').fill('100000');
+  await page.clock.install();
+  await page.clock.pauseAt(new Date());
   await create.getByRole('button', { name: '创建并生成令牌' }).click();
+  await expect(create.getByRole('button', { name: '关闭详情' })).toBeDisabled();
+  for (const shortcut of ['Control+k', 'Meta+k', 'Escape']) {
+    await page.keyboard.press(shortcut);
+    await expect(create).toBeVisible();
+    await expect(page.getByRole('dialog', { name: '命令面板' })).toBeHidden();
+  }
+  await page.clock.resume();
   const token = create.getByLabel('一次性调用令牌');
   await expect(token).toHaveValue(/^demo-only-not-a-real-token-/);
   await expect(create).toContainText('这是唯一一次显示此令牌');
+  await page.keyboard.press('Control+k');
+  await expect(page.getByRole('dialog', { name: '命令面板' })).toBeHidden();
+  await expect(token).toHaveValue(/^demo-only-not-a-real-token-/);
   await create.getByRole('button', { name: '我已保存，关闭' }).click();
   await expect(page.getByLabel('一次性调用令牌')).toHaveCount(0);
   expect(await page.content()).not.toContain('demo-only-not-a-real-token');
@@ -367,6 +390,8 @@ test('all pages fit a phone viewport and support a dark theme', async ({ page },
 
 test('production build uses same-origin HTTP under CSP, survives reload and clears data after a 401', async ({ page }) => {
   let exchanges = 0, expired = false;
+  let partialExpiry = false;
+  let releaseLogs: (() => void) | undefined;
   const snapshot = structuredClone(fixture.snapshot);
   for (const app of snapshot.applications) app.id = `caller_${'a'.repeat(24)}_${app.id}`;
   const errors: string[] = [];
@@ -389,14 +414,20 @@ test('production build uses same-origin HTTP under CSP, survives reload and clea
     expect(request.headers()['x-selark-dashboard']).toBe('1');
     expect(request.headers()['x-selark-session']).toBe('fixture-browser-session');
     expect(request.headers().cookie).toBeUndefined();
-    if (expired) { await route.fulfill({ status: 401, json: { error: '管理会话已失效。' } }); return; }
+    if (partialExpiry && path === '/api/logs') {
+      await new Promise<void>(resolve => { releaseLogs = resolve; });
+      await route.fulfill({ json: fixture.logs }).catch(() => { /* Expiry aborts this read. */ });
+      return;
+    }
+    if (expired || (partialExpiry && path === '/api/records')) { await route.fulfill({ status: 401, json: { error: '管理会话已失效。' } }); return; }
     const values: Record<string, unknown> = { '/api/snapshot': snapshot, '/api/records': { items: fixture.records.slice(0, 25), total: 65, offset: 0, limit: 25 }, '/api/logs': fixture.logs, '/api/backups': fixture.backups, '/api/capabilities': fixture.management.capabilities };
     if (!(path in values)) throw new Error(`Unexpected API request ${request.method()} ${path}`);
     await route.fulfill({ json: values[path] });
   });
   // Every entry point must expire the whole dashboard, including reads started by a sheet.
-  for (const entry of ['write', 'providers', 'connection', 'application']) {
+  for (const entry of ['write', 'providers', 'connection', 'application', 'refresh']) {
     expired = false;
+    await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('about:blank');
     await page.goto('http://127.0.0.1:5174/#login=fixture-login');
     await expect(metrics(page)).toBeVisible();
@@ -407,7 +438,10 @@ test('production build uses same-origin HTTP under CSP, survives reload and clea
     await expect(metrics(page)).toBeVisible();
     expect(exchanges).toBe(previousExchanges);
 
-    if (entry === 'application') {
+    if (entry === 'refresh') {
+      partialExpiry = true;
+      await page.getByRole('button', { name: '刷新', exact: true }).click();
+    } else if (entry === 'application') {
       await page.setViewportSize({ width: 390, height: 844 });
       await nav(page, '应用管理').click();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -428,6 +462,14 @@ test('production build uses same-origin HTTP under CSP, survives reload and clea
     await expect(page.getByRole('dialog')).toHaveCount(0);
     await expect(page.getByText('OpenAI Demo')).toHaveCount(0);
     expect(await page.evaluate(() => sessionStorage.getItem('selark-dashboard-session'))).toBeNull();
+    if (entry === 'refresh') {
+      // A late successful read cannot restore data after expiry or its old deadline.
+      releaseLogs?.();
+      await page.clock.install();
+      await page.clock.fastForward(21000);
+      await expect(metrics(page)).toBeHidden();
+      await expect(page.getByRole('heading', { name: '需要本机管理会话' })).toBeVisible();
+    }
   }
   expect(errors).toEqual([]);
 });

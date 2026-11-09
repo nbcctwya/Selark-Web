@@ -105,7 +105,12 @@ function Workspace({ api, bootstrap = null, developmentControls }: { api: Dashbo
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); setPalette(true); return; }
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        // Keep modal workflows, including pending creates and one-time tokens, in place.
+        if (!document.querySelector('dialog[open]')) setPalette(true);
+        return;
+      }
       if (event.metaKey || event.ctrlKey || event.altKey || typing(document.activeElement) || document.querySelector('dialog[open]')) return;
       const index = Number(event.key);
       if (index >= 1 && index <= pages.length) { event.preventDefault(); go(pages[index - 1].key); }

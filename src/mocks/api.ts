@@ -101,7 +101,7 @@ export function createMockApi(options: { scenario?: Scenario; delayMs?: number; 
     return { since, until, selected };
   }
 
-  function summary(selected: RequestRecord[]): UsageSummary {
+  function summary(selected: RequestRecord[]): Required<UsageSummary> {
     const statuses: Record<string, number> = {};
     for (const row of selected) statuses[row.status] = (statuses[row.status] ?? 0) + 1;
     const tokens = (key: 'prompt_tokens' | 'completion_tokens' | 'total_tokens') => {
@@ -112,7 +112,7 @@ export function createMockApi(options: { scenario?: Scenario; delayMs?: number; 
     const currencies = new Set(selected.flatMap(row => row.cost.estimated_cost != null && row.cost.currency ? [row.cost.currency] : []));
     for (const currency of currencies) costs[currency] = addMoney(selected.flatMap(row => row.cost.currency === currency && row.cost.estimated_cost != null ? [row.cost.estimated_cost] : []));
     const completed = selected.filter(row => ['success', 'failed', 'cancelled', 'interrupted'].includes(row.status));
-    const latencies = completed.flatMap(row => row.duration_ms == null ? [] : [row.duration_ms]);
+    const latencies = completed.flatMap(row => row.duration_ms != null && row.duration_ms >= 0 && row.duration_ms < 1e15 ? [row.duration_ms] : []);
     const bases: Record<string, number> = {};
     for (const row of selected) {
       const allocation = content.accounting[row.request_id];

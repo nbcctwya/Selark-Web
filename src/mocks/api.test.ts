@@ -80,6 +80,14 @@ describe('mock contract and interactions', () => {
     expect(snapshot.usage?.summary.estimated_cost_by_currency).toEqual(fixture.snapshot.usage.summary.estimated_cost_by_currency);
     expect(snapshot.usage?.summary.unknown_consumption_requests).toBe(fixture.snapshot.usage.summary.unknown_consumption_requests);
     expect(snapshot.usage?.summary.resource_accounting).toEqual(fixture.snapshot.usage.summary.resource_accounting);
+    const actual = snapshot.usage!.models;
+    for (const model of fixture.snapshot.usage.models) {
+      const mock = actual.find(item => item.connection_id === model.connection_id && item.model === model.model)!;
+      expect(mock.success_rate).toBe(model.success_rate);
+      expect(mock.average_latency_ms).toBe(model.average_latency_ms);
+      expect(mock.completed_requests).toBe(model.completed_requests);
+      expect(mock.latency_samples).toBe(model.latency_samples);
+    }
   });
 
   it('filters summaries and records consistently and paginates without duplicates', async () => {

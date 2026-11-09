@@ -121,16 +121,19 @@ export function useDashboard(api: DashboardApi, bootstrap: string | null, filter
       await api.initialize(bootstrap);
       controller.signal.throwIfAborted();
       const snapshot = await api.snapshot(filters, controller.signal);
+      const part = <T,>(result: Promise<T>) => result.catch(error => {
+        // Expire immediately; another section may wait until the shared deadline.
+        if (version === generation.current && isExpired(error)) expire(error.message);
+        throw error;
+      });
       const [records, logs, backups, capabilities] = await Promise.allSettled([
-        api.records({ ...pinned(filters, snapshot), offset: used.offset, errors: used.errors }, controller.signal),
-        api.logs(controller.signal),
-        api.backups(controller.signal),
-        api.getCapabilities(controller.signal),
+        part(api.records({ ...pinned(filters, snapshot), offset: used.offset, errors: used.errors }, controller.signal)),
+        part(api.logs(controller.signal)),
+        part(api.backups(controller.signal)),
+        part(api.getCapabilities(controller.signal)),
       ]);
       controller.signal.throwIfAborted();
       if (version !== generation.current) return false;
-      const expired = [records, logs, backups, capabilities].find(r => r.status === 'rejected' && isExpired(r.reason));
-      if (expired?.status === 'rejected') throw expired.reason;
       const fail = (result: PromiseSettledResult<unknown>, fallback: string) => result.status === 'rejected' ? reason(result.reason, fallback) : null;
       snapshotRef.current = snapshot;
       setState({

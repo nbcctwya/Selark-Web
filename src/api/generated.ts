@@ -777,11 +777,11 @@ export interface components {
     /** ModelUsage */
     ModelUsage: {
       /** Average Latency Ms */
-      average_latency_ms?: number | null;
+      average_latency_ms: number | null;
       /** Billed Cost */
       billed_cost: null;
       /** Completed Requests */
-      completed_requests?: number;
+      completed_requests: number;
       /** Connection Id */
       connection_id: string | null;
       /** Estimated Cost By Currency */
@@ -794,7 +794,7 @@ export interface components {
       /** Known Usage Requests */
       known_usage_requests: number;
       /** Latency Samples */
-      latency_samples?: number;
+      latency_samples: number;
       /** Local Rejected Requests */
       local_rejected_requests: number;
       /** Missing Field Requests */
@@ -815,7 +815,7 @@ export interface components {
         [key: string]: number;
       };
       /** Success Rate */
-      success_rate?: number | null;
+      success_rate: number | null;
       /** Unknown Attempt Count Requests */
       unknown_attempt_count_requests: number;
       /** Unknown Consumption Requests */
@@ -1177,15 +1177,15 @@ export interface components {
     /** QuotaCounter */
     QuotaCounter: {
       /** Limit */
-      limit: number | null;
+      limit: string | null;
       /** Remaining */
-      remaining: number | null;
+      remaining: string | null;
       /** Reset At */
       reset_at: string | null;
       /** Unit */
       unit: string;
       /** Used */
-      used: number | null;
+      used: string | null;
       /** Window */
       window: string;
     };
@@ -1254,6 +1254,8 @@ export interface components {
       purpose: string;
       /** Queue Ms */
       queue_ms: number | null;
+      /** Reasoning Tokens */
+      reasoning_tokens: string | null;
       /** Request Id */
       request_id: string;
       /** Resource Type */
@@ -1262,6 +1264,8 @@ export interface components {
       started_at: string | null;
       /** Status */
       status: string;
+      /** Thinking Tokens */
+      thinking_tokens: string | null;
       /** Total Tokens */
       total_tokens: number | null;
       /** Upstream Attempts */

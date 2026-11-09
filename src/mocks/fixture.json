@@ -1,9 +1,9 @@
 {
   "fixture_only": true,
   "contract": "selark-dashboard-v2",
-  "reference_time": "2026-11-07T14:38:16.572627+00:00",
+  "reference_time": "2026-11-09T11:38:40.790969+00:00",
   "snapshot": {
-    "checked_at": "2026-11-07T14:38:16.572627+00:00",
+    "checked_at": "2026-11-09T11:38:40.790969+00:00",
     "version": "0.10.0",
     "scope": "local_instance",
     "ok": true,
@@ -29,7 +29,7 @@
         },
         "verification": {
           "state": "success",
-          "verified_at": "2026-11-07T09:34:53.929581+00:00",
+          "verified_at": "2026-11-09T06:35:18.140769+00:00",
           "age_seconds": 18202,
           "model": "mimo-fixture",
           "scope": "connection_configuration"
@@ -41,8 +41,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.395827+00:00",
-          "discovered_at": "2026-11-07T14:38:16.395827+00:00",
+          "checked_at": "2026-11-09T11:38:40.630064+00:00",
+          "discovered_at": "2026-11-09T11:38:40.630064+00:00",
           "current": true,
           "count": 2
         },
@@ -81,7 +81,7 @@
                 {
                   "state": "success",
                   "outcome": "success",
-                  "verified_at": "2026-11-07T09:34:53.929581+00:00",
+                  "verified_at": "2026-11-09T06:35:18.140769+00:00",
                   "request_id": "fixture-00063",
                   "actual_model": "mimo-fixture",
                   "protocol": "chat-completions",
@@ -138,7 +138,7 @@
         },
         "verification": {
           "state": "success",
-          "verified_at": "2026-11-07T12:06:17.006504+00:00",
+          "verified_at": "2026-11-09T09:06:41.217692+00:00",
           "age_seconds": 9119,
           "model": "deepseek-fixture",
           "scope": "connection_configuration"
@@ -150,8 +150,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.411724+00:00",
-          "discovered_at": "2026-11-07T14:38:16.411724+00:00",
+          "checked_at": "2026-11-09T11:38:40.655879+00:00",
+          "discovered_at": "2026-11-09T11:38:40.655879+00:00",
           "current": true,
           "count": 1
         },
@@ -190,7 +190,7 @@
                 {
                   "state": "success",
                   "outcome": "success",
-                  "verified_at": "2026-11-07T12:06:17.006504+00:00",
+                  "verified_at": "2026-11-09T09:06:41.217692+00:00",
                   "request_id": "fixture-00064",
                   "actual_model": "deepseek-fixture",
                   "protocol": "chat-completions",
@@ -229,7 +229,7 @@
         },
         "verification": {
           "state": "success",
-          "verified_at": "2026-11-07T07:03:30.852658+00:00",
+          "verified_at": "2026-11-09T04:03:55.063846+00:00",
           "age_seconds": 27285,
           "model": "kimi-for-coding",
           "scope": "connection_configuration"
@@ -241,8 +241,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.427989+00:00",
-          "discovered_at": "2026-11-07T14:38:16.427989+00:00",
+          "checked_at": "2026-11-09T11:38:40.673603+00:00",
+          "discovered_at": "2026-11-09T11:38:40.673603+00:00",
           "current": true,
           "count": 1
         },
@@ -279,7 +279,7 @@
                 {
                   "state": "success",
                   "outcome": "success",
-                  "verified_at": "2026-11-07T07:03:30.852658+00:00",
+                  "verified_at": "2026-11-09T04:03:55.063846+00:00",
                   "request_id": "fixture-00062",
                   "actual_model": "kimi-for-coding",
                   "protocol": "chat-completions",
@@ -294,18 +294,27 @@
           ]
         },
         "provider_quota": {
-          "state": "never",
+          "state": "partial",
           "remaining_tokens": null,
           "current_remaining_tokens": null,
           "historical_snapshot": true,
-          "checked_at": null,
-          "age_seconds": null,
+          "checked_at": "2026-11-09T11:38:40.688339+00:00",
+          "age_seconds": 0,
           "extra_usage": "unknown",
           "membership_status": "unknown",
           "conflicting_fields": false,
           "invalid_fields": false,
           "windows": [],
-          "reported_counters": []
+          "reported_counters": [
+            {
+              "window": "unscoped",
+              "unit": "provider_units",
+              "limit": "1000",
+              "used": "900",
+              "remaining": "100",
+              "reset_at": null
+            }
+          ]
         }
       },
       {
@@ -340,8 +349,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.447057+00:00",
-          "discovered_at": "2026-11-07T14:38:16.447057+00:00",
+          "checked_at": "2026-11-09T11:38:40.692687+00:00",
+          "discovered_at": "2026-11-09T11:38:40.692687+00:00",
           "current": true,
           "count": 1
         },
@@ -411,8 +420,8 @@
         },
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.462315+00:00",
-          "discovered_at": "2026-11-07T14:38:16.462315+00:00",
+          "checked_at": "2026-11-09T11:38:40.714738+00:00",
+          "discovered_at": "2026-11-09T11:38:40.714738+00:00",
           "current": true,
           "count": 2
         },
@@ -468,7 +477,7 @@
       {
         "id": "legacy",
         "name": "Legacy client (0.1.x)",
-        "created_at": "2026-11-07T14:38:16.011151+00:00",
+        "created_at": "2026-11-09T11:38:40.232168+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -484,7 +493,7 @@
           "budget_currency": "USD"
         },
         "quota": {
-          "day": "2026-11-07",
+          "day": "2026-11-09",
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": false,
@@ -550,7 +559,7 @@
       {
         "id": "demo-app-1",
         "name": "Cursor Workspace",
-        "created_at": "2026-11-07T14:38:16.077871+00:00",
+        "created_at": "2026-11-09T11:38:40.289482+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -570,7 +579,7 @@
           "budget_currency": "USD"
         },
         "quota": {
-          "day": "2026-11-07",
+          "day": "2026-11-09",
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": true,
@@ -634,7 +643,7 @@
       {
         "id": "demo-app-2",
         "name": "Personal Notebook",
-        "created_at": "2026-11-07T14:38:16.080213+00:00",
+        "created_at": "2026-11-09T11:38:40.291512+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -654,7 +663,7 @@
           "budget_currency": "USD"
         },
         "quota": {
-          "day": "2026-11-07",
+          "day": "2026-11-09",
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": true,
@@ -718,7 +727,7 @@
       {
         "id": "demo-app-3",
         "name": "Research Tools",
-        "created_at": "2026-11-07T14:38:16.081816+00:00",
+        "created_at": "2026-11-09T11:38:40.292895+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -738,7 +747,7 @@
           "budget_currency": "USD"
         },
         "quota": {
-          "day": "2026-11-07",
+          "day": "2026-11-09",
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": true,
@@ -800,8 +809,8 @@
       {
         "id": "demo-app-4",
         "name": "Disabled integration",
-        "created_at": "2026-11-07T14:38:16.356806+00:00",
-        "revoked_at": "2026-11-07T14:38:16.357825+00:00",
+        "created_at": "2026-11-09T11:38:40.577272+00:00",
+        "revoked_at": "2026-11-09T11:38:40.578073+00:00",
         "active": false,
         "policy": {
           "allow_token_plans": false,
@@ -816,7 +825,7 @@
           "budget_currency": "USD"
         },
         "quota": {
-          "day": "2026-11-07",
+          "day": "2026-11-09",
           "timezone": "UTC",
           "policy": {
             "allow_token_plans": false,
@@ -856,8 +865,8 @@
     "usage": {
       "timezone": "UTC",
       "filters": {
-        "since": "2026-10-31T14:38:16.566725+00:00",
-        "until": "2026-11-07T14:38:16.566725+00:00"
+        "since": "2026-11-02T11:38:40.784876+00:00",
+        "until": "2026-11-09T11:38:40.784876+00:00"
       },
       "summary": {
         "requests": 65,
@@ -905,25 +914,25 @@
       "group_by": "day",
       "trend": [
         {
-          "day": "2026-10-31",
-          "requests": 3,
-          "known_usage_requests": 2,
+          "day": "2026-11-02",
+          "requests": 4,
+          "known_usage_requests": 3,
           "missing_usage_requests": 1,
           "local_rejected_requests": 0,
           "unknown_consumption_requests": 1,
           "in_flight_requests": 0,
-          "reported_usage_requests": 2,
-          "upstream_attempts": 3,
+          "reported_usage_requests": 3,
+          "upstream_attempts": 4,
           "unknown_attempt_count_requests": 0,
           "unknown_time_requests": 0,
           "status_counts": {
             "failed": 1,
-            "success": 2
+            "success": 3
           },
           "known_tokens": {
-            "prompt_tokens": 2381,
-            "completion_tokens": 329,
-            "total_tokens": 2710
+            "prompt_tokens": 3762,
+            "completion_tokens": 558,
+            "total_tokens": 4320
           },
           "missing_field_requests": {
             "prompt_tokens": 1,
@@ -931,105 +940,21 @@
             "total_tokens": 1
           },
           "estimated_cost_by_currency": {
-            "USD": "0.001556000"
+            "USD": "0.003624000"
           },
           "unknown_cost_requests": 2,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
-            "requests": 3,
+            "requests": 4,
             "tokens_by_basis": {
               "unknown_hold": 1100,
-              "reported_total": 2710
+              "reported_total": 4320
             }
           },
-          "completed_requests": 3,
-          "success_rate": 0.6666666666666666,
-          "average_latency_ms": 233.0
-        },
-        {
-          "day": "2026-11-01",
-          "requests": 9,
-          "known_usage_requests": 9,
-          "missing_usage_requests": 0,
-          "local_rejected_requests": 0,
-          "unknown_consumption_requests": 0,
-          "in_flight_requests": 0,
-          "reported_usage_requests": 9,
-          "upstream_attempts": 9,
-          "unknown_attempt_count_requests": 0,
-          "unknown_time_requests": 0,
-          "status_counts": {
-            "success": 9
-          },
-          "known_tokens": {
-            "prompt_tokens": 17001,
-            "completion_tokens": 3609,
-            "total_tokens": 20610
-          },
-          "missing_field_requests": {
-            "prompt_tokens": 0,
-            "completion_tokens": 0,
-            "total_tokens": 0
-          },
-          "estimated_cost_by_currency": {
-            "USD": "0.017784000"
-          },
-          "unknown_cost_requests": 3,
-          "billed_cost": null,
-          "resource_accounting": {
-            "scope": "Selark 0.5+ admissions",
-            "requests": 9,
-            "tokens_by_basis": {
-              "reported_total": 20610
-            }
-          },
-          "completed_requests": 9,
-          "success_rate": 1.0,
-          "average_latency_ms": 731.0
-        },
-        {
-          "day": "2026-11-02",
-          "requests": 10,
-          "known_usage_requests": 9,
-          "missing_usage_requests": 1,
-          "local_rejected_requests": 0,
-          "unknown_consumption_requests": 1,
-          "in_flight_requests": 0,
-          "reported_usage_requests": 9,
-          "upstream_attempts": 10,
-          "unknown_attempt_count_requests": 0,
-          "unknown_time_requests": 0,
-          "status_counts": {
-            "success": 9,
-            "failed": 1
-          },
-          "known_tokens": {
-            "prompt_tokens": 27542,
-            "completion_tokens": 7178,
-            "total_tokens": 34720
-          },
-          "missing_field_requests": {
-            "prompt_tokens": 1,
-            "completion_tokens": 1,
-            "total_tokens": 1
-          },
-          "estimated_cost_by_currency": {
-            "USD": "0.032120000"
-          },
-          "unknown_cost_requests": 4,
-          "billed_cost": null,
-          "resource_accounting": {
-            "scope": "Selark 0.5+ admissions",
-            "requests": 10,
-            "tokens_by_basis": {
-              "reported_total": 34720,
-              "unknown_hold": 4330
-            }
-          },
-          "completed_requests": 10,
-          "success_rate": 0.9,
-          "average_latency_ms": 1519.5
+          "completed_requests": 4,
+          "success_rate": 0.75,
+          "average_latency_ms": 274.5
         },
         {
           "day": "2026-11-03",
@@ -1047,9 +972,9 @@
             "success": 9
           },
           "known_tokens": {
-            "prompt_tokens": 38718,
-            "completion_tokens": 10962,
-            "total_tokens": 49680
+            "prompt_tokens": 18144,
+            "completion_tokens": 3996,
+            "total_tokens": 22140
           },
           "missing_field_requests": {
             "prompt_tokens": 0,
@@ -1057,7 +982,7 @@
             "total_tokens": 0
           },
           "estimated_cost_by_currency": {
-            "USD": "0.047736000"
+            "USD": "0.020088000"
           },
           "unknown_cost_requests": 3,
           "billed_cost": null,
@@ -1065,12 +990,12 @@
             "scope": "Selark 0.5+ admissions",
             "requests": 9,
             "tokens_by_basis": {
-              "reported_total": 49680
+              "reported_total": 22140
             }
           },
           "completed_requests": 9,
           "success_rate": 1.0,
-          "average_latency_ms": 2308.0
+          "average_latency_ms": 814.0
         },
         {
           "day": "2026-11-04",
@@ -1089,9 +1014,9 @@
             "failed": 1
           },
           "known_tokens": {
-            "prompt_tokens": 49259,
-            "completion_tokens": 14531,
-            "total_tokens": 63790
+            "prompt_tokens": 28812,
+            "completion_tokens": 7608,
+            "total_tokens": 36420
           },
           "missing_field_requests": {
             "prompt_tokens": 1,
@@ -1099,21 +1024,21 @@
             "total_tokens": 1
           },
           "estimated_cost_by_currency": {
-            "USD": "0.073100000"
+            "USD": "0.034680000"
           },
-          "unknown_cost_requests": 3,
+          "unknown_cost_requests": 4,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
             "requests": 10,
             "tokens_by_basis": {
-              "reported_total": 63790,
-              "unknown_hold": 7560
+              "reported_total": 36420,
+              "unknown_hold": 4330
             }
           },
           "completed_requests": 10,
           "success_rate": 0.9,
-          "average_latency_ms": 1868.1
+          "average_latency_ms": 1602.5
         },
         {
           "day": "2026-11-05",
@@ -1131,9 +1056,9 @@
             "success": 9
           },
           "known_tokens": {
-            "prompt_tokens": 60435,
-            "completion_tokens": 16215,
-            "total_tokens": 76650
+            "prompt_tokens": 39861,
+            "completion_tokens": 11349,
+            "total_tokens": 51210
           },
           "missing_field_requests": {
             "prompt_tokens": 0,
@@ -1141,7 +1066,7 @@
             "total_tokens": 0
           },
           "estimated_cost_by_currency": {
-            "USD": "0.071388000"
+            "USD": "0.050040000"
           },
           "unknown_cost_requests": 3,
           "billed_cost": null,
@@ -1149,12 +1074,12 @@
             "scope": "Selark 0.5+ admissions",
             "requests": 9,
             "tokens_by_basis": {
-              "reported_total": 76650
+              "reported_total": 51210
             }
           },
           "completed_requests": 9,
           "success_rate": 1.0,
-          "average_latency_ms": 814.0
+          "average_latency_ms": 2391.0
         },
         {
           "day": "2026-11-06",
@@ -1173,9 +1098,9 @@
             "failed": 1
           },
           "known_tokens": {
-            "prompt_tokens": 70976,
-            "completion_tokens": 2984,
-            "total_tokens": 73960
+            "prompt_tokens": 50529,
+            "completion_tokens": 14961,
+            "total_tokens": 65490
           },
           "missing_field_requests": {
             "prompt_tokens": 1,
@@ -1183,41 +1108,41 @@
             "total_tokens": 1
           },
           "estimated_cost_by_currency": {
-            "USD": "0.044120000"
+            "USD": "0.063864000"
           },
-          "unknown_cost_requests": 5,
+          "unknown_cost_requests": 4,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
             "requests": 10,
             "tokens_by_basis": {
-              "reported_total": 73960,
-              "unknown_hold": 8690
+              "reported_total": 65490,
+              "unknown_hold": 7560
             }
           },
           "completed_requests": 10,
           "success_rate": 0.9,
-          "average_latency_ms": 1602.5
+          "average_latency_ms": 1644.0
         },
         {
           "day": "2026-11-07",
-          "requests": 5,
-          "known_usage_requests": 5,
+          "requests": 9,
+          "known_usage_requests": 9,
           "missing_usage_requests": 0,
           "local_rejected_requests": 0,
           "unknown_consumption_requests": 0,
           "in_flight_requests": 0,
-          "reported_usage_requests": 5,
-          "upstream_attempts": 5,
+          "reported_usage_requests": 9,
+          "upstream_attempts": 9,
           "unknown_attempt_count_requests": 0,
           "unknown_time_requests": 0,
           "status_counts": {
-            "success": 5
+            "success": 9
           },
           "known_tokens": {
-            "prompt_tokens": 44370,
-            "completion_tokens": 3330,
-            "total_tokens": 47700
+            "prompt_tokens": 61578,
+            "completion_tokens": 14502,
+            "total_tokens": 76080
           },
           "missing_field_requests": {
             "prompt_tokens": 0,
@@ -1225,20 +1150,104 @@
             "total_tokens": 0
           },
           "estimated_cost_by_currency": {
-            "USD": "0.043488000"
+            "USD": "0.071388000"
+          },
+          "unknown_cost_requests": 3,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 9,
+            "tokens_by_basis": {
+              "reported_total": 76080
+            }
+          },
+          "completed_requests": 9,
+          "success_rate": 1.0,
+          "average_latency_ms": 897.0
+        },
+        {
+          "day": "2026-11-08",
+          "requests": 10,
+          "known_usage_requests": 9,
+          "missing_usage_requests": 1,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 1,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 9,
+          "upstream_attempts": 10,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 9,
+            "failed": 1
+          },
+          "known_tokens": {
+            "prompt_tokens": 72246,
+            "completion_tokens": 3414,
+            "total_tokens": 75660
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 1,
+            "completion_tokens": 1,
+            "total_tokens": 1
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.054480000"
+          },
+          "unknown_cost_requests": 4,
+          "billed_cost": null,
+          "resource_accounting": {
+            "scope": "Selark 0.5+ admissions",
+            "requests": 10,
+            "tokens_by_basis": {
+              "reported_total": 75660,
+              "unknown_hold": 8690
+            }
+          },
+          "completed_requests": 10,
+          "success_rate": 0.9,
+          "average_latency_ms": 1685.5
+        },
+        {
+          "day": "2026-11-09",
+          "requests": 4,
+          "known_usage_requests": 4,
+          "missing_usage_requests": 0,
+          "local_rejected_requests": 0,
+          "unknown_consumption_requests": 0,
+          "in_flight_requests": 0,
+          "reported_usage_requests": 4,
+          "upstream_attempts": 4,
+          "unknown_attempt_count_requests": 0,
+          "unknown_time_requests": 0,
+          "status_counts": {
+            "success": 4
+          },
+          "known_tokens": {
+            "prompt_tokens": 35750,
+            "completion_tokens": 2750,
+            "total_tokens": 38500
+          },
+          "missing_field_requests": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0
+          },
+          "estimated_cost_by_currency": {
+            "USD": "0.033128000"
           },
           "unknown_cost_requests": 1,
           "billed_cost": null,
           "resource_accounting": {
             "scope": "Selark 0.5+ admissions",
-            "requests": 5,
+            "requests": 4,
             "tokens_by_basis": {
-              "reported_total": 47700
+              "reported_total": 38500
             }
           },
-          "completed_requests": 5,
+          "completed_requests": 4,
           "success_rate": 1.0,
-          "average_latency_ms": 2225.0
+          "average_latency_ms": 2266.5
         }
       ],
       "models": [
@@ -1281,7 +1290,11 @@
               "unknown_hold": 9790,
               "reported_total": 121720
             }
-          }
+          },
+          "completed_requests": 22,
+          "success_rate": 0.9090909090909091,
+          "average_latency_ms": 1508.1818181818182,
+          "latency_samples": 22
         },
         {
           "connection_id": "deepseek",
@@ -1322,7 +1335,11 @@
               "reported_total": 128820,
               "unknown_hold": 4330
             }
-          }
+          },
+          "completed_requests": 22,
+          "success_rate": 0.9545454545454546,
+          "average_latency_ms": 1451.590909090909,
+          "latency_samples": 22
         },
         {
           "connection_id": "coding",
@@ -1361,7 +1378,11 @@
               "reported_total": 119280,
               "unknown_hold": 7560
             }
-          }
+          },
+          "completed_requests": 21,
+          "success_rate": 0.9523809523809523,
+          "average_latency_ms": 1489.857142857143,
+          "latency_samples": 21
         }
       ],
       "unknown_time_excluded": 0
@@ -1399,8 +1420,8 @@
   "records": [
     {
       "request_id": "fixture-00064",
-      "started_at": "2026-11-07T12:06:17.006504+00:00",
-      "finished_at": "2026-11-07T12:06:17.006504+00:00",
+      "started_at": "2026-11-09T09:06:41.217692+00:00",
+      "finished_at": "2026-11-09T09:06:41.217692+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1429,12 +1450,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "376"
     },
     {
       "request_id": "fixture-00063",
-      "started_at": "2026-11-07T09:34:53.929581+00:00",
-      "finished_at": "2026-11-07T09:34:53.929581+00:00",
+      "started_at": "2026-11-09T06:35:18.140769+00:00",
+      "finished_at": "2026-11-09T06:35:18.140769+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1463,12 +1486,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "354",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00062",
-      "started_at": "2026-11-07T07:03:30.852658+00:00",
-      "finished_at": "2026-11-07T07:03:30.852658+00:00",
+      "started_at": "2026-11-09T04:03:55.063846+00:00",
+      "finished_at": "2026-11-09T04:03:55.063846+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1497,12 +1522,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "333"
     },
     {
       "request_id": "fixture-00061",
-      "started_at": "2026-11-07T04:32:07.775735+00:00",
-      "finished_at": "2026-11-07T04:32:07.775735+00:00",
+      "started_at": "2026-11-09T01:32:31.986923+00:00",
+      "finished_at": "2026-11-09T01:32:31.986923+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1531,12 +1558,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "311",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00060",
-      "started_at": "2026-11-07T02:00:44.698812+00:00",
-      "finished_at": "2026-11-07T02:00:44.698812+00:00",
+      "started_at": "2026-11-08T23:01:08.910000+00:00",
+      "finished_at": "2026-11-08T23:01:08.910000+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1565,12 +1594,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "290"
     },
     {
       "request_id": "fixture-00059",
-      "started_at": "2026-11-06T23:29:21.621889+00:00",
-      "finished_at": "2026-11-06T23:29:21.621889+00:00",
+      "started_at": "2026-11-08T20:29:45.833077+00:00",
+      "finished_at": "2026-11-08T20:29:45.833077+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1599,12 +1630,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "268",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00058",
-      "started_at": "2026-11-06T20:57:58.544965+00:00",
-      "finished_at": "2026-11-06T20:57:58.544965+00:00",
+      "started_at": "2026-11-08T17:58:22.756153+00:00",
+      "finished_at": "2026-11-08T17:58:22.756153+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1633,12 +1666,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "247"
     },
     {
       "request_id": "fixture-00057",
-      "started_at": "2026-11-06T18:26:35.468042+00:00",
-      "finished_at": "2026-11-06T18:26:35.468042+00:00",
+      "started_at": "2026-11-08T15:26:59.679230+00:00",
+      "finished_at": "2026-11-08T15:26:59.679230+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1667,12 +1702,14 @@
         "currency": "USD",
         "cost_status": "unknown",
         "token_basis": "unknown_hold"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00056",
-      "started_at": "2026-11-06T15:55:12.391119+00:00",
-      "finished_at": "2026-11-06T15:55:12.391119+00:00",
+      "started_at": "2026-11-08T12:55:36.602307+00:00",
+      "finished_at": "2026-11-08T12:55:36.602307+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1701,12 +1738,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "204"
     },
     {
       "request_id": "fixture-00055",
-      "started_at": "2026-11-06T13:23:49.314196+00:00",
-      "finished_at": "2026-11-06T13:23:49.314196+00:00",
+      "started_at": "2026-11-08T10:24:13.525384+00:00",
+      "finished_at": "2026-11-08T10:24:13.525384+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1735,12 +1774,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "182",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00054",
-      "started_at": "2026-11-06T10:52:26.237273+00:00",
-      "finished_at": "2026-11-06T10:52:26.237273+00:00",
+      "started_at": "2026-11-08T07:52:50.448461+00:00",
+      "finished_at": "2026-11-08T07:52:50.448461+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1769,12 +1810,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "161"
     },
     {
       "request_id": "fixture-00053",
-      "started_at": "2026-11-06T08:21:03.160350+00:00",
-      "finished_at": "2026-11-06T08:21:03.160350+00:00",
+      "started_at": "2026-11-08T05:21:27.371538+00:00",
+      "finished_at": "2026-11-08T05:21:27.371538+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1803,12 +1846,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "139",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00052",
-      "started_at": "2026-11-06T05:49:40.083427+00:00",
-      "finished_at": "2026-11-06T05:49:40.083427+00:00",
+      "started_at": "2026-11-08T02:50:04.294615+00:00",
+      "finished_at": "2026-11-08T02:50:04.294615+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1837,12 +1882,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "118"
     },
     {
       "request_id": "fixture-00051",
-      "started_at": "2026-11-06T03:18:17.006504+00:00",
-      "finished_at": "2026-11-06T03:18:17.006504+00:00",
+      "started_at": "2026-11-08T00:18:41.217692+00:00",
+      "finished_at": "2026-11-08T00:18:41.217692+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1871,12 +1918,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "96",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00050",
-      "started_at": "2026-11-06T00:46:53.929581+00:00",
-      "finished_at": "2026-11-06T00:46:53.929581+00:00",
+      "started_at": "2026-11-07T21:47:18.140769+00:00",
+      "finished_at": "2026-11-07T21:47:18.140769+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -1905,12 +1954,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "75"
     },
     {
       "request_id": "fixture-00049",
-      "started_at": "2026-11-05T22:15:30.852658+00:00",
-      "finished_at": "2026-11-05T22:15:30.852658+00:00",
+      "started_at": "2026-11-07T19:15:55.063846+00:00",
+      "finished_at": "2026-11-07T19:15:55.063846+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -1939,12 +1990,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "53",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00048",
-      "started_at": "2026-11-05T19:44:07.775735+00:00",
-      "finished_at": "2026-11-05T19:44:07.775735+00:00",
+      "started_at": "2026-11-07T16:44:31.986923+00:00",
+      "finished_at": "2026-11-07T16:44:31.986923+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -1973,12 +2026,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "1082"
     },
     {
       "request_id": "fixture-00047",
-      "started_at": "2026-11-05T17:12:44.698812+00:00",
-      "finished_at": "2026-11-05T17:12:44.698812+00:00",
+      "started_at": "2026-11-07T14:13:08.910000+00:00",
+      "finished_at": "2026-11-07T14:13:08.910000+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2007,12 +2062,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "1060",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00046",
-      "started_at": "2026-11-05T14:41:21.621889+00:00",
-      "finished_at": "2026-11-05T14:41:21.621889+00:00",
+      "started_at": "2026-11-07T11:41:45.833077+00:00",
+      "finished_at": "2026-11-07T11:41:45.833077+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2041,12 +2098,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "1039"
     },
     {
       "request_id": "fixture-00045",
-      "started_at": "2026-11-05T12:09:58.544965+00:00",
-      "finished_at": "2026-11-05T12:09:58.544965+00:00",
+      "started_at": "2026-11-07T09:10:22.756153+00:00",
+      "finished_at": "2026-11-07T09:10:22.756153+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2075,12 +2134,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "1017",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00044",
-      "started_at": "2026-11-05T09:38:35.468042+00:00",
-      "finished_at": "2026-11-05T09:38:35.468042+00:00",
+      "started_at": "2026-11-07T06:38:59.679230+00:00",
+      "finished_at": "2026-11-07T06:38:59.679230+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2109,12 +2170,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "996"
     },
     {
       "request_id": "fixture-00043",
-      "started_at": "2026-11-05T07:07:12.391119+00:00",
-      "finished_at": "2026-11-05T07:07:12.391119+00:00",
+      "started_at": "2026-11-07T04:07:36.602307+00:00",
+      "finished_at": "2026-11-07T04:07:36.602307+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2143,12 +2206,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "974",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00042",
-      "started_at": "2026-11-05T04:35:49.314196+00:00",
-      "finished_at": "2026-11-05T04:35:49.314196+00:00",
+      "started_at": "2026-11-07T01:36:13.525384+00:00",
+      "finished_at": "2026-11-07T01:36:13.525384+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2177,12 +2242,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "953"
     },
     {
       "request_id": "fixture-00041",
-      "started_at": "2026-11-05T02:04:26.237273+00:00",
-      "finished_at": "2026-11-05T02:04:26.237273+00:00",
+      "started_at": "2026-11-06T23:04:50.448461+00:00",
+      "finished_at": "2026-11-06T23:04:50.448461+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2211,12 +2278,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "931",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00040",
-      "started_at": "2026-11-04T23:33:03.160350+00:00",
-      "finished_at": "2026-11-04T23:33:03.160350+00:00",
+      "started_at": "2026-11-06T20:33:27.371538+00:00",
+      "finished_at": "2026-11-06T20:33:27.371538+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2245,12 +2314,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "910"
     },
     {
       "request_id": "fixture-00039",
-      "started_at": "2026-11-04T21:01:40.083427+00:00",
-      "finished_at": "2026-11-04T21:01:40.083427+00:00",
+      "started_at": "2026-11-06T18:02:04.294615+00:00",
+      "finished_at": "2026-11-06T18:02:04.294615+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2279,12 +2350,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "888",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00038",
-      "started_at": "2026-11-04T18:30:17.006504+00:00",
-      "finished_at": "2026-11-04T18:30:17.006504+00:00",
+      "started_at": "2026-11-06T15:30:41.217692+00:00",
+      "finished_at": "2026-11-06T15:30:41.217692+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2313,12 +2386,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "unknown_hold"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00037",
-      "started_at": "2026-11-04T15:58:53.929581+00:00",
-      "finished_at": "2026-11-04T15:58:53.929581+00:00",
+      "started_at": "2026-11-06T12:59:18.140769+00:00",
+      "finished_at": "2026-11-06T12:59:18.140769+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2347,12 +2422,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "845",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00036",
-      "started_at": "2026-11-04T13:27:30.852658+00:00",
-      "finished_at": "2026-11-04T13:27:30.852658+00:00",
+      "started_at": "2026-11-06T10:27:55.063846+00:00",
+      "finished_at": "2026-11-06T10:27:55.063846+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2381,12 +2458,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "824"
     },
     {
       "request_id": "fixture-00035",
-      "started_at": "2026-11-04T10:56:07.775735+00:00",
-      "finished_at": "2026-11-04T10:56:07.775735+00:00",
+      "started_at": "2026-11-06T07:56:31.986923+00:00",
+      "finished_at": "2026-11-06T07:56:31.986923+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2415,12 +2494,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "802",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00034",
-      "started_at": "2026-11-04T08:24:44.698812+00:00",
-      "finished_at": "2026-11-04T08:24:44.698812+00:00",
+      "started_at": "2026-11-06T05:25:08.910000+00:00",
+      "finished_at": "2026-11-06T05:25:08.910000+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2449,12 +2530,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "781"
     },
     {
       "request_id": "fixture-00033",
-      "started_at": "2026-11-04T05:53:21.621889+00:00",
-      "finished_at": "2026-11-04T05:53:21.621889+00:00",
+      "started_at": "2026-11-06T02:53:45.833077+00:00",
+      "finished_at": "2026-11-06T02:53:45.833077+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2483,12 +2566,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "759",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00032",
-      "started_at": "2026-11-04T03:21:58.544965+00:00",
-      "finished_at": "2026-11-04T03:21:58.544965+00:00",
+      "started_at": "2026-11-06T00:22:22.756153+00:00",
+      "finished_at": "2026-11-06T00:22:22.756153+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2517,12 +2602,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "738"
     },
     {
       "request_id": "fixture-00031",
-      "started_at": "2026-11-04T00:50:35.468042+00:00",
-      "finished_at": "2026-11-04T00:50:35.468042+00:00",
+      "started_at": "2026-11-05T21:50:59.679230+00:00",
+      "finished_at": "2026-11-05T21:50:59.679230+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2551,12 +2638,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "716",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00030",
-      "started_at": "2026-11-03T22:19:12.391119+00:00",
-      "finished_at": "2026-11-03T22:19:12.391119+00:00",
+      "started_at": "2026-11-05T19:19:36.602307+00:00",
+      "finished_at": "2026-11-05T19:19:36.602307+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2585,12 +2674,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "695"
     },
     {
       "request_id": "fixture-00029",
-      "started_at": "2026-11-03T19:47:49.314196+00:00",
-      "finished_at": "2026-11-03T19:47:49.314196+00:00",
+      "started_at": "2026-11-05T16:48:13.525384+00:00",
+      "finished_at": "2026-11-05T16:48:13.525384+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2619,12 +2710,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "673",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00028",
-      "started_at": "2026-11-03T17:16:26.237273+00:00",
-      "finished_at": "2026-11-03T17:16:26.237273+00:00",
+      "started_at": "2026-11-05T14:16:50.448461+00:00",
+      "finished_at": "2026-11-05T14:16:50.448461+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2653,12 +2746,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "652"
     },
     {
       "request_id": "fixture-00027",
-      "started_at": "2026-11-03T14:45:03.160350+00:00",
-      "finished_at": "2026-11-03T14:45:03.160350+00:00",
+      "started_at": "2026-11-05T11:45:27.371538+00:00",
+      "finished_at": "2026-11-05T11:45:27.371538+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2687,12 +2782,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "630",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00026",
-      "started_at": "2026-11-03T12:13:40.083427+00:00",
-      "finished_at": "2026-11-03T12:13:40.083427+00:00",
+      "started_at": "2026-11-05T09:14:04.294615+00:00",
+      "finished_at": "2026-11-05T09:14:04.294615+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2721,12 +2818,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "609"
     },
     {
       "request_id": "fixture-00025",
-      "started_at": "2026-11-03T09:42:17.006504+00:00",
-      "finished_at": "2026-11-03T09:42:17.006504+00:00",
+      "started_at": "2026-11-05T06:42:41.217692+00:00",
+      "finished_at": "2026-11-05T06:42:41.217692+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2755,12 +2854,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "587",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00024",
-      "started_at": "2026-11-03T07:10:53.929581+00:00",
-      "finished_at": "2026-11-03T07:10:53.929581+00:00",
+      "started_at": "2026-11-05T04:11:18.140769+00:00",
+      "finished_at": "2026-11-05T04:11:18.140769+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2789,12 +2890,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "566"
     },
     {
       "request_id": "fixture-00023",
-      "started_at": "2026-11-03T04:39:30.852658+00:00",
-      "finished_at": "2026-11-03T04:39:30.852658+00:00",
+      "started_at": "2026-11-05T01:39:55.063846+00:00",
+      "finished_at": "2026-11-05T01:39:55.063846+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2823,12 +2926,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "544",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00022",
-      "started_at": "2026-11-03T02:08:07.775735+00:00",
-      "finished_at": "2026-11-03T02:08:07.775735+00:00",
+      "started_at": "2026-11-04T23:08:31.986923+00:00",
+      "finished_at": "2026-11-04T23:08:31.986923+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2857,12 +2962,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "523"
     },
     {
       "request_id": "fixture-00021",
-      "started_at": "2026-11-02T23:36:44.698812+00:00",
-      "finished_at": "2026-11-02T23:36:44.698812+00:00",
+      "started_at": "2026-11-04T20:37:08.910000+00:00",
+      "finished_at": "2026-11-04T20:37:08.910000+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2891,12 +2998,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "501",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00020",
-      "started_at": "2026-11-02T21:05:21.621889+00:00",
-      "finished_at": "2026-11-02T21:05:21.621889+00:00",
+      "started_at": "2026-11-04T18:05:45.833077+00:00",
+      "finished_at": "2026-11-04T18:05:45.833077+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -2925,12 +3034,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "480"
     },
     {
       "request_id": "fixture-00019",
-      "started_at": "2026-11-02T18:33:58.544965+00:00",
-      "finished_at": "2026-11-02T18:33:58.544965+00:00",
+      "started_at": "2026-11-04T15:34:22.756153+00:00",
+      "finished_at": "2026-11-04T15:34:22.756153+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -2959,12 +3070,14 @@
         "currency": "USD",
         "cost_status": "unknown",
         "token_basis": "unknown_hold"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00018",
-      "started_at": "2026-11-02T16:02:35.468042+00:00",
-      "finished_at": "2026-11-02T16:02:35.468042+00:00",
+      "started_at": "2026-11-04T13:02:59.679230+00:00",
+      "finished_at": "2026-11-04T13:02:59.679230+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -2993,12 +3106,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "437"
     },
     {
       "request_id": "fixture-00017",
-      "started_at": "2026-11-02T13:31:12.391119+00:00",
-      "finished_at": "2026-11-02T13:31:12.391119+00:00",
+      "started_at": "2026-11-04T10:31:36.602307+00:00",
+      "finished_at": "2026-11-04T10:31:36.602307+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3027,12 +3142,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "415",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00016",
-      "started_at": "2026-11-02T10:59:49.314196+00:00",
-      "finished_at": "2026-11-02T10:59:49.314196+00:00",
+      "started_at": "2026-11-04T08:00:13.525384+00:00",
+      "finished_at": "2026-11-04T08:00:13.525384+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3061,12 +3178,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "394"
     },
     {
       "request_id": "fixture-00015",
-      "started_at": "2026-11-02T08:28:26.237273+00:00",
-      "finished_at": "2026-11-02T08:28:26.237273+00:00",
+      "started_at": "2026-11-04T05:28:50.448461+00:00",
+      "finished_at": "2026-11-04T05:28:50.448461+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3095,12 +3214,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "372",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00014",
-      "started_at": "2026-11-02T05:57:03.160350+00:00",
-      "finished_at": "2026-11-02T05:57:03.160350+00:00",
+      "started_at": "2026-11-04T02:57:27.371538+00:00",
+      "finished_at": "2026-11-04T02:57:27.371538+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3129,12 +3250,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "351"
     },
     {
       "request_id": "fixture-00013",
-      "started_at": "2026-11-02T03:25:40.083427+00:00",
-      "finished_at": "2026-11-02T03:25:40.083427+00:00",
+      "started_at": "2026-11-04T00:26:04.294615+00:00",
+      "finished_at": "2026-11-04T00:26:04.294615+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3163,12 +3286,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "329",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00012",
-      "started_at": "2026-11-02T00:54:17.006504+00:00",
-      "finished_at": "2026-11-02T00:54:17.006504+00:00",
+      "started_at": "2026-11-03T21:54:41.217692+00:00",
+      "finished_at": "2026-11-03T21:54:41.217692+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3197,12 +3322,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "308"
     },
     {
       "request_id": "fixture-00011",
-      "started_at": "2026-11-01T22:22:53.929581+00:00",
-      "finished_at": "2026-11-01T22:22:53.929581+00:00",
+      "started_at": "2026-11-03T19:23:18.140769+00:00",
+      "finished_at": "2026-11-03T19:23:18.140769+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3231,12 +3358,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "286",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00010",
-      "started_at": "2026-11-01T19:51:30.852658+00:00",
-      "finished_at": "2026-11-01T19:51:30.852658+00:00",
+      "started_at": "2026-11-03T16:51:55.063846+00:00",
+      "finished_at": "2026-11-03T16:51:55.063846+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3265,12 +3394,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "265"
     },
     {
       "request_id": "fixture-00009",
-      "started_at": "2026-11-01T17:20:07.775735+00:00",
-      "finished_at": "2026-11-01T17:20:07.775735+00:00",
+      "started_at": "2026-11-03T14:20:31.986923+00:00",
+      "finished_at": "2026-11-03T14:20:31.986923+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3299,12 +3430,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "243",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00008",
-      "started_at": "2026-11-01T14:48:44.698812+00:00",
-      "finished_at": "2026-11-01T14:48:44.698812+00:00",
+      "started_at": "2026-11-03T11:49:08.910000+00:00",
+      "finished_at": "2026-11-03T11:49:08.910000+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3333,12 +3466,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "222"
     },
     {
       "request_id": "fixture-00007",
-      "started_at": "2026-11-01T12:17:21.621889+00:00",
-      "finished_at": "2026-11-01T12:17:21.621889+00:00",
+      "started_at": "2026-11-03T09:17:45.833077+00:00",
+      "finished_at": "2026-11-03T09:17:45.833077+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3367,12 +3502,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "200",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00006",
-      "started_at": "2026-11-01T09:45:58.544965+00:00",
-      "finished_at": "2026-11-01T09:45:58.544965+00:00",
+      "started_at": "2026-11-03T06:46:22.756153+00:00",
+      "finished_at": "2026-11-03T06:46:22.756153+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3401,12 +3538,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "179"
     },
     {
       "request_id": "fixture-00005",
-      "started_at": "2026-11-01T07:14:35.468042+00:00",
-      "finished_at": "2026-11-01T07:14:35.468042+00:00",
+      "started_at": "2026-11-03T04:14:59.679230+00:00",
+      "finished_at": "2026-11-03T04:14:59.679230+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3435,12 +3574,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "157",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00004",
-      "started_at": "2026-11-01T04:43:12.391119+00:00",
-      "finished_at": "2026-11-01T04:43:12.391119+00:00",
+      "started_at": "2026-11-03T01:43:36.602307+00:00",
+      "finished_at": "2026-11-03T01:43:36.602307+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3469,12 +3610,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "136"
     },
     {
       "request_id": "fixture-00003",
-      "started_at": "2026-11-01T02:11:49.314196+00:00",
-      "finished_at": "2026-11-01T02:11:49.314196+00:00",
+      "started_at": "2026-11-02T23:12:13.525384+00:00",
+      "finished_at": "2026-11-02T23:12:13.525384+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3503,12 +3646,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "114",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00002",
-      "started_at": "2026-10-31T23:40:26.237273+00:00",
-      "finished_at": "2026-10-31T23:40:26.237273+00:00",
+      "started_at": "2026-11-02T20:40:50.448461+00:00",
+      "finished_at": "2026-11-02T20:40:50.448461+00:00",
       "caller_id": "demo-app-3",
       "connection_id": "coding",
       "model": "kimi-for-coding",
@@ -3537,12 +3682,14 @@
         "currency": null,
         "cost_status": "not_priced",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": "93"
     },
     {
       "request_id": "fixture-00001",
-      "started_at": "2026-10-31T21:09:03.160350+00:00",
-      "finished_at": "2026-10-31T21:09:03.160350+00:00",
+      "started_at": "2026-11-02T18:09:27.371538+00:00",
+      "finished_at": "2026-11-02T18:09:27.371538+00:00",
       "caller_id": "demo-app-2",
       "connection_id": "deepseek",
       "model": "deepseek-fixture",
@@ -3571,12 +3718,14 @@
         "currency": "USD",
         "cost_status": "estimated",
         "token_basis": "reported_total"
-      }
+      },
+      "reasoning_tokens": "71",
+      "thinking_tokens": null
     },
     {
       "request_id": "fixture-00000",
-      "started_at": "2026-10-31T18:37:40.083427+00:00",
-      "finished_at": "2026-10-31T18:37:40.083427+00:00",
+      "started_at": "2026-11-02T15:38:04.294615+00:00",
+      "finished_at": "2026-11-02T15:38:04.294615+00:00",
       "caller_id": "demo-app-1",
       "connection_id": "mimo-default",
       "model": "mimo-fixture",
@@ -3605,7 +3754,9 @@
         "currency": "USD",
         "cost_status": "unknown",
         "token_basis": "unknown_hold"
-      }
+      },
+      "reasoning_tokens": null,
+      "thinking_tokens": null
     }
   ],
   "accounting": {
@@ -3873,7 +4024,7 @@
   "logs": {
     "items": [
       {
-        "timestamp": "2026-11-07T14:38:16.083427+00:00",
+        "timestamp": "2026-11-09T11:38:40.294615+00:00",
         "path": "/v1/chat/completions",
         "status": 200,
         "duration_ms": 815
@@ -3885,87 +4036,87 @@
   "backups": {
     "items": [
       {
-        "name": "2026-11-07T14-38-16.539170+00-00-f202c5f5",
+        "name": "2026-11-09T11-38-40.766211+00-00-acde8b73",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.551478+00:00",
+        "created_at": "2026-11-09T11:38:40.774168+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.520119+00-00-07c1fd65",
+        "name": "2026-11-09T11-38-40.749164+00-00-20ea8e65",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.529003+00:00",
+        "created_at": "2026-11-09T11:38:40.759166+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.477505+00-00-84d1fc29",
+        "name": "2026-11-09T11-38-40.732172+00-00-e18a4242",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.494533+00:00",
+        "created_at": "2026-11-09T11:38:40.741991+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.462561+00-00-f764713e",
+        "name": "2026-11-09T11-38-40.714999+00-00-f7781ab0",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.470267+00:00",
+        "created_at": "2026-11-09T11:38:40.723613+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.447288+00-00-1e7eacc7",
+        "name": "2026-11-09T11-38-40.692970+00-00-7d7d172e",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.455194+00:00",
+        "created_at": "2026-11-09T11:38:40.706646+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.428222+00-00-74f00312",
+        "name": "2026-11-09T11-38-40.673840+00-00-4e943a44",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.439029+00:00",
+        "created_at": "2026-11-09T11:38:40.681379+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.412032+00-00-4748a789",
+        "name": "2026-11-09T11-38-40.656151+00-00-bf7f233b",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.419425+00:00",
+        "created_at": "2026-11-09T11:38:40.665306+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.396094+00-00-d50d539b",
+        "name": "2026-11-09T11-38-40.630328+00-00-3e0d982a",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.404534+00:00",
+        "created_at": "2026-11-09T11:38:40.646467+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.378915+00-00-11f05cf3",
+        "name": "2026-11-09T11-38-40.610036+00-00-ddceb040",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.387351+00:00",
+        "created_at": "2026-11-09T11:38:40.620474+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.358654+00-00-6b44dda0",
+        "name": "2026-11-09T11-38-40.578819+00-00-bfc6c8a3",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.368337+00:00",
+        "created_at": "2026-11-09T11:38:40.588839+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.058319+00-00-b65e8eb2",
+        "name": "2026-11-09T11-38-40.272850+00-00-ac84a44b",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.067942+00:00",
+        "created_at": "2026-11-09T11:38:40.281439+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.040389+00-00-f98c00e3",
+        "name": "2026-11-09T11-38-40.256529+00-00-35f7a9e6",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.051150+00:00",
+        "created_at": "2026-11-09T11:38:40.265017+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-16.023832+00-00-1f69661b",
+        "name": "2026-11-09T11-38-40.243193+00-00-06f6d8b7",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:16.030848+00:00",
+        "created_at": "2026-11-09T11:38:40.249627+00:00",
         "manifest": "sha256_present"
       },
       {
-        "name": "2026-11-07T14-38-15.970969+00-00-68d53905",
+        "name": "2026-11-09T11-38-40.200135+00-00-32f598df",
         "integrity": "not_checked",
-        "created_at": "2026-11-07T14:38:15.974157+00:00",
+        "created_at": "2026-11-09T11:38:40.203090+00:00",
         "manifest": "sha256_present"
       }
     ],
@@ -4083,8 +4234,8 @@
         ],
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.395827+00:00",
-          "discovered_at": "2026-11-07T14:38:16.395827+00:00",
+          "checked_at": "2026-11-09T11:38:40.630064+00:00",
+          "discovered_at": "2026-11-09T11:38:40.630064+00:00",
           "current": true,
           "count": 2,
           "models": [
@@ -4127,8 +4278,8 @@
         ],
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.411724+00:00",
-          "discovered_at": "2026-11-07T14:38:16.411724+00:00",
+          "checked_at": "2026-11-09T11:38:40.655879+00:00",
+          "discovered_at": "2026-11-09T11:38:40.655879+00:00",
           "current": true,
           "count": 1,
           "models": [
@@ -4176,8 +4327,8 @@
         ],
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.427989+00:00",
-          "discovered_at": "2026-11-07T14:38:16.427989+00:00",
+          "checked_at": "2026-11-09T11:38:40.673603+00:00",
+          "discovered_at": "2026-11-09T11:38:40.673603+00:00",
           "current": true,
           "count": 1,
           "models": [
@@ -4219,8 +4370,8 @@
         ],
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.447057+00:00",
-          "discovered_at": "2026-11-07T14:38:16.447057+00:00",
+          "checked_at": "2026-11-09T11:38:40.692687+00:00",
+          "discovered_at": "2026-11-09T11:38:40.692687+00:00",
           "current": true,
           "count": 1,
           "models": [
@@ -4262,8 +4413,8 @@
         ],
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.462315+00:00",
-          "discovered_at": "2026-11-07T14:38:16.462315+00:00",
+          "checked_at": "2026-11-09T11:38:40.714738+00:00",
+          "discovered_at": "2026-11-09T11:38:40.714738+00:00",
           "current": true,
           "count": 2,
           "models": [
@@ -4283,8 +4434,8 @@
         "protocol": "chat-completions",
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.395827+00:00",
-          "discovered_at": "2026-11-07T14:38:16.395827+00:00",
+          "checked_at": "2026-11-09T11:38:40.630064+00:00",
+          "discovered_at": "2026-11-09T11:38:40.630064+00:00",
           "current": true,
           "count": 2,
           "models": [
@@ -4315,7 +4466,7 @@
               {
                 "state": "success",
                 "outcome": "success",
-                "verified_at": "2026-11-07T09:34:53.929581+00:00",
+                "verified_at": "2026-11-09T06:35:18.140769+00:00",
                 "request_id": "fixture-00063",
                 "actual_model": "mimo-fixture",
                 "protocol": "chat-completions",
@@ -4364,8 +4515,8 @@
         "protocol": "chat-completions",
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.411724+00:00",
-          "discovered_at": "2026-11-07T14:38:16.411724+00:00",
+          "checked_at": "2026-11-09T11:38:40.655879+00:00",
+          "discovered_at": "2026-11-09T11:38:40.655879+00:00",
           "current": true,
           "count": 1,
           "models": [
@@ -4395,7 +4546,7 @@
               {
                 "state": "success",
                 "outcome": "success",
-                "verified_at": "2026-11-07T12:06:17.006504+00:00",
+                "verified_at": "2026-11-09T09:06:41.217692+00:00",
                 "request_id": "fixture-00064",
                 "actual_model": "deepseek-fixture",
                 "protocol": "chat-completions",
@@ -4428,8 +4579,8 @@
         "protocol": "chat-completions",
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.427989+00:00",
-          "discovered_at": "2026-11-07T14:38:16.427989+00:00",
+          "checked_at": "2026-11-09T11:38:40.673603+00:00",
+          "discovered_at": "2026-11-09T11:38:40.673603+00:00",
           "current": true,
           "count": 1,
           "models": [
@@ -4457,7 +4608,7 @@
               {
                 "state": "success",
                 "outcome": "success",
-                "verified_at": "2026-11-07T07:03:30.852658+00:00",
+                "verified_at": "2026-11-09T04:03:55.063846+00:00",
                 "request_id": "fixture-00062",
                 "actual_model": "kimi-for-coding",
                 "protocol": "chat-completions",
@@ -4490,8 +4641,8 @@
         "protocol": "anthropic-messages",
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.447057+00:00",
-          "discovered_at": "2026-11-07T14:38:16.447057+00:00",
+          "checked_at": "2026-11-09T11:38:40.692687+00:00",
+          "discovered_at": "2026-11-09T11:38:40.692687+00:00",
           "current": true,
           "count": 1,
           "models": [
@@ -4532,8 +4683,8 @@
         "protocol": "chat-completions",
         "discovery": {
           "state": "success",
-          "checked_at": "2026-11-07T14:38:16.462315+00:00",
-          "discovered_at": "2026-11-07T14:38:16.462315+00:00",
+          "checked_at": "2026-11-09T11:38:40.714738+00:00",
+          "discovered_at": "2026-11-09T11:38:40.714738+00:00",
           "current": true,
           "count": 2,
           "models": [
@@ -4585,7 +4736,7 @@
       {
         "id": "legacy",
         "name": "Legacy client (0.1.x)",
-        "created_at": "2026-11-07T14:38:16.011151+00:00",
+        "created_at": "2026-11-09T11:38:40.232168+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -4605,7 +4756,7 @@
       {
         "id": "demo-app-1",
         "name": "Cursor Workspace",
-        "created_at": "2026-11-07T14:38:16.077871+00:00",
+        "created_at": "2026-11-09T11:38:40.289482+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -4624,12 +4775,12 @@
           "daily_budget": null,
           "budget_currency": "USD"
         },
-        "revision": "228425172508d0ff1e4a17d95c5c6d4d3cdedde5d5b9872ca0c5d2f0ad480875"
+        "revision": "be1b7903aaeea3d1b3ce7872b57b91b2f732baf0c71da1c394972a88a5b24a5c"
       },
       {
         "id": "demo-app-2",
         "name": "Personal Notebook",
-        "created_at": "2026-11-07T14:38:16.080213+00:00",
+        "created_at": "2026-11-09T11:38:40.291512+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -4648,12 +4799,12 @@
           "daily_budget": null,
           "budget_currency": "USD"
         },
-        "revision": "590464a60e710b937099e0d18efbb3b27905a617e2bdaf8df1ba8506959c9591"
+        "revision": "2ceecf8f00c6032265c4cb23a510cd50c9bb745f34a706e6e988b7cffd4156af"
       },
       {
         "id": "demo-app-3",
         "name": "Research Tools",
-        "created_at": "2026-11-07T14:38:16.081816+00:00",
+        "created_at": "2026-11-09T11:38:40.292895+00:00",
         "revoked_at": null,
         "active": true,
         "policy": {
@@ -4672,13 +4823,13 @@
           "daily_budget": null,
           "budget_currency": "USD"
         },
-        "revision": "37844cb444c137a56d541a533725d761e06282cc18ce17b5478b2c8c05d6f0bc"
+        "revision": "f85c8dd1bb0fa8087fe8ac7e02d197f996c8f0f3a605415effc00d4626cd2e26"
       },
       {
         "id": "demo-app-4",
         "name": "Disabled integration",
-        "created_at": "2026-11-07T14:38:16.356806+00:00",
-        "revoked_at": "2026-11-07T14:38:16.357825+00:00",
+        "created_at": "2026-11-09T11:38:40.577272+00:00",
+        "revoked_at": "2026-11-09T11:38:40.578073+00:00",
         "active": false,
         "policy": {
           "allow_token_plans": false,
@@ -4692,13 +4843,13 @@
           "daily_budget": null,
           "budget_currency": "USD"
         },
-        "revision": "6b09ba3434903ff072e80ad03bceffc165109e81918d7313e60681094b2ab949"
+        "revision": "22f34d5ce0510ef7313e04b29fafb9dbcfbb13e4e6ba52d72149ac26e6420a54"
       }
     ],
     "quotas": {
       "legacy": {
         "id": "legacy",
-        "day": "2026-11-07",
+        "day": "2026-11-09",
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": false,
@@ -4728,7 +4879,7 @@
       },
       "demo-app-1": {
         "id": "demo-app-1",
-        "day": "2026-11-07",
+        "day": "2026-11-09",
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": true,
@@ -4764,7 +4915,7 @@
       },
       "demo-app-2": {
         "id": "demo-app-2",
-        "day": "2026-11-07",
+        "day": "2026-11-09",
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": true,
@@ -4800,7 +4951,7 @@
       },
       "demo-app-3": {
         "id": "demo-app-3",
-        "day": "2026-11-07",
+        "day": "2026-11-09",
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": true,
@@ -4834,7 +4985,7 @@
       },
       "demo-app-4": {
         "id": "demo-app-4",
-        "day": "2026-11-07",
+        "day": "2026-11-09",
         "timezone": "UTC",
         "policy": {
           "allow_token_plans": false,
